@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Handler &#8212; MModel 0.3.0 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modifier" href="ref_modifier.html" />
+    <link rel="prev" title="Model" href="ref_model.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">MModel 0.3.0 documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="changelog.html">
+   Changelog
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_graph.html">
+   Creating a model graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_model.html">
+   Building a model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_modifier.html">
+   Modifying model and node
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_subgraph.html">
+   Modifying a subgraph
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API Guideline
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="api_handler.html">
+   Handler API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api_modifier.html">
+   Modifier API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_graph.html">
+   Graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_model.html">
+   Model
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Handler
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_modifier.html">
+   Modifier
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/ref_handler.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handler-executing-in-topological-order">
+   Handler executing in topological order
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handler-module">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     handler
+    </span>
+   </code>
+   module
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Handler</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handler-executing-in-topological-order">
+   Handler executing in topological order
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#handler-module">
+   <code class="xref py py-mod docutils literal notranslate">
+    <span class="pre">
+     handler
+    </span>
+   </code>
+   module
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="handler">
+<h1>Handler<a class="headerlink" href="#handler" title="Permalink to this headline">#</a></h1>
+<section id="handler-executing-in-topological-order">
+<h2>Handler executing in topological order<a class="headerlink" href="#handler-executing-in-topological-order" title="Permalink to this headline">#</a></h2>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mmodel.handler.MemHandler" title="mmodel.handler.MemHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.handler.MemHandler</span></code></a>(graph[, extra_returns])</p></td>
+<td><p>Default model of mmodel module</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">MemHandler</span></code> calculates each input parameter usage. Then, the instance
+executes each node and stores the result in a dictionary. After each node
+execution, it checks the counter of the input variable. If it is zero (no
+longer needed for the sequent nodes), the value is deleted. The behavior has
+little overhead and reduces peak memory usage.</p>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mmodel.handler.PlainHandler" title="mmodel.handler.PlainHandler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.handler.PlainHandler</span></code></a>(graph[, ...])</p></td>
+<td><p>A fast and bare-bone model</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">PlainHandler</span></code> executes each node and stores the result in a dictionary. All
+intermediate values are preserved in the dictionary.</p>
+<table class="autosummary longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mmodel.handler.H5Handler" title="mmodel.handler.H5Handler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.handler.H5Handler</span></code></a>(graph, h5_filename)</p></td>
+<td><p>Model that stores all data in h5 file</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">H5Handler</span></code> executes each node and stores the result in an h5 file. For each
+node execution, the parameters are read from the h5 file. Each instance call
+stores values in the same h5 file, with a subgroup in the format of
+“(instance_id)_(instance_name)_(execution_num)”. The naming scheme makes sure
+the h5 subgroup entries are unique for each instance run.</p>
+</section>
+<section id="handler-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">handler</span></code> module<a class="headerlink" href="#handler-module" title="Permalink to this headline">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mmodel.handler.TopologicalHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.handler.</span></span><span class="sig-name descname"><span class="pre">TopologicalHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_returns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#TopologicalHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.TopologicalHandler" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for layered execution following topological generation</p>
+<p>Data instance is used for the execution instead of attributes.
+This makes the pipeline cleaner and better for testing. A data
+instance can be a dictionary, tuple of dictionaries, or file instance.
+The Data instance is discarded after each execution or when an exception
+occurs.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.TopologicalHandler.finish">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">finish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#TopologicalHandler.finish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.TopologicalHandler.finish" title="Permalink to this definition">#</a></dt>
+<dd><p>Finish execution</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.TopologicalHandler.initiate">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">initiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#TopologicalHandler.initiate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.TopologicalHandler.initiate" title="Permalink to this definition">#</a></dt>
+<dd><p>Initiate the execution</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.TopologicalHandler.raise_node_exception">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">raise_node_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#TopologicalHandler.raise_node_exception"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.TopologicalHandler.raise_node_exception" title="Permalink to this definition">#</a></dt>
+<dd><p>Raise exception when there is a node failure</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.TopologicalHandler.run_node">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#TopologicalHandler.run_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.TopologicalHandler.run_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Run individual node</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mmodel.handler.MemHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.handler.</span></span><span class="sig-name descname"><span class="pre">MemHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_returns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#MemHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.MemHandler" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mmodel.handler.TopologicalHandler" title="mmodel.handler.TopologicalHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">mmodel.handler.TopologicalHandler</span></code></a></p>
+<p>Default model of mmodel module</p>
+<p>Model execute the graph by layer. For parameters, a counter is used
+to track all value usage. At the end of each layer, the parameter is
+deleted if the counter reaches 0.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.MemHandler.finish">
+<span class="sig-name descname"><span class="pre">finish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#MemHandler.finish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.MemHandler.finish" title="Permalink to this definition">#</a></dt>
+<dd><p>Finish and return values</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.MemHandler.initiate">
+<span class="sig-name descname"><span class="pre">initiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#MemHandler.initiate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.MemHandler.initiate" title="Permalink to this definition">#</a></dt>
+<dd><p>Initiate the value dictionary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.MemHandler.raise_node_exception">
+<span class="sig-name descname"><span class="pre">raise_node_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#MemHandler.raise_node_exception"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.MemHandler.raise_node_exception" title="Permalink to this definition">#</a></dt>
+<dd><p>Raise exception</p>
+<p>Delete intermediate attributes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.MemHandler.run_node">
+<span class="sig-name descname"><span class="pre">run_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#MemHandler.run_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.MemHandler.run_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Run node</p>
+<p>At the end of each node calculation, the counter is updated.
+If the counter value is zero, the value is deleted.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mmodel.handler.PlainHandler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.handler.</span></span><span class="sig-name descname"><span class="pre">PlainHandler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_returns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#PlainHandler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.PlainHandler" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mmodel.handler.TopologicalHandler" title="mmodel.handler.TopologicalHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">mmodel.handler.TopologicalHandler</span></code></a></p>
+<p>A fast and bare-bone model</p>
+<p>The method stores all intermediate values in memory. The calculation steps
+are very similar to Model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.PlainHandler.finish">
+<span class="sig-name descname"><span class="pre">finish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#PlainHandler.finish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.PlainHandler.finish" title="Permalink to this definition">#</a></dt>
+<dd><p>Finish and return values</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.PlainHandler.initiate">
+<span class="sig-name descname"><span class="pre">initiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#PlainHandler.initiate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.PlainHandler.initiate" title="Permalink to this definition">#</a></dt>
+<dd><p>Initiate the value dictionary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.PlainHandler.raise_node_exception">
+<span class="sig-name descname"><span class="pre">raise_node_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#PlainHandler.raise_node_exception"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.PlainHandler.raise_node_exception" title="Permalink to this definition">#</a></dt>
+<dd><p>Raise exception</p>
+<p>Delete intermediate attributes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.PlainHandler.run_node">
+<span class="sig-name descname"><span class="pre">run_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#PlainHandler.run_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.PlainHandler.run_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Run node</p>
+<p>Store all values in a dictionary.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="mmodel.handler.H5Handler">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.handler.</span></span><span class="sig-name descname"><span class="pre">H5Handler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h5_filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_returns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#H5Handler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.H5Handler" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mmodel.handler.TopologicalHandler" title="mmodel.handler.TopologicalHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">mmodel.handler.TopologicalHandler</span></code></a></p>
+<p>Model that stores all data in h5 file</p>
+<p>Each entry of the h5 file is unique, with the instance id, instance name
+and execution number</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.H5Handler.finish">
+<span class="sig-name descname"><span class="pre">finish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#H5Handler.finish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.H5Handler.finish" title="Permalink to this definition">#</a></dt>
+<dd><p>output parameters based on returns</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.H5Handler.initiate">
+<span class="sig-name descname"><span class="pre">initiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#H5Handler.initiate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.H5Handler.initiate" title="Permalink to this definition">#</a></dt>
+<dd><p>Initiate dictionary value</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.H5Handler.raise_node_exception">
+<span class="sig-name descname"><span class="pre">raise_node_exception</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#H5Handler.raise_node_exception"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.H5Handler.raise_node_exception" title="Permalink to this definition">#</a></dt>
+<dd><p>Raise exception when exception occurred for a specific node</p>
+<p>The error message is written as a “_node” attribute to the current group.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.H5Handler.read">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#H5Handler.read"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.H5Handler.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Read dataset/attribute by group</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – value name</p></li>
+<li><p><strong>group</strong> (<em>h5py.group</em>) – open h5py group object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.H5Handler.run_node">
+<span class="sig-name descname"><span class="pre">run_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_instance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#H5Handler.run_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.H5Handler.run_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Run node</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.handler.H5Handler.write">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/handler.html#H5Handler.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.handler.H5Handler.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Write h5 dataset/attribute by group</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value_dict</strong> (<em>dict</em>) – dictionary of values to write</p></li>
+<li><p><strong>group</strong> (<em>h5py.group</em>) – open h5py group object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ref_model.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Model</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ref_modifier.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Modifier</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Peter Sun<br/>
+  
+      &copy; Copyright 2022, Peter Sun.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

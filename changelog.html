@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Changelog &#8212; MModel 0.3.0 documentation</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating a model graph" href="tutorial_graph.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">MModel 0.3.0 documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Changelog
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_graph.html">
+   Creating a model graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_model.html">
+   Building a model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_modifier.html">
+   Modifying model and node
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial_subgraph.html">
+   Modifying a subgraph
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  API Guideline
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="api_handler.html">
+   Handler API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="api_modifier.html">
+   Modifier API
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_graph.html">
+   Graph
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_model.html">
+   Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_handler.html">
+   Handler
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_modifier.html">
+   Modifier
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/changelog.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   [0.3.0] - 2022-06-12
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#added">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changed">
+     Changed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fixed">
+     Fixed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   [0.2.2] - 2022-05-06
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Added
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   [0.2.1] - 2022-05-02
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   [0.2.0] - 2022-04-27
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   [0.1.1] - 2022-04-06
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   [0.1.0] - 2022-04-02
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Added
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Changelog</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   [0.3.0] - 2022-06-12
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#added">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changed">
+     Changed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fixed">
+     Fixed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   [0.2.2] - 2022-05-06
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Added
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   [0.2.1] - 2022-05-02
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   [0.2.0] - 2022-04-27
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id10">
+   [0.1.1] - 2022-04-06
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   [0.1.0] - 2022-04-02
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     Added
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">#</a></h1>
+<p>All notable changes to this project will be documented in this file.</p>
+<p>The format is based on
+<a class="reference external" href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
+and this project adheres to
+<a class="reference external" href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a></p>
+<section id="id1">
+<h2>[0.3.0] - 2022-06-12<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<section id="added">
+<h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subgraph_by_returns</span></code> filters graph by node returns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_is_valid_model</span></code> method graph for Model class to validate graph for
+building model executable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">draw</span></code> method to <code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code> and <code class="docutils literal notranslate"><span class="pre">Model</span></code> classes</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">get_node</span></code> and <code class="docutils literal notranslate"><span class="pre">get_node_object</span></code> methods to <code class="docutils literal notranslate"><span class="pre">Model</span></code> class</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">view_node``to</span> <span class="pre">``ModelGraph</span></code> and <code class="docutils literal notranslate"><span class="pre">Model</span></code> classes</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">deepcopy</span></code> method to <code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code> because <code class="docutils literal notranslate"><span class="pre">graph.copy</span></code> method
+is a shallow copy</p></li>
+</ul>
+</section>
+<section id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>move <code class="docutils literal notranslate"><span class="pre">subgraph_by_nodes</span></code> and <code class="docutils literal notranslate"><span class="pre">subgraph_by_parameters</span></code> to <code class="docutils literal notranslate"><span class="pre">filter</span></code>
+module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Model</span></code> and handlers parameter “model_graph” to “graph”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Model</span></code> no longer accept handler arguments (unify behavior of modifiers
+and handlers)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Model</span></code> instance str now shows modifier information</p></li>
+<li><p>modifiers with parameters require to have the “info” attribute set to the
+wrapper (the closure that takes func as a parameter). The “info” is used
+to show the modifier information in the model instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">modify_subgraph</span></code> no longer store the subgraph information as a node
+attribute</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Model._graph</span></code> is a copy of the original graph and is frozen. The same graph
+is used to create the handler object.</p></li>
+<li><p>graph <code class="docutils literal notranslate"><span class="pre">add_node_object</span></code> and <code class="docutils literal notranslate"><span class="pre">add_node_objects_from</span></code> to <code class="docutils literal notranslate"><span class="pre">set_node_object</span></code>
+and <code class="docutils literal notranslate"><span class="pre">set_node_object_from</span></code></p></li>
+</ul>
+</section>
+<section id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">modify_subgraph</span></code> changes original graph attributes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code> shares the same class attribute across instances</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2>[0.2.2] - 2022-05-06<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h3>Added<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>add <code class="docutils literal notranslate"><span class="pre">modifiers</span></code> input argument to <code class="docutils literal notranslate"><span class="pre">ModelGraph.set_node_object</span></code>, allowing
+modifiers to be applied to nodes</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">signature_modifier</span></code> that changes function signature</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">signature_binding_modifier</span></code> that adds binding and checking to wrapped
+function</p></li>
+</ul>
+</section>
+</section>
+<section id="id4">
+<h2>[0.2.1] - 2022-05-02<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h3>Added<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>add <code class="docutils literal notranslate"><span class="pre">add_grouped_edges_from</span></code></p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">add_returns</span></code> as additional input to model. The parameter is used to
+output intermediate values in the returns.</p></li>
+<li><p>add <code class="docutils literal notranslate"><span class="pre">tox</span></code> command for different python version test environments: py38,
+py39, coverage, and docs. The latter two check test coverage and build
+sphinx docs.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>Changed<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>node attribute <code class="docutils literal notranslate"><span class="pre">rts</span></code> to <code class="docutils literal notranslate"><span class="pre">returns</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_linked_edge</span></code> to <code class="docutils literal notranslate"><span class="pre">add_grouped_edge</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add_edge</span></code> and <code class="docutils literal notranslate"><span class="pre">add_edges_from</span></code> updates graph edge attributes</p></li>
+<li><p>move <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> build method from <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> to <code class="docutils literal notranslate"><span class="pre">poetry</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="id7">
+<h2>[0.2.0] - 2022-04-27<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<p>Version 0.2.0 changed the model building from inheritance to composition.
+<code class="docutils literal notranslate"><span class="pre">Model</span></code> class is used to create an executable.</p>
+<section id="id8">
+<h3>Added<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>add <code class="docutils literal notranslate"><span class="pre">zip_loop_modifier</span></code> modifier that zips multiple arguments for loop</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>Changed<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>API for creating executable</p></li>
+<li><p>loop construction changed as a modifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MGraph</span></code> to <code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code></p></li>
+<li><p>model graph allows node definition without node object</p></li>
+<li><p>model graph allows linked edges to simplify graph definition
+with <code class="docutils literal notranslate"><span class="pre">add_linked_edges_from</span></code></p></li>
+<li><p>model graph node attributes do not need to provide
+key with <code class="docutils literal notranslate"><span class="pre">update_node_object</span></code> and <code class="docutils literal notranslate"><span class="pre">update_node_objects_from</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="id10">
+<h2>[0.1.1] - 2022-04-06<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<section id="id11">
+<h3>Added<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">doc</span></code> attribute for <code class="docutils literal notranslate"><span class="pre">MGraph</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">draw_graph()</span></code> method to <code class="docutils literal notranslate"><span class="pre">MGraph</span></code> and model classes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__repr__</span></code> for <code class="docutils literal notranslate"><span class="pre">MGraph</span></code> and model classes</p></li>
+</ul>
+</section>
+<section id="id12">
+<h3>Changed<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>remove <code class="docutils literal notranslate"><span class="pre">name</span></code> input for <code class="docutils literal notranslate"><span class="pre">Model</span></code> and <code class="docutils literal notranslate"><span class="pre">loop_parameter</span></code></p></li>
+<li><p>generate model names and looped subgraph names automatically</p></li>
+<li><p>remove <code class="docutils literal notranslate"><span class="pre">title</span></code> input for <code class="docutils literal notranslate"><span class="pre">draw_graph</span></code></p></li>
+<li><p>change model attribute <code class="docutils literal notranslate"><span class="pre">graph</span></code> to <code class="docutils literal notranslate"><span class="pre">G</span></code>, to avoid confusion on the graph’s
+inherent attribute <code class="docutils literal notranslate"><span class="pre">graph</span></code></p></li>
+<li><p>separate <code class="docutils literal notranslate"><span class="pre">draw_plain_graph()</span></code> and <code class="docutils literal notranslate"><span class="pre">draw_graph()</span></code>, the former shows
+a simplified version of the graph, and the latter shows all graph details</p></li>
+<li><p>graph title outputs detailed descriptions of the model instance and
+graph instance</p></li>
+<li><p>node attribute “return_params” to “returns”</p></li>
+<li><p>edge attribute “interm_params” to “parameters”</p></li>
+</ul>
+</section>
+</section>
+<section id="id13">
+<h2>[0.1.0] - 2022-04-02<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
+<section id="id14">
+<h3>Added<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>class <code class="docutils literal notranslate"><span class="pre">MGraph</span></code> for constructing default graphs</p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">PlainModel</span></code> for constructing executable from graphs</p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">Model</span></code> for constructing executable from graphs with
+memory management</p></li>
+<li><p>class <code class="docutils literal notranslate"><span class="pre">H5Model</span></code> for constructing executable from graphs with
+h5 data storage</p></li>
+<li><p>function wrapper <code class="docutils literal notranslate"><span class="pre">basic_loop</span></code> that creates a basic loop for models</p></li>
+<li><p>function <code class="docutils literal notranslate"><span class="pre">draw_graph</span></code> for drawing DAG graphs</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Overview</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="tutorial_graph.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Creating a model graph</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Peter Sun<br/>
+  
+      &copy; Copyright 2022, Peter Sun.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
