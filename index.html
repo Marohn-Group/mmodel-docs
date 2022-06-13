@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>MModel &#8212; MModel 0.3.0 documentation</title>
+    <title>MModel &#8212; MModel 0.3.1 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -73,7 +73,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.0 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -322,12 +322,7 @@ title="Print to PDF"
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mmodel-installation">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         mmodel
-        </span>
-       </code>
-       installation
+       MModel installation
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
@@ -392,12 +387,7 @@ title="Print to PDF"
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#mmodel-installation">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         mmodel
-        </span>
-       </code>
-       installation
+       MModel installation
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
@@ -433,11 +423,13 @@ title="Print to PDF"
                 
   <section id="mmodel">
 <h1>MModel<a class="headerlink" href="#mmodel" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://github.com/peterhs73/MModel"><img alt="GitHub version" src="https://badge.fury.io/gh/peterhs73%2FMModel.svg" /></a> <a class="reference external" href="https://pypi.python.org/pypi/mmodel/"><img alt="PyPI version shields.io" src="https://img.shields.io/pypi/v/mmodel.svg" /></a> <img alt="PyPI pyversions" src="https://img.shields.io/pypi/pyversions/mmodel.svg" /> <a class="reference external" href="https://circleci.com/gh/peterhs73/MModel"><img alt="CircleCI" src="https://circleci.com/gh/peterhs73/MModel.svg?style=shield" /></a>
+<a class="reference external" href="https://peterhs73.github.io/mmodel-docs/"><img alt="Docs" src="https://img.shields.io/badge/Documentation--brightgreen.svg" /></a></p>
 <p>MModel is a lightweight and modular model building framework
 for small-scale and nonlinear models. The package aims to solve
 scientific program prototyping and distribution difficulties, making
-it easier to create modular, fast, and user-friendly packages. The package
-is well tested with 100 % coverage.</p>
+it easier to create modular, fast, and user-friendly packages.
+The package is fully tested.</p>
 <section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">#</a></h2>
 <p>To create a nonlinear model that has the result of
@@ -522,27 +514,22 @@ For windows installation, please choose “add Graphviz to the
 system PATH for all users/current users” during the setup.</p>
 </section>
 <section id="mmodel-installation">
-<h3><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> installation<a class="headerlink" href="#mmodel-installation" title="Permalink to this headline">#</a></h3>
+<h3>MModel installation<a class="headerlink" href="#mmodel-installation" title="Permalink to this headline">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mmodel</span>
 </pre></div>
 </div>
 </section>
 <section id="development-installation">
 <h3>Development installation<a class="headerlink" href="#development-installation" title="Permalink to this headline">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> uses <a class="reference external" href="https://python-poetry.org/docs/">poetry</a> as
+<p>MModel uses <a class="reference external" href="https://python-poetry.org/docs/">poetry</a> as
 the build system. The package works with both pip and poetry
 installation.</p>
 <p>To install test and docs, despondencies run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">.</span><span class="p">[</span><span class="n">docs</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>(For <code class="docutils literal notranslate"><span class="pre">zsh</span></code> shell, run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;.[test]&quot;</span></code>)</p>
-<p>To run the tests, run:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span>
-</pre></div>
-</div>
-<p>To run the tests in different python environments (py38, py39,
-coverage and docs):</p>
+<p>To run the tests in different python environments and cases
+(py38, py39, coverage and docs):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span>
 </pre></div>
 </div>
