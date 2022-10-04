@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modifying model and node &#8212; MModel 0.3.1 documentation</title>
+    <title>Modifying model and node &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -302,8 +302,8 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modifier-with-parameters">
-   Modifier with parameters
+  <a class="reference internal nav-link" href="#modifier-using-decorators">
+   Modifier using decorators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -331,8 +331,8 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#modifier-with-parameters">
-   Modifier with parameters
+  <a class="reference internal nav-link" href="#modifier-using-decorators">
+   Modifier using decorators
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -352,10 +352,9 @@ title="Print to PDF"
                 
   <section id="modifying-model-and-node">
 <h1>Modifying model and node<a class="headerlink" href="#modifying-model-and-node" title="Permalink to this headline">#</a></h1>
-<p>Modifiers are used to modify callables. They are defined as decorators.
-Here we use decorators to modify already defined callables, namely
-the model and nodes in the graph. They are used during the definition of the
-node object or the model.</p>
+<p>Modifiers are used to modify callables. They can be python closures (wrappers)
+or decorators. They are used during the definition of the
+node object or the model. A modifier is provided as (func, kwargs) tuple.</p>
 <p>To add a loop modifier to the node ‘add’:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">()</span>
 
@@ -374,20 +373,24 @@ node object or the model.</p>
 <span class="n">G</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span><span class="s1">&#39;power&#39;</span><span class="p">,</span> <span class="n">func_b</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>
 
 <span class="c1"># set object with modifier</span>
-<span class="n">bloop</span> <span class="o">=</span> <span class="n">loop_modifier</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">G</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">func_a</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">bloop</span><span class="p">])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span>
+    <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">func_a</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">})]</span>
+<span class="p">)</span>
 
 <span class="c1"># post modification</span>
 <span class="c1"># a new copy of graph is created</span>
 <span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">modify_node</span>
-<span class="n">new_graph</span> <span class="o">=</span> <span class="n">modify_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">bloop</span><span class="p">])</span>
+<span class="n">new_graph</span> <span class="o">=</span> <span class="n">modify_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">})])</span>
 </pre></div>
 </div>
 <p>Similarly, use “modifiers” argument to define model modifiers.</p>
-<section id="modifier-with-parameters">
-<h2>Modifier with parameters<a class="headerlink" href="#modifier-with-parameters" title="Permalink to this headline">#</a></h2>
-<p>If the modifier requires parameters, the parameter should be defined first.
-The modifier should take a function as the only parameter.</p>
+<section id="modifier-using-decorators">
+<h2>Modifier using decorators<a class="headerlink" href="#modifier-using-decorators" title="Permalink to this headline">#</a></h2>
+<p>If the decorator have additional parameters, the parameters should be applied first.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">{}),</span> <span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
 </section>
 <section id="modifier-chaining">
 <h2>Modifier chaining<a class="headerlink" href="#modifier-chaining" title="Permalink to this headline">#</a></h2>

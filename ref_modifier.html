@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modifier &#8212; MModel 0.3.1 documentation</title>
+    <title>Modifier &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -302,7 +302,7 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-mmodel.modifier">
+  <a class="reference internal nav-link" href="#modifier-module">
    <code class="xref py py-mod docutils literal notranslate">
     <span class="pre">
      modifier
@@ -331,7 +331,7 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module-mmodel.modifier">
+  <a class="reference internal nav-link" href="#modifier-module">
    <code class="xref py py-mod docutils literal notranslate">
     <span class="pre">
      modifier
@@ -352,70 +352,8 @@ title="Print to PDF"
                 
   <section id="modifier">
 <h1>Modifier<a class="headerlink" href="#modifier" title="Permalink to this headline">#</a></h1>
-<section id="module-mmodel.modifier">
-<span id="modifier-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">modifier</span></code> module<a class="headerlink" href="#module-mmodel.modifier" title="Permalink to this headline">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="mmodel.modifier.loop_modifier">
-<span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">loop_modifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#loop_modifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.loop_modifier" title="Permalink to this definition">#</a></dt>
-<dd><p>Loop - iterates one given parameter</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parameter</strong> (<em>list</em>) – target parameter to loop</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mmodel.modifier.signature_binding_modifier">
-<span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">signature_binding_modifier</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#signature_binding_modifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.signature_binding_modifier" title="Permalink to this definition">#</a></dt>
-<dd><p>Add parameter binding and checking for function</p>
-<p>The additional wrapper is unnecessary, but to keep a consistent
-modifier syntax. The modifier can be used on wrapped functions
-that do not have a parameter binding step (ones that only allow
-keyword arguments).</p>
-<p>The parse_input method binds the input args and kwargs and fills
-default values automatically. The resulting function behaves the
-same as a python function.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mmodel.modifier.signature_modifier">
-<span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">signature_modifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signature_parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#signature_modifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.signature_modifier" title="Permalink to this definition">#</a></dt>
-<dd><p>Replace node object signature</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signature_parameters</strong> (<em>list</em>) – signature parameters to replace the original
-signature. The parameters are assumed to be “POSITIONAL_OR_KEYWORD”, and no
-default values are allowed. The signature will replace the original signature
-in order.</p>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The modifier does not work with functions that have positional only
-input parameters. When the signature_parameter length is smaller than the
-list of original signatures, there are two cases:
-1. The additional parameters have a default value - they do not show up
-in the signature, but the default values are applied to function
-2. The additional parameters do not have a default value - error is thrown
-for missing input</p>
-<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> allows the first case scenario, no checking is performed.</p>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mmodel.modifier.zip_loop_modifier">
-<span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">zip_loop_modifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#zip_loop_modifier"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.zip_loop_modifier" title="Permalink to this definition">#</a></dt>
-<dd><p>Pairwise loop - iterates the values from loop</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parameters</strong> (<em>list</em><em> or </em><em>string</em>) – list of the parameter to loop
-only one parameter is allowed. If string of parameters are
-provided, the parameters should be delimited by “, “.</p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="modifier-module">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">modifier</span></code> module<a class="headerlink" href="#modifier-module" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 

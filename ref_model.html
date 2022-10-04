@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Model &#8212; MModel 0.3.1 documentation</title>
+    <title>Model &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -353,61 +353,17 @@ title="Print to PDF"
   <section id="model">
 <h1>Model<a class="headerlink" href="#model" title="Permalink to this headline">#</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">MModel</span></code> model building favors composition over inheritance.
-The <code class="docutils literal notranslate"><span class="pre">Model</span></code> class takes three components: model_graph, handler, and
+The <code class="docutils literal notranslate"><span class="pre">Model</span></code> class takes three components: graph, handler, and
 modifiers. A handler takes care of the graph calculation and data
 flow, and a modifier is a wrapper that applies simple modification
-to the callable. Any additional handler argument should can be defined
-using keyword arguments directly to the instantiation.
-The <code class="docutils literal notranslate"><span class="pre">Model</span></code> class instance is a callable itself.</p>
+to the callable. For each handler and modifier, a tuple of (class, kwargs)
+or (func, kwargs) should be supplied.
+The resulting <code class="docutils literal notranslate"><span class="pre">Model</span></code> instance is a callable that behaves like a function.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Model</span></code> class also provides parameter checking and default value
 filling functionality at the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> level. Note that handlers
 and modifiers require keyword inputs.</p>
 <section id="model-module">
 <h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> module<a class="headerlink" href="#model-module" title="Permalink to this headline">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="mmodel.model.Model">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">handler_args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Create model executable</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>graph</strong> (<em>object</em>) – ModelGraph instance (digraph)</p></li>
-<li><p><strong>handler</strong> (<em>class</em>) – Handler class that handles model execution. By default,
-the handler takes the graph as the first parameter. If additional parameters
-are required, use keyword arguments directly.</p></li>
-<li><p><strong>modifiers</strong> (<em>list</em>) – modifiers used for the whole graph model executable.
-Optional, defaults to an empty list.</p></li>
-</ul>
-</dd>
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.draw">
-<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">draw_graph&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.draw" title="Permalink to this definition">#</a></dt>
-<dd><p>Draw the graph of the model</p>
-<p>A drawing is provided. Defaults to <code class="docutils literal notranslate"><span class="pre">draw_graph</span></code></p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.get_node">
-<span class="sig-name descname"><span class="pre">get_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.get_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.get_node" title="Permalink to this definition">#</a></dt>
-<dd><p>Quick access to node within the model</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.get_node_object">
-<span class="sig-name descname"><span class="pre">get_node_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.get_node_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.get_node_object" title="Permalink to this definition">#</a></dt>
-<dd><p>Quick access to node callable within the model</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.view_node">
-<span class="sig-name descname"><span class="pre">view_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.view_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.view_node" title="Permalink to this definition">#</a></dt>
-<dd><p>View a specific node</p>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 </section>
 

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Changelog &#8212; MModel 0.3.1 documentation</title>
+    <title>Changelog &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -303,7 +303,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   [0.3.1] - 2022-06-12
+   [0.4.0] - 2022-10-3
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -312,66 +312,69 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changed">
+     Changed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#added">
      Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removed">
+     Removed
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   [0.3.0] - 2022-06-12
+   [0.3.1] - 2022-06-12
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     Added
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#changed">
-     Changed
+     Fixed
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   [0.3.0] - 2022-06-12
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Changed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
      Fixed
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   [0.2.2] - 2022-05-06
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     Added
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   [0.2.1] - 2022-05-02
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
-     Added
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     Changed
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id10">
-   [0.2.0] - 2022-04-27
+   [0.2.2] - 2022-05-06
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -379,37 +382,66 @@ title="Print to PDF"
      Added
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     Changed
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id13">
-   [0.1.1] - 2022-04-06
+  <a class="reference internal nav-link" href="#id12">
+   [0.2.1] - 2022-05-02
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
+    <a class="reference internal nav-link" href="#id13">
      Added
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id14">
      Changed
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id16">
+  <a class="reference internal nav-link" href="#id15">
+   [0.2.0] - 2022-04-27
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id18">
+   [0.1.1] - 2022-04-06
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id21">
    [0.1.0] - 2022-04-02
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id22">
      Added
     </a>
    </li>
@@ -436,7 +468,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   [0.3.1] - 2022-06-12
+   [0.4.0] - 2022-10-3
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -445,66 +477,69 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changed">
+     Changed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#added">
      Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removed">
+     Removed
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   [0.3.0] - 2022-06-12
+   [0.3.1] - 2022-06-12
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     Added
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#changed">
-     Changed
+     Fixed
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   [0.3.0] - 2022-06-12
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     Changed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
      Fixed
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   [0.2.2] - 2022-05-06
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     Added
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
-   [0.2.1] - 2022-05-02
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id8">
-     Added
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     Changed
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id10">
-   [0.2.0] - 2022-04-27
+   [0.2.2] - 2022-05-06
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -512,37 +547,66 @@ title="Print to PDF"
      Added
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id12">
-     Changed
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id13">
-   [0.1.1] - 2022-04-06
+  <a class="reference internal nav-link" href="#id12">
+   [0.2.1] - 2022-05-02
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
+    <a class="reference internal nav-link" href="#id13">
      Added
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id14">
      Changed
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id16">
+  <a class="reference internal nav-link" href="#id15">
+   [0.2.0] - 2022-04-27
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id18">
+   [0.1.1] - 2022-04-06
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     Added
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     Changed
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id21">
    [0.1.0] - 2022-04-02
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id17">
+    <a class="reference internal nav-link" href="#id22">
      Added
     </a>
    </li>
@@ -566,25 +630,73 @@ title="Print to PDF"
 and this project adheres to
 <a class="reference external" href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a></p>
 <section id="id1">
-<h2>[0.3.1] - 2022-06-12<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>[0.4.0] - 2022-10-3<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>Handler API is rewritten.</p>
 <section id="fixed">
 <h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Python minimum requirement to 3.8</p></li>
-<li><p>duplicated test name</p></li>
+<li><p>object str label aligns to the left for the graph and model</p></li>
+<li><p>H5Handler can write objects to file</p></li>
+<li><p>fix bug middle nodes output not included in the final output</p></li>
+</ul>
+</section>
+<section id="changed">
+<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">set_node_object()</span></code> allows for “inputs” parameter for adjusting node
+function input parameters.</p></li>
+<li><p>modifier functions from decorator to closure (both works)</p></li>
+<li><p>modifier list contains the arguments when supplied</p></li>
+<li><p>handler arguments are supplied with the handler class</p></li>
+<li><p>draw graph method no longer has a default value</p></li>
+<li><p>model docstring is tied to the model instead of the graph, use ‘description’
+for long docstring.</p></li>
+<li><p>‘name’ attribute required for Model instances</p></li>
+<li><p>node execute exception message now includes node information</p></li>
+<li><p>add “returns” parameter to Model</p></li>
 </ul>
 </section>
 <section id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>add circleci as the CI tool</p></li>
+<li><p>custom dictionary <cite>MemData`</cite> as MemHandler’s data instance</p></li>
+<li><p>custom class <cite>H5Data</cite> as H5Handler’s data instance</p></li>
+</ul>
+</section>
+<section id="removed">
+<h3>Removed<a class="headerlink" href="#removed" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>‘info’ attribute no longer used in modifiers and handlers.</p></li>
+<li><p>“model” and “node” no longer appended to model and node string output.</p></li>
 </ul>
 </section>
 </section>
 <section id="id2">
-<h2>[0.3.0] - 2022-06-12<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2>[0.3.1] - 2022-06-12<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <section id="id3">
-<h3>Added<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<h3>Fixed<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Python minimum requirement to 3.8</p></li>
+<li><p>duplicated test name</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>Added<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>add circleci as the CI tool</p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>Changed<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>node and model string output</p></li>
+</ul>
+</section>
+</section>
+<section id="id6">
+<h2>[0.3.0] - 2022-06-12<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<section id="id7">
+<h3>Added<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">subgraph_by_returns</span></code> filters graph by node returns</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">_is_valid_model</span></code> method graph for Model class to validate graph for
@@ -596,8 +708,8 @@ building model executable</p></li>
 is a shallow copy</p></li>
 </ul>
 </section>
-<section id="changed">
-<h3>Changed<a class="headerlink" href="#changed" title="Permalink to this headline">#</a></h3>
+<section id="id8">
+<h3>Changed<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>move <code class="docutils literal notranslate"><span class="pre">subgraph_by_nodes</span></code> and <code class="docutils literal notranslate"><span class="pre">subgraph_by_parameters</span></code> to <code class="docutils literal notranslate"><span class="pre">filter</span></code>
 module</p></li>
@@ -616,18 +728,18 @@ is used to create the handler object.</p></li>
 and <code class="docutils literal notranslate"><span class="pre">set_node_object_from</span></code></p></li>
 </ul>
 </section>
-<section id="id4">
-<h3>Fixed<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<section id="id9">
+<h3>Fixed<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">modify_subgraph</span></code> changes original graph attributes</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code> shares the same class attribute across instances</p></li>
 </ul>
 </section>
 </section>
-<section id="id5">
-<h2>[0.2.2] - 2022-05-06<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<section id="id6">
-<h3>Added<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<section id="id10">
+<h2>[0.2.2] - 2022-05-06<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<section id="id11">
+<h3>Added<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>add <code class="docutils literal notranslate"><span class="pre">modifiers</span></code> input argument to <code class="docutils literal notranslate"><span class="pre">ModelGraph.set_node_object</span></code>, allowing
 modifiers to be applied to nodes</p></li>
@@ -637,10 +749,10 @@ function</p></li>
 </ul>
 </section>
 </section>
-<section id="id7">
-<h2>[0.2.1] - 2022-05-02<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
-<section id="id8">
-<h3>Added<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<section id="id12">
+<h2>[0.2.1] - 2022-05-02<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<section id="id13">
+<h3>Added<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>add <code class="docutils literal notranslate"><span class="pre">add_grouped_edges_from</span></code></p></li>
 <li><p>add <code class="docutils literal notranslate"><span class="pre">add_returns</span></code> as additional input to model. The parameter is used to
@@ -650,8 +762,8 @@ py39, coverage, and docs. The latter two check test coverage and build
 sphinx docs.</p></li>
 </ul>
 </section>
-<section id="id9">
-<h3>Changed<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<section id="id14">
+<h3>Changed<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>node attribute <code class="docutils literal notranslate"><span class="pre">rts</span></code> to <code class="docutils literal notranslate"><span class="pre">returns</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">add_linked_edge</span></code> to <code class="docutils literal notranslate"><span class="pre">add_grouped_edge</span></code></p></li>
@@ -660,18 +772,18 @@ sphinx docs.</p></li>
 </ul>
 </section>
 </section>
-<section id="id10">
-<h2>[0.2.0] - 2022-04-27<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<section id="id15">
+<h2>[0.2.0] - 2022-04-27<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
 <p>Version 0.2.0 changed the model building from inheritance to composition.
 <code class="docutils literal notranslate"><span class="pre">Model</span></code> class is used to create an executable.</p>
-<section id="id11">
-<h3>Added<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<section id="id16">
+<h3>Added<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>add <code class="docutils literal notranslate"><span class="pre">zip_loop_modifier</span></code> modifier that zips multiple arguments for loop</p></li>
 </ul>
 </section>
-<section id="id12">
-<h3>Changed<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h3>
+<section id="id17">
+<h3>Changed<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>API for creating executable</p></li>
 <li><p>loop construction changed as a modifier</p></li>
@@ -684,18 +796,18 @@ key with <code class="docutils literal notranslate"><span class="pre">update_nod
 </ul>
 </section>
 </section>
-<section id="id13">
-<h2>[0.1.1] - 2022-04-06<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
-<section id="id14">
-<h3>Added<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<section id="id18">
+<h2>[0.1.1] - 2022-04-06<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
+<section id="id19">
+<h3>Added<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">doc</span></code> attribute for <code class="docutils literal notranslate"><span class="pre">MGraph</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">draw_graph()</span></code> method to <code class="docutils literal notranslate"><span class="pre">MGraph</span></code> and model classes</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">__repr__</span></code> for <code class="docutils literal notranslate"><span class="pre">MGraph</span></code> and model classes</p></li>
 </ul>
 </section>
-<section id="id15">
-<h3>Changed<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<section id="id20">
+<h3>Changed<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>remove <code class="docutils literal notranslate"><span class="pre">name</span></code> input for <code class="docutils literal notranslate"><span class="pre">Model</span></code> and <code class="docutils literal notranslate"><span class="pre">loop_parameter</span></code></p></li>
 <li><p>generate model names and looped subgraph names automatically</p></li>
@@ -711,10 +823,10 @@ graph instance</p></li>
 </ul>
 </section>
 </section>
-<section id="id16">
-<h2>[0.1.0] - 2022-04-02<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h2>
-<section id="id17">
-<h3>Added<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<section id="id21">
+<h2>[0.1.0] - 2022-04-02<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h2>
+<section id="id22">
+<h3>Added<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>class <code class="docutils literal notranslate"><span class="pre">MGraph</span></code> for constructing default graphs</p></li>
 <li><p>class <code class="docutils literal notranslate"><span class="pre">PlainModel</span></code> for constructing executable from graphs</p></li>

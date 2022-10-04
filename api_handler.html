@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Handler API &#8212; MModel 0.3.1 documentation</title>
+    <title>Handler API &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -303,18 +303,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#handler-class">
-   handler class
+   Handler class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inherit-topologicalhandler-abstract-class">
-   Inherit
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     TopologicalHandler
-    </span>
-   </code>
-   abstract class
+  <a class="reference internal nav-link" href="#handler-data-class-and-topologicalhandler">
+   Handler Data class and TopologicalHandler
   </a>
  </li>
 </ul>
@@ -338,18 +332,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#handler-class">
-   handler class
+   Handler class
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#inherit-topologicalhandler-abstract-class">
-   Inherit
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     TopologicalHandler
-    </span>
-   </code>
-   abstract class
+  <a class="reference internal nav-link" href="#handler-data-class-and-topologicalhandler">
+   Handler Data class and TopologicalHandler
   </a>
  </li>
 </ul>
@@ -370,19 +358,16 @@ title="Print to PDF"
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.handler</span></code></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
 <p>Handlers in <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> represent different execution methods for the provided
-graph. As of <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">0.3.0</span></code>, all handlers are executed in topological order,
+graph. Currently, all handlers are executed in topological order,
 inherited from <code class="docutils literal notranslate"><span class="pre">TopologicalHandler</span></code>.</p>
 <section id="handler-class">
-<h2>handler class<a class="headerlink" href="#handler-class" title="Permalink to this headline">#</a></h2>
+<h2>Handler class<a class="headerlink" href="#handler-class" title="Permalink to this headline">#</a></h2>
 <p>There are three required elements of a handler class/instance:</p>
 <ol class="arabic simple">
-<li><p>handler should take “graph” and “extra_returns” as two (and only) positional
+<li><p>handler should take “graph” and “returns” as two (and only) positional
 arguments</p></li>
 <li><p>handler should define <code class="docutils literal notranslate"><span class="pre">__signature__</span></code> with <code class="docutils literal notranslate"><span class="pre">inspect.Signature</span></code> object
 to allow signature detection with <code class="docutils literal notranslate"><span class="pre">inspect.signature</span></code></p></li>
@@ -390,35 +375,13 @@ to allow signature detection with <code class="docutils literal notranslate"><sp
 </ol>
 <p>Modify the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class if these conditions cannot be satisfied.</p>
 </section>
-<section id="inherit-topologicalhandler-abstract-class">
-<h2>Inherit <code class="docutils literal notranslate"><span class="pre">TopologicalHandler</span></code> abstract class<a class="headerlink" href="#inherit-topologicalhandler-abstract-class" title="Permalink to this headline">#</a></h2>
-<p>The instantiation of <code class="docutils literal notranslate"><span class="pre">TopologicalHandler</span></code> requires the “graph”
-and “extra_returns” arguments.</p>
-<p><code class="docutils literal notranslate"><span class="pre">TopologicalHandler</span></code> is an abstract factory class that executes the nodes
-in topological order, a linear ordering of the nodes for each directed
-edge u -&gt; v, u is ordered ahead of v.</p>
-<p>The call method is defined as the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="sd">&quot;&quot;&quot;Execute graph model by layer&quot;&quot;&quot;</span>
-
-<span class="n">data_instance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">initiate</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">node_attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">run_node</span><span class="p">(</span><span class="n">data_instance</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">)</span>
-    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">raise_node_exception</span><span class="p">(</span><span class="n">data_instance</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-
-<span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="p">(</span><span class="n">data_instance</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">returns</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The following four methods are required:</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">initiate</span></code>, runs before the execution</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">run_node</span></code>, execute each node</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">raise_node_exception</span></code>, exception message for each node</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">finish</span></code>, runs after all nodes are executed and handles returns as well.</p></li>
-</ol>
+<section id="handler-data-class-and-topologicalhandler">
+<h2>Handler Data class and TopologicalHandler<a class="headerlink" href="#handler-data-class-and-topologicalhandler" title="Permalink to this headline">#</a></h2>
+<p>Handler data stores the input value and all return values of the node execution.
+To define a custom handler a Data class should be defined,
+and it should have <cite>__getitem__</cite> and <cite>__setitem__</cite> method.
+If the Model inherits the TopologicalHandler, the class DataClass should be
+defined as the Handler data class.</p>
 </section>
 </section>
 

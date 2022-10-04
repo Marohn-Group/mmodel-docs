@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Graph &#8212; MModel 0.3.1 documentation</title>
+    <title>Graph &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -354,106 +354,6 @@ title="Print to PDF"
 <h1>Graph<a class="headerlink" href="#graph" title="Permalink to this headline">#</a></h1>
 <section id="graph-module">
 <h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">graph</span></code> module<a class="headerlink" href="#graph-module" title="Permalink to this headline">#</a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.graph.</span></span><span class="sig-name descname"><span class="pre">ModelGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph" title="Permalink to this definition">#</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">networkx.classes.digraph.DiGraph</span></code></p>
-<p>Create model graphs</p>
-<p>ModelGraph inherits from <cite>networkx.DiGraph()</cite>, which has all <cite>DiGraph</cite>
-methods.</p>
-<p>The class adds the “type” attribute to the graph attribute. The factory method
-returns a copy of the dictionary. It is equivalent to
-<code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;ModelGraph&quot;}.copy()</span></code> when called.</p>
-<p>The additional graph operations are added:
-- add_grouped_edges and set_node_objects.
-- Method add_grouped_edges, cannot have both edges to be a list.
-- Method set_node_object update nodes with the node callable “func” and returns.
-- The method adds callable signature ‘sig’ to the node attribute</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.add_edge">
-<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.add_edge" title="Permalink to this definition">#</a></dt>
-<dd><p>Modify add_edge to update the edge attribute in the end</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.add_edges_from">
-<span class="sig-name descname"><span class="pre">add_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.add_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.add_edges_from" title="Permalink to this definition">#</a></dt>
-<dd><p>Modify add_edges_from to update the edge attributes</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.add_grouped_edge">
-<span class="sig-name descname"><span class="pre">add_grouped_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.add_grouped_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.add_grouped_edge" title="Permalink to this definition">#</a></dt>
-<dd><p>Add linked edge</p>
-<p>For mmodel, a group edge (u, v) allows u or v
-to be a list of nodes. Represents several nodes
-flow into one node or the other way around.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.add_grouped_edges_from">
-<span class="sig-name descname"><span class="pre">add_grouped_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.add_grouped_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.add_grouped_edges_from" title="Permalink to this definition">#</a></dt>
-<dd><p>Add edges from grouped values</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.deepcopy">
-<span class="sig-name descname"><span class="pre">deepcopy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.deepcopy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.deepcopy" title="Permalink to this definition">#</a></dt>
-<dd><p>Deepcopy graph</p>
-<p>The graph.copy method is a shallow copy. Deepcopy creates copy for the
-attributes dictionary.
-<cite>graph.copy&lt;https://networkx.org/documentation/stable/reference/classes
-/generated/networkx.Graph.copy.html&gt;_</cite></p>
-<p>However, for subgraphs, deepcopy is incredibly inefficient because
-subgraph contains ‘_graph’, which stores the original graph.
-An alternative method is to copy the code from the copy method,
-but use deepcopy for the items.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.draw">
-<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">draw_graph&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.draw" title="Permalink to this definition">#</a></dt>
-<dd><p>Draw the graph</p>
-<p>A drawing is provided. Defaults to <code class="docutils literal notranslate"><span class="pre">draw_graph</span></code></p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.graph_attr_dict_factory">
-<span class="sig-name descname"><span class="pre">graph_attr_dict_factory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mmodel.graph.ModelGraph.graph_attr_dict_factory" title="Permalink to this definition">#</a></dt>
-<dd><p>D.copy() -&gt; a shallow copy of D</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.set_node_object">
-<span class="sig-name descname"><span class="pre">set_node_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.set_node_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.set_node_object" title="Permalink to this definition">#</a></dt>
-<dd><p>Add or update the functions of existing node</p>
-<p>If the node does not exist, create the node.
-In the end, the edge attributes are re-determined</p>
-<p>Modifiers are applied directly onto the node.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.set_node_objects_from">
-<span class="sig-name descname"><span class="pre">set_node_objects_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.set_node_objects_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.set_node_objects_from" title="Permalink to this definition">#</a></dt>
-<dd><p>Update the functions of existing nodes</p>
-<p>The method is the same as add node object</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.update_graph">
-<span class="sig-name descname"><span class="pre">update_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.update_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.update_graph" title="Permalink to this definition">#</a></dt>
-<dd><p>Update edge attributes based on node objects and edges</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.view_node">
-<span class="sig-name descname"><span class="pre">view_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.view_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.view_node" title="Permalink to this definition">#</a></dt>
-<dd><p>view node information</p>
-<p>The node information is kept consistent with the graph information.</p>
-</dd></dl>
-
-</dd></dl>
-
 </section>
 </section>
 

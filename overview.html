@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Overview &#8212; MModel 0.3.1 documentation</title>
+    <title>Overview &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -474,18 +474,23 @@ levels of entrances for the package:</p>
 </section>
 <section id="how-does-it-work">
 <h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> uses a directed acyclic graph (DAG) to represent a non-linear
-model, with nodes presenting individual functions and edges representing
+<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> uses a two stage system to construct a executable python callable
+that behaves like a python function - <strong>graph and model</strong>.</p>
+<p>The <strong>graph</strong> is a directed acyclic graph (DAG) to represent a non-linear
+procedure, with nodes presenting individual functions and edges representing
 parameter flow. The graph is created with a custom <code class="docutils literal notranslate"><span class="pre">networkx</span></code> graph class
-while retaining all of its graph algorithms and methods.</p>
-<p>Once the model graph is defined, a build method <code class="docutils literal notranslate"><span class="pre">Model</span></code> creates the
-executable based on the model graph, graph handler, and additional modifiers.
-Constructing a model using a directed graph allows for clear execution steps,
-error messages, and easy testing. Notably, we can modify the subgraph easily
-without changing the model, which is efficient in terms of performance and
-code writing. For example, we can create a loop of the subgraph when looping
-the whole model is time-consuming due to matrix operation components outside
-of the loop.</p>
+while retaining all of its graph algorithms and methods. The class <code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code>
+handles the graph construction.</p>
+<p>The <strong>model</strong> can be created given the graph, the graph handler, and the modifiers.
+The model is an python executable object that behaves like a python function.
+Specifically, the handler creates the workflow that executes each node, and modifiers
+are python wrapper (closure/decorators) that can modify the nodes and the graph.
+The class <code class="docutils literal notranslate"><span class="pre">Model</span></code> handlers the model construction. Constructing a model using a
+directed graph allows for clear execution steps, error messages, and easy testing.
+Notably, we can modify the subgraph easily without changing the model,
+which is efficient in terms of performance and code writing.
+For example, we can create a loop of the subgraph when looping the whole model is
+time-consuming due to matrix operation components outside of the loop.</p>
 </section>
 <section id="philosophy">
 <h2>Philosophy<a class="headerlink" href="#philosophy" title="Permalink to this headline">#</a></h2>

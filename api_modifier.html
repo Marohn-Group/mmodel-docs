@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modifier API &#8212; MModel 0.3.1 documentation</title>
+    <title>Modifier API &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -311,51 +311,38 @@ title="Print to PDF"
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="ref_modifier.html#module-mmodel.modifier" title="mmodel.modifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.modifier</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 </tbody>
 </table>
-<p>Modifiers should be defined the same as decorators. For exaple, see
+<p>Modifiers should be defined the same as closure or decorators. See
 documentation for
 <a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.wraps">wraps</a>.
-In order for <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> to display the information of a wrapper, use <code class="docutils literal notranslate"><span class="pre">info</span></code> attribute
-to indicate the modifier. Here is an example of a loop modifier:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loop_modifier</span><span class="p">(</span><span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Basic loop wrapper iterates the parameter from loop</span>
+Here is an example of a loop modifier:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loop_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Loop - iterates one given parameter</span>
 
 <span class="sd">    :param list parameter: target parameter to loop</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">wrapper</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">loop_wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">loop_wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 
-            <span class="n">loop_values</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">parameter</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">loop_values</span><span class="p">]</span>
+        <span class="n">loop_values</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">parameter</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">loop_values</span><span class="p">]</span>
 
-        <span class="k">return</span> <span class="n">loop_wrapped</span>
-
-    <span class="c1"># define the wrapper information for</span>
-    <span class="n">wrapper</span><span class="o">.</span><span class="n">info</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;loop_modifier(</span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">)&quot;</span>
-
-    <span class="k">return</span> <span class="n">wrapper</span>
+    <span class="k">return</span> <span class="n">loop_wrapped</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>It is not recommended to use the modifiers as a decorator during the
-function definition because the modified function requires keyword
-argument input regardless of its original signature, and it does not
-provide argument checking (whether an input argument is missing).
-The behavior is by design. The input parameters are only checked
-once at the model level for performance reasons.</p>
-<p>If necessary, <code class="docutils literal notranslate"><span class="pre">signature_binding_modifier()</span></code> can be used to add the binding
-and check the steps.</p>
-</div>
+<p>The wrapped function changes all parameters to keyword only. The behavior is
+intended to reduce overhead during model definition (model changes all parameters
+to positional-or-keyword-arguments).</p>
+<p>For individual functions, if necessary, <code class="docutils literal notranslate"><span class="pre">signature_binding_modifier()</span></code>
+can be used to add the binding and check the steps.</p>
 <p>A modifier for <code class="docutils literal notranslate"><span class="pre">MModel</span></code> requires to have proper signature. If the modifier changes the
 function signal, add <code class="docutils literal notranslate"><span class="pre">__signature__</span></code> attribute with <code class="docutils literal notranslate"><span class="pre">inspect.Signature</span></code> to the wrapped
 function.</p>
+</div>
 </section>
 
 

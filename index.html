@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>MModel &#8212; MModel 0.3.1 documentation</title>
+    <title>MModel &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -73,7 +73,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -459,20 +459,20 @@ The package is fully tested.</p>
     <span class="p">(</span><span class="s2">&quot;func c&quot;</span><span class="p">,</span> <span class="n">func_c</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">]),</span>
 <span class="p">]</span>
 
-<span class="n">graph</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Example&quot;</span><span class="p">)</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;example_graph&quot;</span><span class="p">)</span>
 <span class="n">graph</span><span class="o">.</span><span class="n">add_grouped_edges_from</span><span class="p">(</span><span class="n">grouped_edges</span><span class="p">)</span>
 <span class="n">graph</span><span class="o">.</span><span class="n">set_node_objects_from</span><span class="p">(</span><span class="n">node_objects</span><span class="p">)</span>
 
-<span class="n">example_func</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">)</span>
+<span class="n">example_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}))</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">example_func</span><span class="p">)</span>
-<span class="n">Example</span> <span class="n">model</span>
-  <span class="n">signature</span><span class="p">:</span> <span class="n">base</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">example_model</span><span class="p">)</span>
+<span class="n">example_model</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+  <span class="n">signature</span><span class="p">:</span>
   <span class="n">returns</span><span class="p">:</span> <span class="n">result</span>
-  <span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span>
+  <span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}</span>
   <span class="n">modifiers</span><span class="p">:</span> <span class="n">none</span>
 
-<span class="o">&gt;&gt;&gt;</span> <span class="n">example_func</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">example_model</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2)</span>
 <span class="mf">24.0</span>
 </pre></div>
 </div>
@@ -482,16 +482,20 @@ definition. To loop the “base” parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">subgraph_by_parameters</span><span class="p">,</span> <span class="n">modify_subgraph</span><span class="p">,</span> <span class="n">loop_modifier</span>
 
 <span class="n">subgraph</span> <span class="o">=</span> <span class="n">subgraph_by_parameters</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">])</span>
-<span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">subgraph</span><span class="p">,</span> <span class="n">MemHandler</span><span class="p">,</span> <span class="p">[</span><span class="n">loop_modifier</span><span class="p">(</span><span class="s2">&quot;base&quot;</span><span class="p">)])</span>
+<span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
+    <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span>
+    <span class="n">subgraph</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span>
+    <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;base&quot;</span><span class="p">})],</span>
+<span class="p">)</span>
 <span class="n">looped_graph</span> <span class="o">=</span> <span class="n">modify_subgraph</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">,</span> <span class="s2">&quot;loop node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">)</span>
-<span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">looped_graph</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">)</span>
+<span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;loop_model&quot;</span><span class="p">,</span> <span class="n">looped_graph</span><span class="p">,</span> <span class="n">loop_node</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
-<span class="n">Example</span> <span class="n">model</span>
-  <span class="n">signature</span><span class="p">:</span> <span class="n">base</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-  <span class="n">returns</span><span class="p">:</span> <span class="n">result</span>
-  <span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span>
-  <span class="n">modifiers</span><span class="p">:</span> <span class="n">none</span>
+<span class="n">loop_model</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">returns</span><span class="p">:</span> <span class="n">result</span>
+    <span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}</span>
+    <span class="n">modifiers</span><span class="p">:</span> <span class="p">[]</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2)</span>
 <span class="p">[</span><span class="mf">24.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">]</span>
@@ -499,8 +503,9 @@ definition. To loop the “base” parameter.</p>
 </div>
 <p>Modifiers can also be added to the whole model or a single node.</p>
 <p>To draw the graph or the underlying graph of the model:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">graph</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
-<span class="n">example_func</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">draw_plain_graph</span>
+<span class="n">graph</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">draw_plain_graph</span><span class="p">)</span>
+<span class="n">example_model</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">draw_plain_graph</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -529,7 +534,7 @@ installation.</p>
 </pre></div>
 </div>
 <p>To run the tests in different python environments and cases
-(py38, py39, coverage and docs):</p>
+(py38, py39, py310, coverage and docs):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span>
 </pre></div>
 </div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Creating a model graph &#8212; MModel 0.3.1 documentation</title>
+    <title>Creating a model graph &#8212; MModel 0.4.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -30,7 +30,7 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.3.1 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -408,10 +408,10 @@ and adding <a class="reference external" href="https://networkx.org/documentatio
 
 <span class="n">G</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">()</span>
 
-<span class="n">G</span><span class="o">.</span><span class="n">add_grouped_edge_from</span><span class="p">(</span><span class="n">grouped_edges</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_grouped_edges_from</span><span class="p">(</span><span class="n">grouped_edges</span><span class="p">)</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="n">ModelGraph</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">nodes</span> <span class="ow">and</span> <span class="mi">2</span> <span class="n">edges</span>
+<span class="n">ModelGraph</span> <span class="k">with</span> <span class="mi">5</span> <span class="n">nodes</span> <span class="ow">and</span> <span class="mi">4</span> <span class="n">edges</span>
 </pre></div>
 </div>
 </section>
@@ -450,36 +450,38 @@ the method does not work:</p>
 <li><p>functions without clear signature (<code class="docutils literal notranslate"><span class="pre">numpy</span></code> universal functions)</p></li>
 <li><p>parameters that are different from defined parameter names</p></li>
 </ol>
-<p>In these case 1 and 2, a newly defined function with clear parameter information
-is recommended.</p>
+<p>In this cases, “inputs” parameter can be specified, the signature is changed
+using the signature modifiers:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">G</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="n">returns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">view_node</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">))</span>
+<span class="n">b</span> <span class="n">node</span>
+  <span class="n">callable</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">returns</span><span class="p">:</span> <span class="n">c</span>
+  <span class="n">modifiers</span><span class="p">:</span> <span class="p">[</span><span class="n">signature_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]}]</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The object is stored as a node attribute and the function signature
 (<cite>inspect.Signature</cite>) is stored. The parameter values are converted
 to signature objects.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> determines function parameters using <code class="docutils literal notranslate"><span class="pre">inspect.signature</span></code>, for
-callables that are not compatible with the function, the “params” argument
-is required.</p>
 <p>The name of the parameters that pass through each edge is determined and stored
 in the edge attribute “val”.</p>
 </section>
 <section id="name-and-docstring">
 <h2>Name and docstring<a class="headerlink" href="#name-and-docstring" title="Permalink to this headline">#</a></h2>
-<p>Since the graph represents a model, we want to define the name and docstring
-of the model. They are stored as the graph attributes and can be defined during
-the graph definition and after. The graph attribute of graph G stores the
-attributes in a dictionary format.</p>
+<p>The name and graph string behaves as the networkx graphs. To add name to graph:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># during graph definition</span>
-<span class="n">G</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;test graph&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;add two floats, a and b, returns c&quot;</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ModelGraph Example&quot;</span><span class="p">)</span>
 
 <span class="c1"># after definition</span>
-<span class="n">G</span><span class="o">.</span><span class="n">graph</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ModelGraph Example&#39;</span>
+<span class="c1"># G.graph[&#39;name&#39;] = &#39;ModelGraph Example&#39;</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
 <span class="n">ModelGraph</span> <span class="n">named</span> <span class="s1">&#39;ModelGraph Example&#39;</span> <span class="k">with</span> <span class="mi">0</span> <span class="n">nodes</span> <span class="ow">and</span> <span class="mi">0</span> <span class="n">edges</span>
-
-<span class="n">add</span> <span class="n">two</span> <span class="n">floats</span><span class="p">,</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="p">,</span> <span class="n">returns</span> <span class="n">c</span>
 </pre></div>
 </div>
 </section>
@@ -491,7 +493,8 @@ of the graph.</p>
 <span class="n">G</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span> <span class="c1"># deep copy</span>
 </pre></div>
 </div>
-<p>For more ways to interact with ModelGraph, see <a class="reference internal" href="ref_graph.html"><span class="doc">graph reference</span></a>.</p>
+<p>For more ways to interact with ModelGraph, and networkx.graph see
+<a class="reference internal" href="ref_graph.html"><span class="doc">graph reference</span></a>.</p>
 </section>
 </section>
 
