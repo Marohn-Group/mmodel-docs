@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modifying a subgraph &#8212; MModel 0.4.0 documentation</title>
+    <title>Modifying a subgraph &#8212; MModel 0.5.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.5.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -166,6 +166,11 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_parser.html">
    Filter
   </a>
  </li>
@@ -356,51 +361,56 @@ title="Print to PDF"
 <h2>Filtering subgraph<a class="headerlink" href="#filtering-subgraph" title="Permalink to this headline">#</a></h2>
 <p>There are three methods provided for creating a subgraph from the graph:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">subgraph_by_nodes</span></code>, filter by nodes</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">subgraph_by_parameters</span></code>, filter by node callable parameters</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">subgraph_by_returns</span></code>, filter by node callable returns</p></li>
+<li><p>filter by nodes (“nodes”)</p></li>
+<li><p>filter by node callable parameters (“inputs”)</p></li>
+<li><p>filter by node callable returns (“outputs”)</p></li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The filtered subgraph is a view of the original graph and they are
 frozen.</p>
 </div>
-<p>The resulting subgraph can be built into models:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">subgraph_by_returns</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">])</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}))</span>
+<p>If we filter the graph by the output “log_xy”, the node “function node” is
+excluded.
+The resulting subgraph can be built into models (the graph is defined the same as
+README.rst):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_xy&quot;</span><span class="p">])</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}))</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;log&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The filtering is useful if we only want to create model executable for
+<p>The filtering is useful if we only want to create a model callable for
 only part of the graph.</p>
 </section>
 <section id="subgraph-as-model">
 <h2>Subgraph as model<a class="headerlink" href="#subgraph-as-model" title="Permalink to this headline">#</a></h2>
 <p>Subgraphing is also useful if we want to apply modifiers to part of the
 graph. For example, we want to loop a variable that only part of the subgraph
-uses. Here we loop the “base” parameter from the Quickstart example.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">subgraph_by_parameters</span><span class="p">,</span> <span class="n">modify_subgraph</span><span class="p">,</span> <span class="n">loop_modifier</span>
-
-<span class="n">subgraph</span> <span class="o">=</span> <span class="n">subgraph_by_parameters</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">])</span>
+uses. Here we loop the “log_base” parameter from the Quickstart example.
+<code class="docutils literal notranslate"><span class="pre">replace_subgraph</span></code> outputs a new graph.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_base&quot;</span><span class="p">])</span>
 <span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
-    <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span>
-    <span class="n">subgraph</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span>
-    <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;base&quot;</span><span class="p">})],</span>
+    <span class="s2">&quot;loop_submodel&quot;</span><span class="p">,</span>
+    <span class="n">H</span><span class="p">,</span>
+    <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span>
+    <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;log_base&quot;</span><span class="p">})],</span>
 <span class="p">)</span>
-<span class="n">looped_graph</span> <span class="o">=</span> <span class="n">modify_subgraph</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">,</span> <span class="s2">&quot;loop node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">)</span>
-<span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;loop_model&quot;</span><span class="p">,</span> <span class="n">looped_graph</span><span class="p">,</span> <span class="n">loop_node</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
+<span class="n">looped_graph</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">replace_subgraph</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">)</span>
+
+<span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;looped_model&quot;</span><span class="p">,</span> <span class="n">looped_graph</span><span class="p">,</span> <span class="n">loop_node</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The process above:</p>
+<p>The steps:</p>
 <ol class="arabic simple">
-<li><p>filter the graph with <code class="docutils literal notranslate"><span class="pre">subgraph_by_parameters</span></code></p></li>
-<li><p>create subgraph model with <code class="docutils literal notranslate"><span class="pre">Model</span></code> and loop modifiers</p></li>
-<li><p>update graph with the subgraph nodes object <code class="docutils literal notranslate"><span class="pre">loop_node</span></code> with
-<code class="docutils literal notranslate"><span class="pre">modify_subgraph</span></code>, in this step the original returns list is retained.
-(to modify the returns, use “subgraph_returns” argument)</p></li>
-<li><p>build the model for the graph with <code class="docutils literal notranslate"><span class="pre">Model</span></code>. The handler is the same as
+<li><p>Filter the graph with <code class="docutils literal notranslate"><span class="pre">G.subgraph(inputs</span> <span class="pre">=</span> <span class="pre">...)</span></code>.</p></li>
+<li><p>Create a subgraph model with <code class="docutils literal notranslate"><span class="pre">Model</span></code> and loop modifiers.</p></li>
+<li><p>Update the graph with the subgraph nodes object <code class="docutils literal notranslate"><span class="pre">loop_node</span></code> with
+<code class="docutils literal notranslate"><span class="pre">replace_subgraph</span></code>. Use “output” to specify the output name of the subgraph node.</p></li>
+<li><p>Build the model for the graph with <code class="docutils literal notranslate"><span class="pre">Model</span></code>. The handler is the same as
 the loop_node.</p></li>
 </ol>
 </div>
@@ -438,7 +448,7 @@ the loop_node.</p></li>
   
     By Peter Sun<br/>
   
-      &copy; Copyright 2022, Peter Sun.<br/>
+      &copy; Copyright 2023, Peter Sun.<br/>
 </p>
         </footer>
     </div>

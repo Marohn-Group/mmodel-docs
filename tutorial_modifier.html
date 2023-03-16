@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modifying model and node &#8212; MModel 0.4.0 documentation</title>
+    <title>Modifying model and node &#8212; MModel 0.5.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.5.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -166,6 +166,11 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_parser.html">
    Filter
   </a>
  </li>
@@ -354,39 +359,41 @@ title="Print to PDF"
 <h1>Modifying model and node<a class="headerlink" href="#modifying-model-and-node" title="Permalink to this headline">#</a></h1>
 <p>Modifiers are used to modify callables. They can be python closures (wrappers)
 or decorators. They are used during the definition of the
-node object or the model. A modifier is provided as (func, kwargs) tuple.</p>
+node object or the model. A modifier is provided as <code class="docutils literal notranslate"><span class="pre">(func,</span> <span class="pre">{kwargs_dict})</span></code> tuple.</p>
 <p>To add a loop modifier to the node ‘add’:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">func_a</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="c1"># returns &quot;c&quot;</span>
+
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The sum of a and b.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-<span class="k">def</span> <span class="nf">func_b</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
-    <span class="c1"># returns &quot;d&quot;</span>
-    <span class="k">return</span> <span class="n">c</span><span class="o">*</span><span class="n">c</span>
+
+<span class="k">def</span> <span class="nf">squared</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The squared value of c.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">c</span><span class="o">**</span><span class="mi">2</span>
+
 
 <span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">loop_modifier</span>
 
-<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;power&#39;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;squared&quot;</span><span class="p">)</span>
 <span class="c1"># set object without modifiers</span>
-<span class="n">G</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span><span class="s1">&#39;power&#39;</span><span class="p">,</span> <span class="n">func_b</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<span class="n">G</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span><span class="s2">&quot;squared&quot;</span><span class="p">,</span> <span class="n">squared</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">)</span>
 
 <span class="c1"># set object with modifier</span>
-<span class="n">G</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span>
-    <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">func_a</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">})]</span>
-<span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">add</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">})])</span>
 
 <span class="c1"># post modification</span>
-<span class="c1"># a new copy of graph is created</span>
+<span class="c1"># a new copy of the graph is created</span>
 <span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">modify_node</span>
-<span class="n">new_graph</span> <span class="o">=</span> <span class="n">modify_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">})])</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="n">modify_node</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;b&quot;</span><span class="p">})])</span>
 </pre></div>
 </div>
 <p>Similarly, use “modifiers” argument to define model modifiers.</p>
 <section id="modifier-using-decorators">
 <h2>Modifier using decorators<a class="headerlink" href="#modifier-using-decorators" title="Permalink to this headline">#</a></h2>
-<p>If the decorator have additional parameters, the parameters should be applied first.
+<p>If the decorator has additional parameters, the parameters should be applied first.
 For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="p">{}),</span> <span class="o">...</span><span class="p">]</span>
 </pre></div>
@@ -431,7 +438,7 @@ applied from in the list order.</p>
   
     By Peter Sun<br/>
   
-      &copy; Copyright 2022, Peter Sun.<br/>
+      &copy; Copyright 2023, Peter Sun.<br/>
 </p>
         </footer>
     </div>

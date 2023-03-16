@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modifier API &#8212; MModel 0.4.0 documentation</title>
+    <title>Modifier API &#8212; MModel 0.5.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.5.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -166,6 +166,11 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_parser.html">
    Filter
   </a>
  </li>
@@ -313,14 +318,14 @@ title="Print to PDF"
 <tbody>
 </tbody>
 </table>
-<p>Modifiers should be defined the same as closure or decorators. See
+<p>Modifiers should be defined the same as closures or decorators. See
 documentation for
 <a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.wraps">wraps</a>.
 Here is an example of a loop modifier:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loop_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Loop - iterates one given parameter</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify function to iterate one given parameter.</span>
 
-<span class="sd">    :param list parameter: target parameter to loop</span>
+<span class="sd">    :param list parameter: target parameter to loop.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
@@ -334,12 +339,12 @@ Here is an example of a loop modifier:</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The wrapped function changes all parameters to keyword only. The behavior is
+<p>The wrapped function changes all parameters to keywords only. The behavior is
 intended to reduce overhead during model definition (model changes all parameters
 to positional-or-keyword-arguments).</p>
 <p>For individual functions, if necessary, <code class="docutils literal notranslate"><span class="pre">signature_binding_modifier()</span></code>
 can be used to add the binding and check the steps.</p>
-<p>A modifier for <code class="docutils literal notranslate"><span class="pre">MModel</span></code> requires to have proper signature. If the modifier changes the
+<p>A modifier for <code class="docutils literal notranslate"><span class="pre">MModel</span></code> requires to have a proper signature. If the modifier changes the
 function signal, add <code class="docutils literal notranslate"><span class="pre">__signature__</span></code> attribute with <code class="docutils literal notranslate"><span class="pre">inspect.Signature</span></code> to the wrapped
 function.</p>
 </div>
@@ -376,7 +381,7 @@ function.</p>
   
     By Peter Sun<br/>
   
-      &copy; Copyright 2022, Peter Sun.<br/>
+      &copy; Copyright 2023, Peter Sun.<br/>
 </p>
         </footer>
     </div>

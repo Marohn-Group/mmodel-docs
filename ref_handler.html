@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Handler &#8212; MModel 0.4.0 documentation</title>
+    <title>Handler &#8212; MModel 0.5.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.5.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -166,6 +166,11 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_parser.html">
    Filter
   </a>
  </li>
@@ -365,7 +370,7 @@ title="Print to PDF"
 <section id="handler-executing-in-topological-order">
 <h2>Handler executing in topological order<a class="headerlink" href="#handler-executing-in-topological-order" title="Permalink to this headline">#</a></h2>
 <p>Currently all handler executes in topological order. The handler provides
-detailed message when exception occur during individual node execution.</p>
+detailed message when exceptions occur during individual node execution.</p>
 <table class="autosummary longtable table autosummary">
 <colgroup>
 <col style="width: 10%" />
@@ -389,7 +394,7 @@ executes each node and stores the result in a custom dictionary <code class="doc
 The number of times a value is used in the graph is initialized with MemData object.
 Each time a key is accessed (used as input for a node), the object calculates the
 remaining number. If it is zero (no longer needed for the sequent nodes),
-the value of the key is deleted. The behavior has small overhead and reduces
+the value of the key is deleted. The behavior has a very small overhead and reduces
 peak memory usage.</p>
 <table class="autosummary longtable table autosummary">
 <colgroup>
@@ -406,7 +411,7 @@ stores values in the same h5 file, with a subgroup in the format of
 unique for each instance run.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For values that are object type and cannot be stored as h5 database, the string
+<p>For values that are object type and cannot be stored as H5 database, the string
 of the object is stored as an attribute.</p>
 </div>
 </section>
@@ -446,7 +451,7 @@ of the object is stored as an attribute.</p>
   
     By Peter Sun<br/>
   
-      &copy; Copyright 2022, Peter Sun.<br/>
+      &copy; Copyright 2023, Peter Sun.<br/>
 </p>
         </footer>
     </div>

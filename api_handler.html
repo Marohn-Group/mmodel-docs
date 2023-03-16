@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Handler API &#8212; MModel 0.4.0 documentation</title>
+    <title>Handler API &#8212; MModel 0.5.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.5.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -166,6 +166,11 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_parser.html">
    Filter
   </a>
  </li>
@@ -367,11 +372,11 @@ inherited from <code class="docutils literal notranslate"><span class="pre">Topo
 <h2>Handler class<a class="headerlink" href="#handler-class" title="Permalink to this headline">#</a></h2>
 <p>There are three required elements of a handler class/instance:</p>
 <ol class="arabic simple">
-<li><p>handler should take “graph” and “returns” as two (and only) positional
-arguments</p></li>
-<li><p>handler should define <code class="docutils literal notranslate"><span class="pre">__signature__</span></code> with <code class="docutils literal notranslate"><span class="pre">inspect.Signature</span></code> object
-to allow signature detection with <code class="docutils literal notranslate"><span class="pre">inspect.signature</span></code></p></li>
-<li><p>the resulting handler object should be callable.</p></li>
+<li><p>The handler should take “graph” and “returns” as two (and only) positional
+arguments.</p></li>
+<li><p>The handler should define <code class="docutils literal notranslate"><span class="pre">__signature__</span></code> with <code class="docutils literal notranslate"><span class="pre">inspect.Signature</span></code> object
+to allow signature detection with <code class="docutils literal notranslate"><span class="pre">inspect.signature</span></code>.</p></li>
+<li><p>The resulting handler object should be callable.</p></li>
 </ol>
 <p>Modify the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class if these conditions cannot be satisfied.</p>
 </section>
@@ -379,7 +384,7 @@ to allow signature detection with <code class="docutils literal notranslate"><sp
 <h2>Handler Data class and TopologicalHandler<a class="headerlink" href="#handler-data-class-and-topologicalhandler" title="Permalink to this headline">#</a></h2>
 <p>Handler data stores the input value and all return values of the node execution.
 To define a custom handler a Data class should be defined,
-and it should have <cite>__getitem__</cite> and <cite>__setitem__</cite> method.
+and it should have <cite>__getitem__</cite> and <cite>__setitem__</cite> methods.
 If the Model inherits the TopologicalHandler, the class DataClass should be
 defined as the Handler data class.</p>
 </section>
@@ -416,7 +421,7 @@ defined as the Handler data class.</p>
   
     By Peter Sun<br/>
   
-      &copy; Copyright 2022, Peter Sun.<br/>
+      &copy; Copyright 2023, Peter Sun.<br/>
 </p>
         </footer>
     </div>

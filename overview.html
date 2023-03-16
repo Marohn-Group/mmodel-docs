@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Overview &#8212; MModel 0.4.0 documentation</title>
+    <title>Overview &#8212; MModel 0.5.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -74,7 +74,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.5.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -166,6 +166,11 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_parser.html">
    Filter
   </a>
  </li>
@@ -427,13 +432,13 @@ focus on the effort of the result, the code written is often lacked quality
 and not well tested (unit test or code review). The code review requires a
 review of the simulation’s scientific model and the code written. Both are
 difficult to do, especially for experiments with complex components. For our
-complex systems, we often have shared parts, yet they follow nonsequential
+complex systems, we often have shared parts, yet they follow non-sequential
 execution steps. Because of its complexity, students often simulate experiments
 without knowing the underlying experimental model or structure.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> attempts to help with some of the issues outlined above. <code class="docutils literal notranslate"><span class="pre">mmodel</span></code>
-focuses on building a modular framework, easy to test individual components,
-and providing visualization for the complex models. Furthermore, the modular
-systems also help with code distribution, as well as introduce different
+focuses on building a modular framework, easy-to-test individual components,
+and providing visualization for complex models. Furthermore, the modular
+systems also help with code distribution, as well as introduce differently
 levels of entrances for the package:</p>
 <blockquote>
 <div><table class="table">
@@ -443,7 +448,7 @@ levels of entrances for the package:</p>
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>action</p></th>
-<th class="head"><p>programing level</p></th>
+<th class="head"><p>programming level</p></th>
 </tr>
 </thead>
 <tbody>
@@ -453,7 +458,7 @@ levels of entrances for the package:</p>
 <tr class="row-odd"><td><p>inspect model</p></td>
 <td><p>beginner</p></td>
 </tr>
-<tr class="row-even"><td><p>create new model</p></td>
+<tr class="row-even"><td><p>create a new model</p></td>
 <td><p>beginner</p></td>
 </tr>
 <tr class="row-odd"><td><p>modify model</p></td>
@@ -474,18 +479,18 @@ levels of entrances for the package:</p>
 </section>
 <section id="how-does-it-work">
 <h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> uses a two stage system to construct a executable python callable
+<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> uses a two-stage system to construct a python callable
 that behaves like a python function - <strong>graph and model</strong>.</p>
 <p>The <strong>graph</strong> is a directed acyclic graph (DAG) to represent a non-linear
-procedure, with nodes presenting individual functions and edges representing
+the procedure, with nodes presenting individual functions and edges representing
 parameter flow. The graph is created with a custom <code class="docutils literal notranslate"><span class="pre">networkx</span></code> graph class
 while retaining all of its graph algorithms and methods. The class <code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code>
 handles the graph construction.</p>
 <p>The <strong>model</strong> can be created given the graph, the graph handler, and the modifiers.
-The model is an python executable object that behaves like a python function.
+The model is a python executable object that behaves like a python function.
 Specifically, the handler creates the workflow that executes each node, and modifiers
-are python wrapper (closure/decorators) that can modify the nodes and the graph.
-The class <code class="docutils literal notranslate"><span class="pre">Model</span></code> handlers the model construction. Constructing a model using a
+are python wrappers (closure/decorators) that can modify the nodes and the graph.
+The class <code class="docutils literal notranslate"><span class="pre">Model</span></code> handles the model construction. Constructing a model using a
 directed graph allows for clear execution steps, error messages, and easy testing.
 Notably, we can modify the subgraph easily without changing the model,
 which is efficient in terms of performance and code writing.
@@ -512,14 +517,14 @@ the model components.</p>
 </section>
 <section id="prioritize-execution-performance">
 <h3>prioritize execution performance<a class="headerlink" href="#prioritize-execution-performance" title="Permalink to this headline">#</a></h3>
-<p>The most time-consuming components, for example, creating a new model,
-and determining execution steps, occurs at import time or model initialization
+<p>The most time-consuming components, for example, creating a new model
+and determining execution steps, occur at import time or model initialization
 time. Therefore, the overhead spent on the runtime is as small as possible.</p>
 </section>
 <section id="explicit">
 <h3>explicit<a class="headerlink" href="#explicit" title="Permalink to this headline">#</a></h3>
 <p>Since <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> is intended as a framework for scientific packages, we want to
-make the API and model building process as explicit as possible. See <code class="docutils literal notranslate"><span class="pre">mrfmsim</span></code>
+make the API and model-building process as explicit as possible. See <code class="docutils literal notranslate"><span class="pre">mrfmsim</span></code>
 for some of our high-level design choices.</p>
 </section>
 </section>
@@ -569,7 +574,7 @@ Mistakes; preprint; PsyArXiv, 2021. <a class="reference external" href="https://
   
     By Peter Sun<br/>
   
-      &copy; Copyright 2022, Peter Sun.<br/>
+      &copy; Copyright 2023, Peter Sun.<br/>
 </p>
         </footer>
     </div>

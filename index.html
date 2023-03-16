@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>MModel &#8212; MModel 0.4.0 documentation</title>
+    <title>MModel &#8212; MModel 0.5.0 documentation</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -73,7 +73,7 @@
       
       
       
-      <h1 class="site-logo" id="site-title">MModel 0.4.0 documentation</h1>
+      <h1 class="site-logo" id="site-title">MModel 0.5.0 documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -165,6 +165,11 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ref_filter.html">
+   Filter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ref_parser.html">
    Filter
   </a>
  </li>
@@ -423,9 +428,9 @@ title="Print to PDF"
                 
   <section id="mmodel">
 <h1>MModel<a class="headerlink" href="#mmodel" title="Permalink to this headline">#</a></h1>
-<p><a class="reference external" href="https://github.com/peterhs73/MModel"><img alt="GitHub version" src="https://badge.fury.io/gh/peterhs73%2FMModel.svg" /></a> <a class="reference external" href="https://pypi.python.org/pypi/mmodel/"><img alt="PyPI version shields.io" src="https://img.shields.io/pypi/v/mmodel.svg" /></a> <img alt="PyPI pyversions" src="https://img.shields.io/pypi/pyversions/mmodel.svg" /> <a class="reference external" href="https://circleci.com/gh/peterhs73/MModel"><img alt="CircleCI" src="https://circleci.com/gh/peterhs73/MModel.svg?style=shield" /></a>
-<a class="reference external" href="https://peterhs73.github.io/mmodel-docs/"><img alt="Docs" src="https://img.shields.io/badge/Documentation--brightgreen.svg" /></a></p>
-<p>MModel is a lightweight and modular model building framework
+<p><a class="reference external" href="https://github.com/Marohn-Group/mmodel"><img alt="GitHub version" src="https://badge.fury.io/gh/peterhs73%2FMModel.svg" /></a> <a class="reference external" href="https://pypi.python.org/pypi/mmodel/"><img alt="PyPI version shields.io" src="https://img.shields.io/pypi/v/mmodel.svg" /></a> <img alt="PyPI pyversions" src="https://img.shields.io/pypi/pyversions/mmodel.svg" /> <a class="reference external" href="https://github.com/Marohn-Group/mmodel/actions"><img alt="Unittests" src="https://github.com/Marohn-Group/mmodel/actions/workflows/tox.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/Marohn-Group/mmodel-docs/"><img alt="Docs" src="https://img.shields.io/badge/Documentation--brightgreen.svg" /></a></p>
+<p>MModel is a lightweight and modular model-building framework
 for small-scale and nonlinear models. The package aims to solve
 scientific program prototyping and distribution difficulties, making
 it easier to create modular, fast, and user-friendly packages.
@@ -436,76 +441,98 @@ The package is fully tested.</p>
 <cite>(x + y)log(x + y, base)</cite>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">ModelGraph</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">MemHandler</span>
 <span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">func_a</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-
-<span class="k">def</span> <span class="nf">func_b</span><span class="p">(</span><span class="n">sum_xy</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">sum_xy</span><span class="p">,</span> <span class="n">base</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">func_c</span><span class="p">(</span><span class="n">sum_xy</span><span class="p">,</span> <span class="n">log_xy</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">sum_xy</span> <span class="o">*</span> <span class="n">log_xy</span>
-
-<span class="c1"># create graph links</span>
-
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">sum_xy</span><span class="p">,</span> <span class="n">log_xy</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function that adds a value to the multiplied inputs.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">sum_xy</span> <span class="o">*</span> <span class="n">log_xy</span> <span class="o">+</span> <span class="mi">6</span>
+</pre></div>
+</div>
+<p>The graph is defined using grouped edges (the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> syntax of edge
+the definition also works.)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create graph edges</span>
 <span class="n">grouped_edges</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;func a&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;func b&quot;</span><span class="p">,</span> <span class="s2">&quot;func c&quot;</span><span class="p">]),</span>
-    <span class="p">(</span><span class="s2">&quot;func b&quot;</span><span class="p">,</span> <span class="s2">&quot;func c&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;function node&quot;</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;function node&quot;</span><span class="p">),</span>
 <span class="p">]</span>
-
+</pre></div>
+</div>
+<p>The functions are then added to node attributes. The order of definition
+is node_name, node_func, output, input (if different from original function),
+and modifiers.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define note objects</span>
 <span class="n">node_objects</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;func a&quot;</span><span class="p">,</span> <span class="n">func_a</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">]),</span>
-    <span class="p">(</span><span class="s2">&quot;func b&quot;</span><span class="p">,</span> <span class="n">func_b</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;log_xy&quot;</span><span class="p">]),</span>
-    <span class="p">(</span><span class="s2">&quot;func c&quot;</span><span class="p">,</span> <span class="n">func_c</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;result&quot;</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="s2">&quot;sum_xy&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="s2">&quot;log_xy&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">,</span> <span class="s2">&quot;log_base&quot;</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s2">&quot;function node&quot;</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">),</span>
 <span class="p">]</span>
 
-<span class="n">graph</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;example_graph&quot;</span><span class="p">)</span>
-<span class="n">graph</span><span class="o">.</span><span class="n">add_grouped_edges_from</span><span class="p">(</span><span class="n">grouped_edges</span><span class="p">)</span>
-<span class="n">graph</span><span class="o">.</span><span class="n">set_node_objects_from</span><span class="p">(</span><span class="n">node_objects</span><span class="p">)</span>
-
-<span class="n">example_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}))</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">example_model</span><span class="p">)</span>
-<span class="n">example_model</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-  <span class="n">signature</span><span class="p">:</span>
-  <span class="n">returns</span><span class="p">:</span> <span class="n">result</span>
-  <span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}</span>
-  <span class="n">modifiers</span><span class="p">:</span> <span class="n">none</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">example_model</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2)</span>
-<span class="mf">24.0</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;example_graph&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_grouped_edges_from</span><span class="p">(</span><span class="n">grouped_edges</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">set_node_objects_from</span><span class="p">(</span><span class="n">node_objects</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The resulting <code class="docutils literal notranslate"><span class="pre">example_func</span></code> is callable.</p>
-<p>One key feature of <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> is modifiers, which modify callables post
-definition. To loop the “base” parameter.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">subgraph_by_parameters</span><span class="p">,</span> <span class="n">modify_subgraph</span><span class="p">,</span> <span class="n">loop_modifier</span>
+<p>To define the model, the name, graph, and handler need to be specified. Additional
+parameters include modifiers, descriptions, and returns lists. The input parameters
+of the model are determined based on the node information.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Test model.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The model behaves like a Python function, with additional metadata. The graph can
+be plotted using the <code class="docutils literal notranslate"><span class="pre">draw</span></code> method.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">example_model</span><span class="p">)</span>
+<span class="go">example_model(log_base, x, y)</span>
+<span class="go">returns: z</span>
+<span class="go">handler: MemHandler()</span>
 
-<span class="n">subgraph</span> <span class="o">=</span> <span class="n">subgraph_by_parameters</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">])</span>
+<span class="go">Test model.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example_model</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
+<span class="go">30.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example_model</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The resulting graph contains the model metadata and detailed node information.</p>
+<p>One key feature of <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> that differs from other workflow is modifiers,
+which modify callables post definition. Modifiers work on both the node level and model level.</p>
+<p>Example: Using modifier and graph to loop the nodes that require the “log_base” parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">loop_modifier</span>
+
+<span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_base&quot;</span><span class="p">])</span>
 <span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
-    <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span>
-    <span class="n">subgraph</span><span class="p">,</span>
-    <span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span>
-    <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;base&quot;</span><span class="p">})],</span>
+    <span class="s2">&quot;loop_submodel&quot;</span><span class="p">,</span>
+    <span class="n">H</span><span class="p">,</span>
+    <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span>
+    <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;log_base&quot;</span><span class="p">})],</span>
 <span class="p">)</span>
-<span class="n">looped_graph</span> <span class="o">=</span> <span class="n">modify_subgraph</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">,</span> <span class="s2">&quot;loop node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">)</span>
-<span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;loop_model&quot;</span><span class="p">,</span> <span class="n">looped_graph</span><span class="p">,</span> <span class="n">loop_node</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
-<span class="n">loop_model</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="n">returns</span><span class="p">:</span> <span class="n">result</span>
-    <span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}</span>
-    <span class="n">modifiers</span><span class="p">:</span> <span class="p">[]</span>
-
-<span class="o">&gt;&gt;&gt;</span> <span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2)</span>
-<span class="p">[</span><span class="mf">24.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">]</span>
+<span class="n">looped_G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">replace_subgraph</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">)</span>
+<span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;looped_model&quot;</span><span class="p">,</span> <span class="n">looped_G</span><span class="p">,</span> <span class="n">loop_node</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Modifiers can also be added to the whole model or a single node.</p>
-<p>To draw the graph or the underlying graph of the model:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">draw_plain_graph</span>
-<span class="n">graph</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">draw_plain_graph</span><span class="p">)</span>
-<span class="n">example_model</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">draw_plain_graph</span><span class="p">)</span>
+<p>We can inspect the loop node as well as the new model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">loop_node</span><span class="p">)</span>
+<span class="go">loop_submodel(log_base, sum_xy)</span>
+<span class="go">returns: z</span>
+<span class="go">handler: MemHandler()</span>
+<span class="go">modifiers:</span>
+<span class="go">  - loop_modifier(&#39;log_base&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
+<span class="go">looped_model(log_base, x, y)</span>
+<span class="go">returns: looped_z</span>
+<span class="go">handler: MemHandler()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
+<span class="go">[30.0, 18.0]</span>
+</pre></div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">draw</span></code> method to draw the graph. There are three styles
+“plain”, “short”, and “full”, which differ by the level of detail of the
+node information. A graph output is displayed in Jupyter Notebook
+or can be saved using the export option.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;short&quot;</span><span class="p">)</span>
+<span class="n">example_model</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;plain&quot;</span><span class="p">,</span> <span class="n">export</span><span class="o">=</span><span class="s2">&quot;example.pdf&quot;</span><span class="p">)</span> <span class="c1"># default to draw_graph</span>
 </pre></div>
 </div>
 </section>
@@ -534,7 +561,7 @@ installation.</p>
 </pre></div>
 </div>
 <p>To run the tests in different python environments and cases
-(py38, py39, py310, coverage and docs):</p>
+(py38, py39, py310, py311, coverage and docs):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span>
 </pre></div>
 </div>
@@ -624,7 +651,7 @@ installation.</p>
   
     By Peter Sun<br/>
   
-      &copy; Copyright 2022, Peter Sun.<br/>
+      &copy; Copyright 2023, Peter Sun.<br/>
 </p>
         </footer>
     </div>
