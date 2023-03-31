@@ -1,442 +1,332 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>MModel &#8212; MModel 0.5.0 documentation</title>
-    
+    <title>MModel &#8212; MModel 0.5.2 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Overview" href="overview.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="#">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">MModel 0.5.0 documentation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    <p class="title logo__title">MModel 0.5.2 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="changelog.html">
-   Changelog
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorial
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial_graph.html">
-   Creating a model graph
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial_model.html">
-   Building a model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial_modifier.html">
-   Modifying model and node
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial_subgraph.html">
-   Modifying a subgraph
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Building a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  API Guideline
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="api_handler.html">
-   Handler API
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="api_modifier.html">
-   Modifier API
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Reference
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="ref_graph.html">
-   Graph
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ref_model.html">
-   Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ref_handler.html">
-   Handler
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ref_modifier.html">
-   Modifier
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ref_filter.html">
-   Filter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ref_parser.html">
-   Filter
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Filter</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/index.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/index.rst.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.rst</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   MModel
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quickstart">
-     Quickstart
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installation">
-     Installation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#graphviz-installation">
-       Graphviz installation
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mmodel-installation">
-       MModel installation
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#development-installation">
-       Development installation
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#license">
-   License
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indices-and-tables">
-   Indices and tables
-  </a>
-  <ul class="visible nav section-nav flex-column">
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>MModel</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   MModel
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quickstart">
-     Quickstart
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installation">
-     Installation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#graphviz-installation">
-       Graphviz installation
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#mmodel-installation">
-       MModel installation
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#development-installation">
-       Development installation
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#license">
-   License
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indices-and-tables">
-   Indices and tables
-  </a>
-  <ul class="visible nav section-nav flex-column">
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MModel</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MModel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickstart">Quickstart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphviz-installation">Graphviz installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel-installation">MModel installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-installation">Development installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a><ul class="visible nav section-nav flex-column">
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="mmodel">
-<h1>MModel<a class="headerlink" href="#mmodel" title="Permalink to this headline">#</a></h1>
+<h1>MModel<a class="headerlink" href="#mmodel" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://github.com/Marohn-Group/mmodel"><img alt="GitHub version" src="https://badge.fury.io/gh/peterhs73%2FMModel.svg" /></a> <a class="reference external" href="https://pypi.python.org/pypi/mmodel/"><img alt="PyPI version shields.io" src="https://img.shields.io/pypi/v/mmodel.svg" /></a> <img alt="PyPI pyversions" src="https://img.shields.io/pypi/pyversions/mmodel.svg" /> <a class="reference external" href="https://github.com/Marohn-Group/mmodel/actions"><img alt="Unittests" src="https://github.com/Marohn-Group/mmodel/actions/workflows/tox.yml/badge.svg" /></a>
 <a class="reference external" href="https://github.com/Marohn-Group/mmodel-docs/"><img alt="Docs" src="https://img.shields.io/badge/Documentation--brightgreen.svg" /></a></p>
 <p>MModel is a lightweight and modular model-building framework
 for small-scale and nonlinear models. The package aims to solve
 scientific program prototyping and distribution difficulties, making
-it easier to create modular, fast, and user-friendly packages.
-The package is fully tested.</p>
+it easier to create modular, fast, and user-friendly packages.</p>
 <section id="quickstart">
-<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">#</a></h2>
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">#</a></h2>
 <p>To create a nonlinear model that has the result of
 <cite>(x + y)log(x + y, base)</cite>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">ModelGraph</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">MemHandler</span>
@@ -483,6 +373,7 @@ be plotted using the <code class="docutils literal notranslate"><span class="pre
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">example_model</span><span class="p">)</span>
 <span class="go">example_model(log_base, x, y)</span>
 <span class="go">returns: z</span>
+<span class="go">graph: example_graph</span>
 <span class="go">handler: MemHandler()</span>
 
 <span class="go">Test model.</span>
@@ -495,18 +386,25 @@ be plotted using the <code class="docutils literal notranslate"><span class="pre
 </div>
 <p>The resulting graph contains the model metadata and detailed node information.</p>
 <p>One key feature of <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> that differs from other workflow is modifiers,
-which modify callables post definition. Modifiers work on both the node level and model level.</p>
-<p>Example: Using modifier and graph to loop the nodes that require the “log_base” parameter.</p>
+which modify callables post definition. Modifiers work on both the node level
+and model level.</p>
+<p>Example: Use <code class="docutils literal notranslate"><span class="pre">loop_modifier</span></code> on the graph to loop the nodes that require the
+“log_base” parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">loop_modifier</span>
 
 <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_base&quot;</span><span class="p">])</span>
-<span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
-    <span class="s2">&quot;loop_submodel&quot;</span><span class="p">,</span>
+<span class="n">H</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;example_subgraph&quot;</span>
+<span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;submodel&quot;</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}))</span>
+
+<span class="n">looped_G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">replace_subgraph</span><span class="p">(</span>
     <span class="n">H</span><span class="p">,</span>
-    <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span>
+    <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span>
+    <span class="n">loop_node</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">,</span>
     <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;log_base&quot;</span><span class="p">})],</span>
 <span class="p">)</span>
-<span class="n">looped_G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">replace_subgraph</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">)</span>
+<span class="n">looped_G</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;looped_graph&quot;</span>
+
 <span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;looped_model&quot;</span><span class="p">,</span> <span class="n">looped_G</span><span class="p">,</span> <span class="n">loop_node</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -514,6 +412,7 @@ which modify callables post definition. Modifiers work on both the node level an
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">loop_node</span><span class="p">)</span>
 <span class="go">loop_submodel(log_base, sum_xy)</span>
 <span class="go">returns: z</span>
+<span class="go">graph: example_subgraph</span>
 <span class="go">handler: MemHandler()</span>
 <span class="go">modifiers:</span>
 <span class="go">  - loop_modifier(&#39;log_base&#39;)</span>
@@ -521,6 +420,7 @@ which modify callables post definition. Modifiers work on both the node level an
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
 <span class="go">looped_model(log_base, x, y)</span>
 <span class="go">returns: looped_z</span>
+<span class="go">graph: looped_graph</span>
 <span class="go">handler: MemHandler()</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
@@ -528,7 +428,7 @@ which modify callables post definition. Modifiers work on both the node level an
 </pre></div>
 </div>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">draw</span></code> method to draw the graph. There are three styles
-“plain”, “short”, and “full”, which differ by the level of detail of the
+“plain”, “short”, and “verbose”, which differ by the level of detail of the
 node information. A graph output is displayed in Jupyter Notebook
 or can be saved using the export option.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;short&quot;</span><span class="p">)</span>
@@ -537,25 +437,30 @@ or can be saved using the export option.</p>
 </div>
 </section>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">#</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
 <section id="graphviz-installation">
-<h3>Graphviz installation<a class="headerlink" href="#graphviz-installation" title="Permalink to this headline">#</a></h3>
+<h3>Graphviz installation<a class="headerlink" href="#graphviz-installation" title="Permalink to this heading">#</a></h3>
 <p>To view the graph, Graphviz needs to be installed:
 <a class="reference external" href="https://graphviz.org/download/">Graphviz Installation</a>
 For windows installation, please choose “add Graphviz to the
 system PATH for all users/current users” during the setup.</p>
 </section>
 <section id="mmodel-installation">
-<h3>MModel installation<a class="headerlink" href="#mmodel-installation" title="Permalink to this headline">#</a></h3>
+<h3>MModel installation<a class="headerlink" href="#mmodel-installation" title="Permalink to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mmodel</span>
 </pre></div>
 </div>
 </section>
 <section id="development-installation">
-<h3>Development installation<a class="headerlink" href="#development-installation" title="Permalink to this headline">#</a></h3>
+<h3>Development installation<a class="headerlink" href="#development-installation" title="Permalink to this heading">#</a></h3>
 <p>MModel uses <a class="reference external" href="https://python-poetry.org/docs/">poetry</a> as
 the build system. The package works with both pip and poetry
-installation.</p>
+installation. For macos systems, sometimes <cite>brew install</cite> results
+in unexpected installation path, it is recommended to install
+with conda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pygraphviz</span>
+</pre></div>
+</div>
 <p>To install test and docs, despondencies run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">.</span><span class="p">[</span><span class="n">docs</span><span class="p">]</span>
 </pre></div>
@@ -573,7 +478,7 @@ installation.</p>
 </section>
 </section>
 <section id="license">
-<h1>License<a class="headerlink" href="#license" title="Permalink to this headline">#</a></h1>
+<h1>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h1>
 <p>MModel is distributed with the 3-clause BSD license.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2022</span>
 <span class="n">Peter</span> <span class="n">Sun</span> <span class="o">&lt;</span><span class="n">hs859</span><span class="nd">@cornell</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
@@ -611,7 +516,7 @@ installation.</p>
 </div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">#</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -628,43 +533,104 @@ installation.</p>
 </section>
 
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="overview.html" title="next page">
-    <div class="prev-next-info">
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="right-next"
+       href="overview.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Overview</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MModel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickstart">Quickstart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphviz-installation">Graphviz installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel-installation">MModel installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-installation">Development installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#license">License</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#indices-and-tables">Indices and tables</a><ul class="visible nav section-nav flex-column">
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By Peter Sun<br/>
-  
-      &copy; Copyright 2023, Peter Sun.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By Peter Sun
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Peter Sun.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
