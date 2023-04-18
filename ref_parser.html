@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Filter &#8212; MModel 0.5.2 documentation</title>
+    <title>Parser &#8212; MModel 0.6.0 documentation</title>
   
   
   
@@ -44,6 +44,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ref_parser';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Shortcut" href="ref_shortcut.html" />
     <link rel="prev" title="Filter" href="ref_filter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -116,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.5.2 documentation</p>
+    <p class="title logo__title">MModel 0.6.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -144,7 +145,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Filter</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 </ul>
 
     </div>
@@ -281,7 +283,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Filter</h1>
+    <h1>Parser</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -296,6 +298,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.grab_docstring"><code class="docutils literal notranslate"><span class="pre">grab_docstring()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_builtin"><code class="docutils literal notranslate"><span class="pre">parse_builtin()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_default"><code class="docutils literal notranslate"><span class="pre">parse_default()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_lambda"><code class="docutils literal notranslate"><span class="pre">parse_lambda()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_model"><code class="docutils literal notranslate"><span class="pre">parse_model()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_ufunc"><code class="docutils literal notranslate"><span class="pre">parse_ufunc()</span></code></a></li>
 </ul>
@@ -311,8 +314,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="filter">
-<h1>Filter<a class="headerlink" href="#filter" title="Permalink to this heading">#</a></h1>
+  <section id="parser">
+<h1>Parser<a class="headerlink" href="#parser" title="Permalink to this heading">#</a></h1>
 <section id="module-mmodel.parser">
 <span id="parser-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">parser</span></code> module<a class="headerlink" href="#module-mmodel.parser" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
@@ -339,27 +342,38 @@ and ends with a period.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.parser.parse_builtin">
-<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_builtin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_builtin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_builtin" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_builtin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_builtin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_builtin" title="Permalink to this definition">#</a></dt>
 <dd><p>Check if the function is a built-in function.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.parser.parse_default">
-<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_default" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_default</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_default"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_default" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the default function dictionary.</p>
 <p>The function needs to have the start uppercase and end period style of
 docstring.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="mmodel.parser.parse_lambda">
+<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_lambda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_lambda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_lambda" title="Permalink to this definition">#</a></dt>
+<dd><p>Check if the function is a lambda function.</p>
+<p>There is no good way to directly extract the lambda function.
+The inspect.getsource() function extracts the whole source code,
+the lambda function is parsed with regex expression. However,
+this is not a robust solution, recommend to define the doc attribute
+directly.</p>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="mmodel.parser.parse_model">
-<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_model" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_model" title="Permalink to this definition">#</a></dt>
 <dd><p>Check if the function is a Model class instance.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.parser.parse_ufunc">
-<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_ufunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_ufunc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_ufunc" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.parser.</span></span><span class="sig-name descname"><span class="pre">parse_ufunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/parser.html#parse_ufunc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.parser.parse_ufunc" title="Permalink to this definition">#</a></dt>
 <dd><p>Check if the function is a numpy universal function.</p>
 <p>The documentation of the universal function is normally the third line.</p>
 </dd></dl>
@@ -385,6 +399,15 @@ docstring.</p>
         <p class="prev-next-title">Filter</p>
       </div>
     </a>
+    <a class="right-next"
+       href="ref_shortcut.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Shortcut</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -405,6 +428,7 @@ docstring.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.grab_docstring"><code class="docutils literal notranslate"><span class="pre">grab_docstring()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_builtin"><code class="docutils literal notranslate"><span class="pre">parse_builtin()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_default"><code class="docutils literal notranslate"><span class="pre">parse_default()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_lambda"><code class="docutils literal notranslate"><span class="pre">parse_lambda()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_model"><code class="docutils literal notranslate"><span class="pre">parse_model()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.parser.parse_ufunc"><code class="docutils literal notranslate"><span class="pre">parse_ufunc()</span></code></a></li>
 </ul>

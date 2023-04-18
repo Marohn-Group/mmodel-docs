@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Modifier API &#8212; MModel 0.6.0 documentation</title>
+    <title>Shortcut &#8212; MModel 0.6.0 documentation</title>
   
   
   
@@ -41,11 +41,10 @@
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'api_modifier';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ref_shortcut';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Graph" href="ref_graph.html" />
-    <link rel="prev" title="Handler API" href="api_handler.html" />
+    <link rel="prev" title="Parser" href="ref_parser.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -134,19 +133,19 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modifier API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shortcut</a></li>
 </ul>
 
     </div>
@@ -201,7 +200,7 @@
       
       
       
-      <li><a href="_sources/api_modifier.rst" target="_blank"
+      <li><a href="_sources/ref_shortcut.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -270,7 +269,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -281,11 +282,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Modifier API</h1>
+    <h1>Shortcut</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.shortcut"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shortcut</span></code> module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.shortcut.modifier_shortcut"><code class="docutils literal notranslate"><span class="pre">modifier_shortcut()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -295,52 +307,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="modifier-api">
-<h1>Modifier API<a class="headerlink" href="#modifier-api" title="Permalink to this heading">#</a></h1>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="ref_modifier.html#module-mmodel.modifier" title="mmodel.modifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.modifier</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<p>Modifiers should be defined the same as decorators. See
-documentation for
-<a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.wraps">wraps</a>.
-Here is an example of a loop modifier:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
-<span class="k">def</span> <span class="nf">loop_input</span><span class="p">(</span><span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify function to iterate single input parameter.</span>
+  <section id="shortcut">
+<h1>Shortcut<a class="headerlink" href="#shortcut" title="Permalink to this heading">#</a></h1>
+<p>Shortcuts are a way to apply modifiers or other operations to the nodes in a model.
+They should take a model as input and return a new model as output.</p>
+<section id="module-mmodel.shortcut">
+<span id="shortcut-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">shortcut</span></code> module<a class="headerlink" href="#module-mmodel.shortcut" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.shortcut.modifier_shortcut">
+<span class="sig-prename descclassname"><span class="pre">mmodel.shortcut.</span></span><span class="sig-name descname"><span class="pre">modifier_shortcut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier_dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/shortcut.html#modifier_shortcut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.shortcut.modifier_shortcut" title="Permalink to this definition">#</a></dt>
+<dd><p>Shortcut for quickly adding modifiers to the model.</p>
+</dd></dl>
 
-<span class="sd">    :param list parameter: target parameter to loop.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">loop_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-
-        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">loop_wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-
-            <span class="n">loop_values</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
-            <span class="k">return</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">parameter</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">loop_values</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="n">loop_wrapped</span>
-    <span class="n">loop_modifier</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loop_input(</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">loop_modifier</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The wrapped function changes all parameters to keywords only. The behavior is
-intended to reduce overhead during model definition (model changes all parameters
-to positional-or-keyword-arguments).</p>
-<p>For individual functions, if necessary, <code class="docutils literal notranslate"><span class="pre">signature_binding_modifier()</span></code>
-can be used to add the binding and check the steps.</p>
-<p>A modifier for <code class="docutils literal notranslate"><span class="pre">MModel</span></code> requires to have a proper signature. If the modifier changes the
-function signal, add <code class="docutils literal notranslate"><span class="pre">__signature__</span></code> attribute with <code class="docutils literal notranslate"><span class="pre">inspect.Signature</span></code> to the wrapped
-function.</p>
-<p>The metadata of the modifier is used to generate the string displayed in the metadata
-at the node and model level. The metadata is a string passed to the “metadata” attribute of
-the modifier function.</p>
-</div>
+</section>
 </section>
 
 
@@ -353,22 +332,13 @@ the modifier function.</p>
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="api_handler.html"
+       href="ref_parser.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Handler API</p>
+        <p class="prev-next-title">Parser</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="ref_graph.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Graph</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -376,6 +346,23 @@ the modifier function.</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.shortcut"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shortcut</span></code> module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.shortcut.modifier_shortcut"><code class="docutils literal notranslate"><span class="pre">modifier_shortcut()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

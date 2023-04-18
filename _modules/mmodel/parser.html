@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mmodel.parser &#8212; MModel 0.5.2 documentation</title>
+    <title>mmodel.parser &#8212; MModel 0.6.0 documentation</title>
   
   
   
@@ -114,7 +114,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.5.2 documentation</p>
+    <p class="title logo__title">MModel 0.6.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -142,7 +142,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ref_parser.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_parser.html">Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_shortcut.html">Shortcut</a></li>
 </ul>
 
     </div>
@@ -245,10 +246,11 @@ document.write(`
                   
   <h1>Source code for mmodel.parser</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">types</span>
-<span class="kn">from</span> <span class="nn">mmodel.modifier</span> <span class="kn">import</span> <span class="n">signature_modifier</span><span class="p">,</span> <span class="n">pos_signature_modifier</span>
+<span class="kn">from</span> <span class="nn">mmodel.modifier</span> <span class="kn">import</span> <span class="n">redefine_signature</span><span class="p">,</span> <span class="n">redefine_pos_signature</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">mmodel.model</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">re</span>
 
 
 <div class="viewcode-block" id="NodeParser"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.NodeParser">[docs]</a><span class="k">class</span> <span class="nc">NodeParser</span><span class="p">:</span>
@@ -273,12 +275,14 @@ document.write(`
 <span class="sd">        long, the order of the parser is important.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">parser</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser_dict</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-            <span class="n">attr_dict</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">)</span>
+            <span class="n">attr_dict</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span>
+                <span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="n">modifiers</span>
+            <span class="p">)</span>
             <span class="k">if</span> <span class="n">attr_dict</span><span class="p">:</span>
                 <span class="n">func</span> <span class="o">=</span> <span class="n">attr_dict</span><span class="p">[</span><span class="s2">&quot;_func&quot;</span><span class="p">]</span>
                 <span class="c1"># apply the modifiers</span>
-                <span class="k">for</span> <span class="n">mdf</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
-                    <span class="n">func</span> <span class="o">=</span> <span class="n">mdf</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">mdf</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+                    <span class="n">func</span> <span class="o">=</span> <span class="n">mdf</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
 
                 <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
                 <span class="n">base_dict</span> <span class="o">=</span> <span class="p">{</span>
@@ -310,13 +314,13 @@ document.write(`
     <span class="k">return</span> <span class="n">doc</span></div>
 
 
-<div class="viewcode-block" id="parse_default"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_default">[docs]</a><span class="k">def</span> <span class="nf">parse_default</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+<div class="viewcode-block" id="parse_default"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_default">[docs]</a><span class="k">def</span> <span class="nf">parse_default</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the default function dictionary.</span>
 
 <span class="sd">    The function needs to have the start uppercase and end period style of</span>
 <span class="sd">    docstring.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
         <span class="n">func_dict</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
@@ -326,7 +330,7 @@ document.write(`
         <span class="n">func_dict</span><span class="p">[</span><span class="s2">&quot;doc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc</span>
 
         <span class="k">if</span> <span class="n">inputs</span><span class="p">:</span>
-            <span class="n">func</span> <span class="o">=</span> <span class="n">signature_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">redefine_signature</span><span class="p">(</span><span class="n">inputs</span><span class="p">)(</span><span class="n">func</span><span class="p">)</span>
 
         <span class="n">func_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;_func&quot;</span><span class="p">:</span> <span class="n">func</span><span class="p">,</span> <span class="s2">&quot;functype&quot;</span><span class="p">:</span> <span class="s2">&quot;callable&quot;</span><span class="p">})</span>
         <span class="k">return</span> <span class="n">func_dict</span>
@@ -335,14 +339,14 @@ document.write(`
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2"> has invalid function type.&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="parse_builtin"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_builtin">[docs]</a><span class="k">def</span> <span class="nf">parse_builtin</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+<div class="viewcode-block" id="parse_builtin"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_builtin">[docs]</a><span class="k">def</span> <span class="nf">parse_builtin</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the function is a built-in function.&quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">types</span><span class="o">.</span><span class="n">BuiltinFunctionType</span><span class="p">):</span>
 
         <span class="n">doc</span> <span class="o">=</span> <span class="n">grab_docstring</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">inputs</span><span class="p">:</span>
-            <span class="n">func</span> <span class="o">=</span> <span class="n">pos_signature_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">redefine_pos_signature</span><span class="p">(</span><span class="n">inputs</span><span class="p">)(</span><span class="n">func</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2"> built-in type function &quot;</span>
@@ -352,7 +356,7 @@ document.write(`
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;_func&quot;</span><span class="p">:</span> <span class="n">func</span><span class="p">,</span> <span class="s2">&quot;functype&quot;</span><span class="p">:</span> <span class="s2">&quot;builtin&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="n">doc</span><span class="p">}</span></div>
 
 
-<div class="viewcode-block" id="parse_ufunc"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_ufunc">[docs]</a><span class="k">def</span> <span class="nf">parse_ufunc</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+<div class="viewcode-block" id="parse_ufunc"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_ufunc">[docs]</a><span class="k">def</span> <span class="nf">parse_ufunc</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the function is a numpy universal function.</span>
 
 <span class="sd">    The documentation of the universal function is normally the third line.</span>
@@ -362,7 +366,7 @@ document.write(`
         <span class="n">doc</span> <span class="o">=</span> <span class="n">grab_docstring</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">inputs</span><span class="p">:</span>
-            <span class="n">func</span> <span class="o">=</span> <span class="n">pos_signature_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">redefine_pos_signature</span><span class="p">(</span><span class="n">inputs</span><span class="p">)(</span><span class="n">func</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2"> numpy.ufunc type function &quot;</span>
@@ -372,7 +376,45 @@ document.write(`
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;_func&quot;</span><span class="p">:</span> <span class="n">func</span><span class="p">,</span> <span class="s2">&quot;functype&quot;</span><span class="p">:</span> <span class="s2">&quot;numpy.ufunc&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="n">doc</span><span class="p">}</span></div>
 
 
-<div class="viewcode-block" id="parse_model"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_model">[docs]</a><span class="k">def</span> <span class="nf">parse_model</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+<div class="viewcode-block" id="parse_lambda"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_lambda">[docs]</a><span class="k">def</span> <span class="nf">parse_lambda</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the function is a lambda function.</span>
+
+<span class="sd">    There is no good way to directly extract the lambda function.</span>
+<span class="sd">    The inspect.getsource() function extracts the whole source code,</span>
+<span class="sd">    the lambda function is parsed with regex expression. However,</span>
+<span class="sd">    this is not a robust solution, recommend to define the doc attribute</span>
+<span class="sd">    directly.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s2">&quot;__code__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">func</span><span class="o">.</span><span class="vm">__code__</span><span class="o">.</span><span class="n">co_name</span> <span class="o">==</span> <span class="s2">&quot;&lt;lambda&gt;&quot;</span><span class="p">:</span>
+
+        <span class="n">pattern_prefix</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">r</span><span class="s2">&quot;[\&#39;|</span><span class="se">\&quot;</span><span class="s2">]</span><span class="si">{}</span><span class="s2">[\&#39;|</span><span class="se">\&quot;</span><span class="s2">]\s*,\s*&quot;</span>
+            <span class="sa">r</span><span class="s2">&quot;lambda\s[a-zA-Z,_ ]*:\s*(.*)&quot;</span>
+            <span class="sa">r</span><span class="s2">&quot;,\s*[\&#39;|</span><span class="se">\&quot;</span><span class="s2">]</span><span class="si">{}</span><span class="s2">[\&#39;|</span><span class="se">\&quot;</span><span class="s2">]\s*&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;lambda\s[a-zA-Z,_ ]*:\s*(.*),&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">full_expression</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsource</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">full_expression</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;lambda&quot;</span><span class="p">):</span>
+                <span class="n">matched</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">full_expression</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">matched</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern_prefix</span><span class="p">,</span> <span class="n">full_expression</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">matched</span><span class="p">:</span>
+                <span class="n">doc</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Lambda expression: </span><span class="si">{</span><span class="n">matched</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>  <span class="c1"># could not get source code</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">inputs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Node </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="si">}</span><span class="s2"> lambda type function &quot;</span>
+                <span class="s2">&quot;does not support &#39;inputs&#39; definition.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;_func&quot;</span><span class="p">:</span> <span class="n">func</span><span class="p">,</span> <span class="s2">&quot;functype&quot;</span><span class="p">:</span> <span class="s2">&quot;lambda&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="n">doc</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="parse_model"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.parse_model">[docs]</a><span class="k">def</span> <span class="nf">parse_model</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the function is a Model class instance.&quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">Model</span><span class="p">):</span>
@@ -382,7 +424,7 @@ document.write(`
             <span class="n">doc</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="n">inputs</span><span class="p">:</span>
-            <span class="n">func</span> <span class="o">=</span> <span class="n">signature_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+            <span class="n">func</span> <span class="o">=</span> <span class="n">redefine_signature</span><span class="p">(</span><span class="n">inputs</span><span class="p">)(</span><span class="n">func</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;_func&quot;</span><span class="p">:</span> <span class="n">func</span><span class="p">,</span> <span class="s2">&quot;functype&quot;</span><span class="p">:</span> <span class="s2">&quot;mmodel.Model&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="n">doc</span><span class="p">}</span></div>
 
@@ -392,6 +434,7 @@ document.write(`
         <span class="s2">&quot;buitin&quot;</span><span class="p">:</span> <span class="n">parse_builtin</span><span class="p">,</span>
         <span class="s2">&quot;numpy.ufunc&quot;</span><span class="p">:</span> <span class="n">parse_ufunc</span><span class="p">,</span>
         <span class="s2">&quot;mmodel.Model&quot;</span><span class="p">:</span> <span class="n">parse_model</span><span class="p">,</span>
+        <span class="s2">&quot;lambda&quot;</span><span class="p">:</span> <span class="n">parse_lambda</span><span class="p">,</span>
         <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="n">parse_default</span><span class="p">,</span>
     <span class="p">}</span>
 <span class="p">)</span>

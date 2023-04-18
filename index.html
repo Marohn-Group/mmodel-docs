@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>MModel &#8212; MModel 0.5.2 documentation</title>
+    <title>MModel &#8212; MModel 0.6.0 documentation</title>
   
   
   
@@ -116,7 +116,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.5.2 documentation</p>
+    <p class="title logo__title">MModel 0.6.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -144,7 +144,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 </ul>
 
     </div>
@@ -329,18 +330,19 @@ it easier to create modular, fast, and user-friendly packages.</p>
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">#</a></h2>
 <p>To create a nonlinear model that has the result of
 <cite>(x + y)log(x + y, base)</cite>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">ModelGraph</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">MemHandler</span>
-<span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">sum_xy</span><span class="p">,</span> <span class="n">log_xy</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Function that adds a value to the multiplied inputs.&quot;&quot;&quot;</span>
+
     <span class="k">return</span> <span class="n">sum_xy</span> <span class="o">*</span> <span class="n">log_xy</span> <span class="o">+</span> <span class="mi">6</span>
 </pre></div>
 </div>
 <p>The graph is defined using grouped edges (the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> syntax of edge
 the definition also works.)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create graph edges</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">ModelGraph</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">MemHandler</span>
+<span class="c1"># create graph edges</span>
 <span class="n">grouped_edges</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;function node&quot;</span><span class="p">]),</span>
     <span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;function node&quot;</span><span class="p">),</span>
@@ -365,7 +367,7 @@ and modifiers.</p>
 <p>To define the model, the name, graph, and handler need to be specified. Additional
 parameters include modifiers, descriptions, and returns lists. The input parameters
 of the model are determined based on the node information.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Test model.&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Test model.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The model behaves like a Python function, with additional metadata. The graph can
@@ -374,7 +376,7 @@ be plotted using the <code class="docutils literal notranslate"><span class="pre
 <span class="go">example_model(log_base, x, y)</span>
 <span class="go">returns: z</span>
 <span class="go">graph: example_graph</span>
-<span class="go">handler: MemHandler()</span>
+<span class="go">handler: MemHandler</span>
 
 <span class="go">Test model.</span>
 
@@ -388,20 +390,20 @@ be plotted using the <code class="docutils literal notranslate"><span class="pre
 <p>One key feature of <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> that differs from other workflow is modifiers,
 which modify callables post definition. Modifiers work on both the node level
 and model level.</p>
-<p>Example: Use <code class="docutils literal notranslate"><span class="pre">loop_modifier</span></code> on the graph to loop the nodes that require the
+<p>Example: Use <code class="docutils literal notranslate"><span class="pre">loop_input</span></code> modifier on the graph to loop the nodes that require the
 “log_base” parameter.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">loop_modifier</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">loop_input</span>
 
 <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_base&quot;</span><span class="p">])</span>
 <span class="n">H</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;example_subgraph&quot;</span>
-<span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;submodel&quot;</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}))</span>
+<span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;submodel&quot;</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">)</span>
 
 <span class="n">looped_G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">replace_subgraph</span><span class="p">(</span>
     <span class="n">H</span><span class="p">,</span>
     <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span>
     <span class="n">loop_node</span><span class="p">,</span>
     <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">,</span>
-    <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;log_base&quot;</span><span class="p">})],</span>
+    <span class="n">modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">loop_input</span><span class="p">(</span><span class="s2">&quot;log_base&quot;</span><span class="p">)],</span>
 <span class="p">)</span>
 <span class="n">looped_G</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;looped_graph&quot;</span>
 
@@ -409,19 +411,18 @@ and model level.</p>
 </pre></div>
 </div>
 <p>We can inspect the loop node as well as the new model.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">loop_node</span><span class="p">)</span>
-<span class="go">loop_submodel(log_base, sum_xy)</span>
-<span class="go">returns: z</span>
-<span class="go">graph: example_subgraph</span>
-<span class="go">handler: MemHandler()</span>
-<span class="go">modifiers:</span>
-<span class="go">  - loop_modifier(&#39;log_base&#39;)</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
 <span class="go">looped_model(log_base, x, y)</span>
 <span class="go">returns: looped_z</span>
 <span class="go">graph: looped_graph</span>
 <span class="go">handler: MemHandler()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="o">.</span><span class="n">node_metadata</span><span class="p">(</span><span class="s2">&quot;loop_node&quot;</span><span class="p">))</span>
+<span class="go">submodel(log_base, sum_xy)</span>
+<span class="go">return: looped_z</span>
+<span class="go">functype: mmodel.Model</span>
+<span class="go">modifiers:</span>
+<span class="go">  - loop_input(&#39;log_base&#39;)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
 <span class="go">[30.0, 18.0]</span>

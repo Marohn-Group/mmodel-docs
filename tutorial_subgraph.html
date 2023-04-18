@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Modifying a subgraph &#8212; MModel 0.5.2 documentation</title>
+    <title>Modifying a subgraph &#8212; MModel 0.6.0 documentation</title>
   
   
   
@@ -117,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.5.2 documentation</p>
+    <p class="title logo__title">MModel 0.6.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -145,7 +145,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 </ul>
 
     </div>
@@ -325,7 +326,7 @@ excluded.
 The resulting subgraph can be built into models (the graph is defined the same as
 README.rst):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_xy&quot;</span><span class="p">])</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}))</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;model&quot;</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">MemHandler</span><span class="p">)</span>
 
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">H</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
 <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;log&#39;</span><span class="p">]</span>
@@ -344,8 +345,8 @@ uses. Here we loop the “log_base” parameter from the Quickstart example.
 <span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
     <span class="s2">&quot;loop_submodel&quot;</span><span class="p">,</span>
     <span class="n">H</span><span class="p">,</span>
-    <span class="n">handler</span><span class="o">=</span><span class="p">(</span><span class="n">MemHandler</span><span class="p">,</span> <span class="p">{}),</span>
-    <span class="n">modifiers</span><span class="o">=</span><span class="p">[(</span><span class="n">loop_modifier</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;parameter&quot;</span><span class="p">:</span> <span class="s2">&quot;log_base&quot;</span><span class="p">})],</span>
+    <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">,</span>
+    <span class="n">modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">loop_input</span><span class="p">(</span><span class="s2">&quot;log_base&quot;</span><span class="p">})],</span>
 <span class="p">)</span>
 <span class="n">looped_graph</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">replace_subgraph</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">)</span>
 

@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; MModel 0.5.2 documentation</title>
+    <title>Index &#8212; MModel 0.6.0 documentation</title>
   
   
   
@@ -114,7 +114,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.5.2 documentation</p>
+    <p class="title logo__title">MModel 0.6.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -142,7 +142,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 </ul>
 
     </div>
@@ -287,6 +288,10 @@ document.write(`
       <li><a href="ref_handler.html#mmodel.handler.BasicHandler">BasicHandler (class in mmodel.handler)</a>
 </li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ref_modifier.html#mmodel.modifier.bind_signature">bind_signature() (in module mmodel.modifier)</a>
+</li>
+  </ul></td>
 </tr></table>
 
 <h2 id="D">D</h2>
@@ -360,7 +365,7 @@ document.write(`
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ref_modifier.html#mmodel.modifier.loop_modifier">loop_modifier() (in module mmodel.modifier)</a>
+      <li><a href="ref_modifier.html#mmodel.modifier.loop_input">loop_input() (in module mmodel.modifier)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -393,11 +398,20 @@ document.write(`
         <li><a href="ref_parser.html#module-mmodel.parser">module</a>
 </li>
       </ul></li>
+      <li>
+    mmodel.shortcut
+
+      <ul>
+        <li><a href="ref_shortcut.html#module-mmodel.shortcut">module</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ref_model.html#mmodel.model.Model">Model (class in mmodel.model)</a>
 </li>
       <li><a href="ref_graph.html#mmodel.graph.ModelGraph">ModelGraph (class in mmodel.graph)</a>
+</li>
+      <li><a href="ref_shortcut.html#mmodel.shortcut.modifier_shortcut">modifier_shortcut() (in module mmodel.shortcut)</a>
 </li>
       <li><a href="ref_graph.html#mmodel.graph.ModelGraph.modify_node">modify_node() (mmodel.graph.ModelGraph method)</a>
 </li>
@@ -410,6 +424,8 @@ document.write(`
         <li><a href="ref_modifier.html#module-mmodel.modifier">mmodel.modifier</a>
 </li>
         <li><a href="ref_parser.html#module-mmodel.parser">mmodel.parser</a>
+</li>
+        <li><a href="ref_shortcut.html#module-mmodel.shortcut">mmodel.shortcut</a>
 </li>
       </ul></li>
   </ul></td>
@@ -438,13 +454,15 @@ document.write(`
 </li>
       <li><a href="ref_parser.html#mmodel.parser.parse_default">parse_default() (in module mmodel.parser)</a>
 </li>
+      <li><a href="ref_parser.html#mmodel.parser.parse_lambda">parse_lambda() (in module mmodel.parser)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ref_parser.html#mmodel.parser.parse_model">parse_model() (in module mmodel.parser)</a>
 </li>
       <li><a href="ref_parser.html#mmodel.parser.parse_ufunc">parse_ufunc() (in module mmodel.parser)</a>
 </li>
-      <li><a href="ref_modifier.html#mmodel.modifier.pos_signature_modifier">pos_signature_modifier() (in module mmodel.modifier)</a>
+      <li><a href="ref_modifier.html#mmodel.modifier.profile_time">profile_time() (in module mmodel.modifier)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -452,10 +470,14 @@ document.write(`
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ref_graph.html#mmodel.graph.ModelGraph.replace_subgraph">replace_subgraph() (mmodel.graph.ModelGraph method)</a>
+      <li><a href="ref_modifier.html#mmodel.modifier.redefine_pos_signature">redefine_pos_signature() (in module mmodel.modifier)</a>
+</li>
+      <li><a href="ref_modifier.html#mmodel.modifier.redefine_signature">redefine_signature() (in module mmodel.modifier)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ref_graph.html#mmodel.graph.ModelGraph.replace_subgraph">replace_subgraph() (mmodel.graph.ModelGraph method)</a>
+</li>
       <li><a href="ref_graph.html#mmodel.graph.ModelGraph.returns">returns (mmodel.graph.ModelGraph property)</a>
 </li>
       <li><a href="ref_handler.html#mmodel.handler.TopologicalHandler.run_node">run_node() (mmodel.handler.TopologicalHandler method)</a>
@@ -472,12 +494,8 @@ document.write(`
 </li>
       <li><a href="ref_graph.html#mmodel.graph.ModelGraph.signature">signature (mmodel.graph.ModelGraph property)</a>
 </li>
-      <li><a href="ref_modifier.html#mmodel.modifier.signature_binding_modifier">signature_binding_modifier() (in module mmodel.modifier)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ref_modifier.html#mmodel.modifier.signature_modifier">signature_modifier() (in module mmodel.modifier)</a>
-</li>
       <li><a href="ref_graph.html#mmodel.graph.ModelGraph.subgraph">subgraph() (mmodel.graph.ModelGraph method)</a>
 </li>
       <li><a href="ref_filter.html#mmodel.filter.subnodes_by_inputs">subnodes_by_inputs() (in module mmodel.filter)</a>
@@ -506,7 +524,7 @@ document.write(`
 <h2 id="Z">Z</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ref_modifier.html#mmodel.modifier.zip_loop_modifier">zip_loop_modifier() (in module mmodel.modifier)</a>
+      <li><a href="ref_modifier.html#mmodel.modifier.zip_loop_inputs">zip_loop_inputs() (in module mmodel.modifier)</a>
 </li>
   </ul></td>
 </tr></table>

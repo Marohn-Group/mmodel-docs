@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Overview &#8212; MModel 0.5.2 documentation</title>
+    <title>Overview &#8212; MModel 0.6.0 documentation</title>
   
   
   
@@ -117,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.5.2 documentation</p>
+    <p class="title logo__title">MModel 0.6.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -145,7 +145,8 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 </ul>
 
     </div>
@@ -331,55 +332,21 @@ execution steps. Because of its complexity, students often simulate experiments
 without knowing the underlying experimental model or structure.</p>
 <p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> attempts to help with some of the issues outlined above. <code class="docutils literal notranslate"><span class="pre">mmodel</span></code>
 focuses on building a modular framework, easy-to-test individual components,
-and providing visualization for complex models. Furthermore, the modular
-systems also help with code distribution, as well as introduce differently
-levels of entrances for the package:</p>
-<blockquote>
-<div><table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>action</p></th>
-<th class="head"><p>programming level</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>run model</p></td>
-<td><p>beginner</p></td>
-</tr>
-<tr class="row-odd"><td><p>inspect model</p></td>
-<td><p>beginner</p></td>
-</tr>
-<tr class="row-even"><td><p>create a new model</p></td>
-<td><p>beginner</p></td>
-</tr>
-<tr class="row-odd"><td><p>modify model</p></td>
-<td><p>intermediate</p></td>
-</tr>
-<tr class="row-even"><td><p>create components</p></td>
-<td><p>intermediate</p></td>
-</tr>
-<tr class="row-odd"><td><p>new execution method</p></td>
-<td><p>advanced</p></td>
-</tr>
-<tr class="row-even"><td><p>code maintenance</p></td>
-<td><p>advanced</p></td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
+and providing visualization for complex models.</p>
 </section>
 <section id="how-does-it-work">
 <h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> uses a two-stage system to construct a python callable
-that behaves like a python function - <strong>graph and model</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mmodel</span></code> uses a two-stage system to construct a Python callable
+that behaves like a Python function - <strong>graph and model</strong>.</p>
 <p>The <strong>graph</strong> is a directed acyclic graph (DAG) to represent a non-linear
 the procedure, with nodes presenting individual functions and edges representing
 parameter flow. The graph is created with a custom <code class="docutils literal notranslate"><span class="pre">networkx</span></code> graph class
 while retaining all of its graph algorithms and methods. The class <code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code>
 handles the graph construction.</p>
 <p>The <strong>model</strong> can be created given the graph, the graph handler, and the modifiers.
-The model is a python executable object that behaves like a python function.
+The model is a Python executable object that behaves like a Python function.
 Specifically, the handler creates the workflow that executes each node, and modifiers
-are python wrappers (closure/decorators) that can modify the nodes and the graph.
+are Python wrappers (closure/decorators) that can modify the nodes and the graph.
 The class <code class="docutils literal notranslate"><span class="pre">Model</span></code> handles the model construction. Constructing a model using a
 directed graph allows for clear execution steps, error messages, and easy testing.
 Notably, we can modify the subgraph easily without changing the model,
