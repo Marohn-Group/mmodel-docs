@@ -267,16 +267,26 @@ document.write(`
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser_dict</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_parser_dict</span> <span class="o">=</span> <span class="n">parser_dict</span>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if the function belongs to the correct type.</span>
 
 <span class="sd">        Returns customized dictionary if that is true. It is possible</span>
 <span class="sd">        that some of the function options overlap when the list goes</span>
 <span class="sd">        long, the order of the parser is important.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="s2">&quot;doc&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;doc&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">for</span> <span class="n">parser</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parser_dict</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
             <span class="n">attr_dict</span> <span class="o">=</span> <span class="n">parser</span><span class="p">(</span>
-                <span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="n">modifiers</span>
+                <span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span>
+                <span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span>
+                <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+                <span class="n">modifiers</span><span class="o">=</span><span class="n">modifiers</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="k">if</span> <span class="n">attr_dict</span><span class="p">:</span>
                 <span class="n">func</span> <span class="o">=</span> <span class="n">attr_dict</span><span class="p">[</span><span class="s2">&quot;_func&quot;</span><span class="p">]</span>
@@ -285,15 +295,17 @@ document.write(`
                     <span class="n">func</span> <span class="o">=</span> <span class="n">mdf</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
 
                 <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
                 <span class="n">base_dict</span> <span class="o">=</span> <span class="p">{</span>
                     <span class="s2">&quot;func&quot;</span><span class="p">:</span> <span class="n">func</span><span class="p">,</span>
                     <span class="s2">&quot;sig&quot;</span><span class="p">:</span> <span class="n">sig</span><span class="p">,</span>
                     <span class="s2">&quot;output&quot;</span><span class="p">:</span> <span class="n">output</span><span class="p">,</span>
                     <span class="s2">&quot;modifiers&quot;</span><span class="p">:</span> <span class="n">modifiers</span><span class="p">,</span>
+                    <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="n">doc</span><span class="p">,</span>
                 <span class="p">}</span>
                 <span class="c1"># attr dict can overwrite the base dict</span>
-                <span class="n">attr_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">base_dict</span><span class="p">)</span>
-                <span class="k">return</span> <span class="n">attr_dict</span></div>
+                <span class="n">base_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">attr_dict</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">base_dict</span></div>
 
 
 <div class="viewcode-block" id="grab_docstring"><a class="viewcode-back" href="../../ref_parser.html#mmodel.parser.grab_docstring">[docs]</a><span class="k">def</span> <span class="nf">grab_docstring</span><span class="p">(</span><span class="n">docstring</span><span class="p">):</span>
@@ -320,6 +332,7 @@ document.write(`
 <span class="sd">    The function needs to have the start uppercase and end period style of</span>
 <span class="sd">    docstring.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
         <span class="n">func_dict</span> <span class="o">=</span> <span class="p">{}</span>
 

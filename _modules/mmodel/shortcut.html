@@ -245,16 +245,19 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for mmodel.shortcut</h1><div class="highlight"><pre>
-<div class="viewcode-block" id="modifier_shortcut"><a class="viewcode-back" href="../../ref_shortcut.html#mmodel.shortcut.modifier_shortcut">[docs]</a><span></span><span class="k">def</span> <span class="nf">modifier_shortcut</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">modifier_dict</span><span class="p">):</span>
+<span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;modifier_shortcut&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="modifier_shortcut"><a class="viewcode-back" href="../../ref_shortcut.html#mmodel.shortcut.modifier_shortcut">[docs]</a><span class="k">def</span> <span class="nf">modifier_shortcut</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">modifier_dict</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Shortcut for quickly adding modifiers to the model.&quot;&quot;&quot;</span>
 
+    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">model</span><span class="o">.</span><span class="n">name</span>
     <span class="n">G</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">graph</span>  <span class="c1"># copy of the graph</span>
     <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">modifier_list</span> <span class="ow">in</span> <span class="n">modifier_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">modifiers</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;modifiers&quot;</span><span class="p">]</span>
         <span class="n">modifiers</span> <span class="o">=</span> <span class="n">modifiers</span> <span class="o">+</span> <span class="n">modifier_list</span>
         <span class="n">G</span><span class="o">.</span><span class="n">modify_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="n">modifiers</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">graph</span><span class="o">=</span><span class="n">G</span><span class="p">)</span></div>
 </pre></div>
 
                 </article>
