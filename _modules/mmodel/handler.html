@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mmodel.handler &#8212; MModel 0.6.2 documentation</title>
+    <title>mmodel.handler &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -114,7 +114,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -125,25 +125,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -246,19 +250,13 @@ document.write(`
                   
   <h1>Source code for mmodel.handler</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">UserDict</span>
-<span class="kn">from</span> <span class="nn">mmodel.utility</span> <span class="kn">import</span> <span class="n">graph_topological_sort</span><span class="p">,</span> <span class="n">param_counter</span>
+<span class="kn">from</span> <span class="nn">mmodel.utility</span> <span class="kn">import</span> <span class="n">graph_topological_sort</span><span class="p">,</span> <span class="n">param_counter</span><span class="p">,</span> <span class="n">modelgraph_signature</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">h5py</span>
 <span class="kn">import</span> <span class="nn">string</span>
 <span class="kn">import</span> <span class="nn">random</span>
-
-<span class="n">ERROR_FORMAT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="se">\</span>
-<span class="s2">An exception occurred for node &#39;</span><span class="si">{node}</span><span class="s2">&#39;:</span>
-<span class="s2">--- node info ---</span>
-<span class="si">{node_str}</span>
-<span class="s2">--- input info ---</span>
-<span class="si">{input_str}</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">dedent</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
 
 <div class="viewcode-block" id="TopologicalHandler"><a class="viewcode-back" href="../../ref_handler.html#mmodel.handler.TopologicalHandler">[docs]</a><span class="k">class</span> <span class="nc">TopologicalHandler</span><span class="p">:</span>
@@ -279,18 +277,20 @@ document.write(`
 
     <span class="n">DataClass</span><span class="p">:</span> <span class="nb">type</span> <span class="o">=</span> <span class="nb">callable</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="o">**</span><span class="n">datacls_kwargs</span><span class="p">):</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="o">**</span><span class="n">datacls_kwargs</span><span class="p">):</span>
+        <span class="c1"># self.__name__ = name</span>
         <span class="c1"># __signature__ allows the inspect module to properly generate the signature</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">signature</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">modelgraph_signature</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">returns</span> <span class="o">=</span> <span class="n">returns</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">graph_topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">datacls_kwargs</span> <span class="o">=</span> <span class="n">datacls_kwargs</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute graph model by layer.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute graph model by layer.</span>
+<span class="sd">        The data object is not stored as an attribute to avoid repeated</span>
+<span class="sd">        use and reduce memory usage.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DataClass</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">datacls_kwargs</span><span class="p">)</span>
 
@@ -301,34 +301,53 @@ document.write(`
 
         <span class="k">return</span> <span class="n">result</span>
 
+<div class="viewcode-block" id="TopologicalHandler.node_exception"><a class="viewcode-back" href="../../ref_handler.html#mmodel.handler.TopologicalHandler.node_exception">[docs]</a>    <span class="k">def</span> <span class="nf">node_exception</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">node_data</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Exception handler for individual nodes.</span>
+
+<span class="sd">        Overwrite this function for different exception formatting.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">exception_format</span> <span class="o">=</span> <span class="n">dedent</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;\</span>
+<span class="sd">        An exception occurred when executing node &#39;{node}&#39;:</span>
+<span class="sd">        --- exception info ---</span>
+<span class="sd">        {exc_str}</span>
+<span class="sd">        --- node info ---</span>
+<span class="sd">        {node_str}</span>
+<span class="sd">        --- input info ---</span>
+<span class="sd">        {input_str}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="p">)</span>
+        <span class="n">node_object</span> <span class="o">=</span> <span class="n">node_attr</span><span class="p">[</span><span class="s2">&quot;node_object&quot;</span><span class="p">]</span>
+        <span class="c1"># format the error message</span>
+        <span class="n">input_str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+            <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">node_data</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+        <span class="p">)</span>
+        <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()</span>
+        <span class="n">exc_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">exc_type</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">exc_value</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="n">exception_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span> <span class="n">exc_str</span><span class="o">=</span><span class="n">exc_str</span><span class="p">,</span> <span class="n">node_str</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">node_object</span><span class="p">),</span> <span class="n">input_str</span><span class="o">=</span><span class="n">input_str</span>
+        <span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="TopologicalHandler.run_node"><a class="viewcode-back" href="../../ref_handler.html#mmodel.handler.TopologicalHandler.run_node">[docs]</a>    <span class="k">def</span> <span class="nf">run_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the individual node.&quot;&quot;&quot;</span>
 
-        <span class="c1"># Only parameters without defaults are applied</span>
+        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">node_attr</span><span class="p">[</span><span class="s2">&quot;signature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">parameters</span><span class="p">}</span>
+        <span class="n">node_object</span> <span class="o">=</span> <span class="n">node_attr</span><span class="p">[</span><span class="s2">&quot;node_object&quot;</span><span class="p">]</span>
 
-        <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">key</span><span class="p">:</span> <span class="n">data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
-            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">node_attr</span><span class="p">[</span><span class="s2">&quot;sig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="n">param</span><span class="o">.</span><span class="n">empty</span><span class="p">)</span>
-        <span class="p">}</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># execute</span>
-            <span class="n">func_result</span> <span class="o">=</span> <span class="n">node_attr</span><span class="p">[</span><span class="s2">&quot;func&quot;</span><span class="p">](</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <span class="n">func_result</span> <span class="o">=</span> <span class="n">node_object</span><span class="o">.</span><span class="n">node_func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
             <span class="n">output</span> <span class="o">=</span> <span class="n">node_attr</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">]</span>
             <span class="k">if</span> <span class="n">output</span><span class="p">:</span>  <span class="c1"># skip the None</span>
                 <span class="n">data</span><span class="p">[</span><span class="n">output</span><span class="p">]</span> <span class="o">=</span> <span class="n">func_result</span>
 
         <span class="k">except</span><span class="p">:</span>  <span class="c1"># exception occurred while running the node</span>
-
             <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s2">&quot;close&quot;</span><span class="p">):</span>
                 <span class="n">data</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-            <span class="c1"># format the error message</span>
-            <span class="n">node_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">node_metadata</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-            <span class="n">input_str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
-                <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
-            <span class="p">)</span>
-            <span class="n">msg</span> <span class="o">=</span> <span class="n">ERROR_FORMAT</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">node</span><span class="o">=</span><span class="n">node</span><span class="p">,</span> <span class="n">input_str</span><span class="o">=</span><span class="n">input_str</span><span class="p">,</span> <span class="n">node_str</span><span class="o">=</span><span class="n">node_str</span><span class="p">)</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">node_exception</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="n">node_attr</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TopologicalHandler.finish"><a class="viewcode-back" href="../../ref_handler.html#mmodel.handler.TopologicalHandler.finish">[docs]</a>    <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">returns</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Finish execution.&quot;&quot;&quot;</span>
@@ -383,7 +402,6 @@ document.write(`
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">gname</span><span class="p">):</span>
-
         <span class="bp">self</span><span class="o">.</span><span class="n">fname</span> <span class="o">=</span> <span class="n">fname</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>
@@ -442,12 +460,11 @@ document.write(`
 
     <span class="n">DataClass</span> <span class="o">=</span> <span class="n">MemData</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add counter to the object.&quot;&quot;&quot;</span>
 
         <span class="n">counter</span> <span class="o">=</span> <span class="n">param_counter</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">)</span>
-
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="n">counter</span><span class="o">=</span><span class="n">counter</span><span class="p">)</span></div>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="n">counter</span><span class="o">=</span><span class="n">counter</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="H5Handler"><a class="viewcode-back" href="../../ref_handler.html#mmodel.handler.H5Handler">[docs]</a><span class="k">class</span> <span class="nc">H5Handler</span><span class="p">(</span><span class="n">TopologicalHandler</span><span class="p">):</span>
@@ -459,8 +476,8 @@ document.write(`
 
     <span class="n">DataClass</span> <span class="o">=</span> <span class="n">H5Data</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="n">fname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">gname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span> <span class="n">gname</span><span class="o">=</span><span class="n">gname</span><span class="p">)</span></div>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="n">fname</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">gname</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="n">fname</span><span class="p">,</span> <span class="n">gname</span><span class="o">=</span><span class="n">gname</span><span class="p">)</span></div>
 </pre></div>
 
                 </article>
@@ -496,7 +513,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

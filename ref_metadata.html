@@ -1,0 +1,526 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Metadata &#8212; MModel 0.7.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ref_metadata';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Visualizer" href="ref_visualizer.html" />
+    <link rel="prev" title="Signature" href="ref_signature.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ref_metadata.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Metadata</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.metadata"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metadata</span></code> module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.MetaDataFormatter"><code class="docutils literal notranslate"><span class="pre">MetaDataFormatter</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_dictargs"><code class="docutils literal notranslate"><span class="pre">format_dictargs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_func"><code class="docutils literal notranslate"><span class="pre">format_func()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_list"><code class="docutils literal notranslate"><span class="pre">format_list()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_modifierlist"><code class="docutils literal notranslate"><span class="pre">format_modifierlist()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_obj_name"><code class="docutils literal notranslate"><span class="pre">format_obj_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_returns"><code class="docutils literal notranslate"><span class="pre">format_returns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_shortdocstring"><code class="docutils literal notranslate"><span class="pre">format_shortdocstring()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_value"><code class="docutils literal notranslate"><span class="pre">format_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.modifier_metadata"><code class="docutils literal notranslate"><span class="pre">modifier_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="metadata">
+<h1>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h1>
+<section id="module-mmodel.metadata">
+<span id="metadata-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">metadata</span></code> module<a class="headerlink" href="#module-mmodel.metadata" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mmodel.metadata.MetaDataFormatter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">MetaDataFormatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format_dict:</span> <span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">meta_order:</span> <span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_wrapper:</span> <span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shorten_list:</span> <span class="pre">list</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#MetaDataFormatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.MetaDataFormatter" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Metadata Formatter.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.format_dictargs">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">format_dictargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#format_dictargs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.format_dictargs" title="Permalink to this definition">#</a></dt>
+<dd><p>Format the metadata value that is a dictionary.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.format_func">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">format_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#format_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.format_func" title="Permalink to this definition">#</a></dt>
+<dd><p>Format the metadata value that has a function.</p>
+<p>The key name is not shown in the string output.
+The result is func(args1, args2, …).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.format_list">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">format_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#format_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.format_list" title="Permalink to this definition">#</a></dt>
+<dd><p>Format the metadata value that is a list.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.format_modifierlist">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">format_modifierlist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#format_modifierlist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.format_modifierlist" title="Permalink to this definition">#</a></dt>
+<dd><p>Format the metadata that is a list of modifiers.</p>
+<p>The metadata of the modifier is extracted by the modifier_metadata function.
+The resulting list is formatted by the format_list function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.format_obj_name">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">format_obj_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#format_obj_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.format_obj_name" title="Permalink to this definition">#</a></dt>
+<dd><p>Format the metadata value that is an object.</p>
+<p>Only show the name of the object. This is used for
+graph and handler objects.
+The object needs to have __name__ or name attribute defined.
+If neither is defined, display the string representation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.format_returns">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">format_returns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#format_returns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.format_returns" title="Permalink to this definition">#</a></dt>
+<dd><p>Format the metadata value that has a list of returns.</p>
+<p>The formatter is for the returns metadata. If the “returns” value is empty,
+the output is None. If the returns only have one value, return the value; otherwise
+, return the values separated by commas in a tuple representation.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.format_shortdocstring">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">format_shortdocstring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#format_shortdocstring"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.format_shortdocstring" title="Permalink to this definition">#</a></dt>
+<dd><p>Format function docstring.</p>
+<p>Only the short docstring is parsed. The built-in and
+ufunc type docstring location is not consistent
+some module/function has the repr at the first line,
+and some don’t.
+Here we try to grab the first line that starts with
+an upper case and ends with a period.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.format_value">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">format_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#format_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.format_value" title="Permalink to this definition">#</a></dt>
+<dd><p>Format the metadata without displaying the key.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mmodel.metadata.modifier_metadata">
+<span class="sig-prename descclassname"><span class="pre">mmodel.metadata.</span></span><span class="sig-name descname"><span class="pre">modifier_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">closure</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/metadata.html#modifier_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.metadata.modifier_metadata" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract metadata from closure, including the name and the arguments.</p>
+<p>The order of extraction:
+1. If the object has the “metadata” attribute defined.
+2. If the closure takes no arguments, the name is the function name.
+3. If the closure takes arguments, the “metadata” attribute is not defined.</p>
+<p>Note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inspect</span><span class="o">.</span><span class="n">getclosurevars</span><span class="p">(</span><span class="n">closure</span><span class="p">)</span><span class="o">.</span><span class="n">nonlocals</span> <span class="n">can</span> <span class="n">only</span> <span class="n">parse</span> <span class="n">values</span>
+<span class="k">if</span> <span class="n">the</span> <span class="n">value</span> <span class="ow">is</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">closure</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ref_signature.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Signature</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ref_visualizer.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualizer</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.metadata"><code class="xref py py-mod docutils literal notranslate"><span class="pre">metadata</span></code> module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.MetaDataFormatter"><code class="docutils literal notranslate"><span class="pre">MetaDataFormatter</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_dictargs"><code class="docutils literal notranslate"><span class="pre">format_dictargs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_func"><code class="docutils literal notranslate"><span class="pre">format_func()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_list"><code class="docutils literal notranslate"><span class="pre">format_list()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_modifierlist"><code class="docutils literal notranslate"><span class="pre">format_modifierlist()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_obj_name"><code class="docutils literal notranslate"><span class="pre">format_obj_name()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_returns"><code class="docutils literal notranslate"><span class="pre">format_returns()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_shortdocstring"><code class="docutils literal notranslate"><span class="pre">format_shortdocstring()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.format_value"><code class="docutils literal notranslate"><span class="pre">format_value()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.metadata.modifier_metadata"><code class="docutils literal notranslate"><span class="pre">modifier_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Peter Sun
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022 - 2024, Peter Sun.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

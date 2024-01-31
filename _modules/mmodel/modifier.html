@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mmodel.modifier &#8212; MModel 0.6.2 documentation</title>
+    <title>mmodel.modifier &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -114,7 +114,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -125,25 +125,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -245,41 +249,35 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for mmodel.modifier</h1><div class="highlight"><pre>
-<span></span><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;loop_input&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;zip_loop_inputs&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;redefine_signature&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;redefine_pos_signature&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;bind_signature&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;profile_time&quot;</span><span class="p">,</span>
-<span class="p">]</span>
-
-
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
-<span class="kn">import</span> <span class="nn">inspect</span>
-<span class="kn">from</span> <span class="nn">mmodel.utility</span> <span class="kn">import</span> <span class="n">parse_input</span><span class="p">,</span> <span class="n">parse_parameters</span>
+<span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">signature</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Signature</span>
 
 
 <div class="viewcode-block" id="loop_input"><a class="viewcode-back" href="../../ref_modifier.html#mmodel.modifier.loop_input">[docs]</a><span class="k">def</span> <span class="nf">loop_input</span><span class="p">(</span><span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify function to iterate one given parameter.</span>
 
 <span class="sd">    :param list parameter: target parameter to loop</span>
+<span class="sd">        The target parameter name is changed to f&quot;{param}_loop&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="n">param_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter</span><span class="p">:</span>
+                <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Parameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2">_loop&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+
+        <span class="n">new_sig</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span>
+
         <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">loop_wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-
-            <span class="n">loop_values</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
-
-            <span class="k">try</span><span class="p">:</span>
-                <span class="c1"># make sure the parameter input is iterable</span>
-                <span class="nb">iter</span><span class="p">(</span><span class="n">loop_values</span><span class="p">)</span>
-            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
-                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2"> value is not iterable&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Isolate the loop parameter and loop over the values.&quot;&quot;&quot;</span>
+            <span class="n">loop_values</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">_loop&quot;</span><span class="p">)</span>
 
             <span class="k">return</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">parameter</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">loop_values</span><span class="p">]</span>
 
+        <span class="n">loop_wrapped</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">new_sig</span>
         <span class="k">return</span> <span class="n">loop_wrapped</span>
 
     <span class="n">loop</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;loop_input(</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
@@ -289,20 +287,18 @@ document.write(`
 <div class="viewcode-block" id="zip_loop_inputs"><a class="viewcode-back" href="../../ref_modifier.html#mmodel.modifier.zip_loop_inputs">[docs]</a><span class="k">def</span> <span class="nf">zip_loop_inputs</span><span class="p">(</span><span class="n">parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify function to iterate the parameters pairwise.</span>
 
-<span class="sd">    :param list parameters: list of the parameter to loop</span>
-<span class="sd">        only one parameter is allowed. If the string of parameters is</span>
+<span class="sd">    :param list parameters: list of the parameters to loop</span>
+<span class="sd">        only one parameter is allowed. If a string of the parameters is</span>
 <span class="sd">        provided, the parameters should be delimited by &quot;, &quot;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">zip_loop</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
         <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">loop_wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-
             <span class="n">loop_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]</span>
 
             <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">loop_values</span><span class="p">):</span>  <span class="c1"># unzip the values</span>
-
                 <span class="n">loop_value_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
                 <span class="n">rv</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="n">loop_value_dict</span><span class="p">)</span>
                 <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rv</span><span class="p">)</span>
@@ -315,120 +311,21 @@ document.write(`
     <span class="k">return</span> <span class="n">zip_loop</span></div>
 
 
-<div class="viewcode-block" id="redefine_signature"><a class="viewcode-back" href="../../ref_modifier.html#mmodel.modifier.redefine_signature">[docs]</a><span class="k">def</span> <span class="nf">redefine_signature</span><span class="p">(</span><span class="n">parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replace node object signature.</span>
-
-<span class="sd">    :param list parameters: signature parameters to replace the original</span>
-<span class="sd">        signature. The parameters are assumed to be &quot;POSITIONAL_OR_KEYWORD&quot;, and no</span>
-<span class="sd">        default values are allowed. The signature will replace the original signature</span>
-<span class="sd">        in order.</span>
-
-<span class="sd">    .. Note::</span>
-
-<span class="sd">        The modifier does not work with functions that have positional-only</span>
-<span class="sd">        input parameters; or functions do not have a signature</span>
-<span class="sd">        (built-in and numpy.ufunc). Use pos_signature_modifier instead.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">signature_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-
-        <span class="n">sig</span><span class="p">,</span> <span class="n">param_order</span><span class="p">,</span> <span class="n">defaultargs</span> <span class="o">=</span> <span class="n">parse_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-
-        <span class="c1"># if there&#39;s &quot;kwargs&quot; in the parameter, ignore the parameter</span>
-        <span class="n">old_parameters</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
-                <span class="n">old_parameters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-
-        <span class="c1"># once unzipped to return iterators, the original variable returns none</span>
-        <span class="n">param_pair</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">old_parameters</span><span class="p">,</span> <span class="n">param_order</span><span class="p">))</span>
-
-        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="c1"># assume there are no repeated signature names that are not overlapping</span>
-            <span class="c1"># replace a, b with b, c is not allowed in the following step</span>
-            <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">defaultargs</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span> <span class="ow">in</span> <span class="n">param_pair</span><span class="p">:</span>
-                <span class="n">kwargs</span><span class="p">[</span><span class="n">old</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">new</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-        <span class="n">wrapped</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">sig</span>
-        <span class="k">return</span> <span class="n">wrapped</span>
-
-    <span class="k">return</span> <span class="n">signature_modifier</span></div>
-
-
-<div class="viewcode-block" id="redefine_pos_signature"><a class="viewcode-back" href="../../ref_modifier.html#mmodel.modifier.redefine_pos_signature">[docs]</a><span class="k">def</span> <span class="nf">redefine_pos_signature</span><span class="p">(</span><span class="n">parameters</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replace node object positional signature with keyword arguments.</span>
-
-<span class="sd">    For functions that do not have a signature or only allow positional only</span>
-<span class="sd">    inputs. The modifier is specifically used to change the &quot;signature&quot; of the builtin</span>
-<span class="sd">    function or numpy.ufunc.</span>
-
-<span class="sd">    .. note::</span>
-
-<span class="sd">        The modifier is only tested against built-in function or numpy.ufunc.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">pos_signature_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-
-        <span class="n">sig</span><span class="p">,</span> <span class="n">param_order</span><span class="p">,</span> <span class="n">defaultargs</span> <span class="o">=</span> <span class="n">parse_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-
-        <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">defaultargs</span><span class="p">)</span>
-            <span class="c1"># extra the variables in order</span>
-            <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">param_order</span><span class="p">]</span>
-
-            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
-
-        <span class="n">wrapped</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">sig</span>
-        <span class="k">return</span> <span class="n">wrapped</span>
-
-    <span class="k">return</span> <span class="n">pos_signature_modifier</span></div>
-
-
-<div class="viewcode-block" id="bind_signature"><a class="viewcode-back" href="../../ref_modifier.html#mmodel.modifier.bind_signature">[docs]</a><span class="k">def</span> <span class="nf">bind_signature</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add parameter binding and checking for function.</span>
-
-<span class="sd">    The additional wrapper is unnecessary, but to keep a consistent</span>
-<span class="sd">    modifier syntax. The modifier can be used on wrapped functions</span>
-<span class="sd">    that do not have a parameter binding step (ones that only allow</span>
-<span class="sd">    keyword arguments).</span>
-
-<span class="sd">    The parse_input method binds the input args and kwargs and fills</span>
-<span class="sd">    default values automatically. The resulting function behaves the</span>
-<span class="sd">    same as a python function.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">sig</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-
-        <span class="n">parsed_kwargs</span> <span class="o">=</span> <span class="n">parse_input</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">parsed_kwargs</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">wrapped</span></div>
-
-
-<span class="k">def</span> <span class="nf">format_time</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">precision</span><span class="p">):</span>
+<div class="viewcode-block" id="format_time"><a class="viewcode-back" href="../../ref_modifier.html#mmodel.modifier.format_time">[docs]</a><span class="k">def</span> <span class="nf">format_time</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">precision</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format time in seconds to a human-readable string.&quot;&quot;&quot;</span>
 
     <span class="n">units</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s2">&quot;ms&quot;</span><span class="p">:</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="s2">&quot;us&quot;</span><span class="p">:</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="s2">&quot;ns&quot;</span><span class="p">:</span> <span class="mf">1e-9</span><span class="p">}</span>
     <span class="k">for</span> <span class="n">unit</span><span class="p">,</span> <span class="n">scale</span> <span class="ow">in</span> <span class="n">units</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">dt</span> <span class="o">&gt;=</span> <span class="n">scale</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">scale</span><span class="si">:</span><span class="s2">.</span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">dt</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">scale</span><span class="si">:</span><span class="s2">.</span><span class="si">{</span><span class="n">precision</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">unit</span><span class="si">}</span><span class="s2">&quot;</span></div>
 
 
 <div class="viewcode-block" id="profile_time"><a class="viewcode-back" href="../../ref_modifier.html#mmodel.modifier.profile_time">[docs]</a><span class="k">def</span> <span class="nf">profile_time</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">repeat</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Profile the execution time of a function.</span>
 
-<span class="sd">    The modifier behaves similarly to the timeit module. However,</span>
+<span class="sd">    The modifier behaves similarly to the *timeit* module. However,</span>
 <span class="sd">    the modifier does not suppress garbage collection during the function</span>
-<span class="sd">    execution, therefore, the result might be slightly different.</span>
+<span class="sd">    execution; therefore, the result might be slightly different.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="kn">import</span> <span class="nn">timeit</span>
 
@@ -436,13 +333,13 @@ document.write(`
 
     <span class="k">def</span> <span class="nf">timeit_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
         <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
             <span class="n">time_list</span> <span class="o">=</span> <span class="p">[]</span>
 
             <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repeat</span><span class="p">):</span>
                 <span class="n">t0</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
                 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
-                    <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
                 <span class="n">t1</span> <span class="o">=</span> <span class="n">timer</span><span class="p">()</span>
                 <span class="n">time_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span> <span class="o">/</span> <span class="n">number</span><span class="p">)</span>
 
@@ -498,7 +395,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

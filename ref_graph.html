@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Graph &#8212; MModel 0.6.2 documentation</title>
+    <title>Graph &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Model" href="ref_model.html" />
-    <link rel="prev" title="Modifier API" href="api_modifier.html" />
+    <link rel="prev" title="Node" href="ref_node.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -117,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -128,25 +128,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -294,23 +298,22 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-module"><code class="xref py py-mod docutils literal notranslate"><span class="pre">graph</span></code> module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph"><code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.add_edge"><code class="docutils literal notranslate"><span class="pre">ModelGraph.add_edge()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.add_edges_from"><code class="docutils literal notranslate"><span class="pre">ModelGraph.add_edges_from()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.add_grouped_edge"><code class="docutils literal notranslate"><span class="pre">ModelGraph.add_grouped_edge()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.add_grouped_edges_from"><code class="docutils literal notranslate"><span class="pre">ModelGraph.add_grouped_edges_from()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.deepcopy"><code class="docutils literal notranslate"><span class="pre">ModelGraph.deepcopy()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.draw"><code class="docutils literal notranslate"><span class="pre">ModelGraph.draw()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.graph_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">ModelGraph.graph_attr_dict_factory()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.modify_node"><code class="docutils literal notranslate"><span class="pre">ModelGraph.modify_node()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.node_metadata"><code class="docutils literal notranslate"><span class="pre">ModelGraph.node_metadata()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.replace_subgraph"><code class="docutils literal notranslate"><span class="pre">ModelGraph.replace_subgraph()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.returns"><code class="docutils literal notranslate"><span class="pre">ModelGraph.returns</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.set_node_object"><code class="docutils literal notranslate"><span class="pre">ModelGraph.set_node_object()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.set_node_objects_from"><code class="docutils literal notranslate"><span class="pre">ModelGraph.set_node_objects_from()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.signature"><code class="docutils literal notranslate"><span class="pre">ModelGraph.signature</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.subgraph"><code class="docutils literal notranslate"><span class="pre">ModelGraph.subgraph()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.update_graph"><code class="docutils literal notranslate"><span class="pre">ModelGraph.update_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.add_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_edge()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.add_edges_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_edges_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.add_grouped_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_grouped_edge()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.add_grouped_edges_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_grouped_edges_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.deepcopy"><code class="docutils literal notranslate"><span class="pre">Graph.deepcopy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.edit_node"><code class="docutils literal notranslate"><span class="pre">Graph.edit_node()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.get_node"><code class="docutils literal notranslate"><span class="pre">Graph.get_node()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.get_node_object"><code class="docutils literal notranslate"><span class="pre">Graph.get_node_object()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.graph_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.graph_attr_dict_factory()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.replace_subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.replace_subgraph()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.set_node_object"><code class="docutils literal notranslate"><span class="pre">Graph.set_node_object()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.set_node_objects_from"><code class="docutils literal notranslate"><span class="pre">Graph.set_node_objects_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.subgraph()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.update_graph"><code class="docutils literal notranslate"><span class="pre">Graph.update_graph()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.visualize"><code class="docutils literal notranslate"><span class="pre">Graph.visualize()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -331,148 +334,109 @@ document.write(`
 <section id="graph-module">
 <h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">graph</span></code> module<a class="headerlink" href="#graph-module" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.graph.</span></span><span class="sig-name descname"><span class="pre">ModelGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.graph.</span></span><span class="sig-name descname"><span class="pre">Graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">DiGraph</span></code></p>
 <p>Create model graphs.</p>
-<p>ModelGraph inherits from <cite>networkx.DiGraph()</cite>, which has all <cite>DiGraph</cite>
+<p>mmodel.Graph inherits from <cite>networkx.DiGraph()</cite>, which has all <cite>DiGraph</cite>
 methods.</p>
 <p>The class adds the “type” attribute to the graph attribute. The factory method
 returns a copy of the dictionary. It is equivalent to
-<code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;ModelGraph&quot;}.copy()</span></code> when called.</p>
+<code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;mmodel_graph&quot;}.copy()</span></code> when called.</p>
 <p>The additional graph operations are added:
 - add_grouped_edges and set_node_objects.
 - Method <code class="docutils literal notranslate"><span class="pre">add_grouped_edges</span></code>, cannot have both edges list.
 - Method <code class="docutils literal notranslate"><span class="pre">set_node_object</span></code> updates nodes with the node callable “func” and output.
 - The method adds callable signature ‘sig’ to the node attribute.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.add_edge">
-<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.add_edge" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.add_edge">
+<span class="sig-name descname"><span class="pre">add_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u_of_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v_of_edge</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.add_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.add_edge" title="Permalink to this definition">#</a></dt>
 <dd><p>Modify add_edge to update the edge attribute in the end.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.add_edges_from">
-<span class="sig-name descname"><span class="pre">add_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.add_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.add_edges_from" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.add_edges_from">
+<span class="sig-name descname"><span class="pre">add_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ebunch_to_add</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.add_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.add_edges_from" title="Permalink to this definition">#</a></dt>
 <dd><p>Modify add_edges_from to update the edge attributes.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.add_grouped_edge">
-<span class="sig-name descname"><span class="pre">add_grouped_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.add_grouped_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.add_grouped_edge" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.add_grouped_edge">
+<span class="sig-name descname"><span class="pre">add_grouped_edge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">u</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.add_grouped_edge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.add_grouped_edge" title="Permalink to this definition">#</a></dt>
 <dd><p>Add linked edge.</p>
 <p>For mmodel, a group edge (u, v) allows u or v
-to be a list of nodes. Represents several nodes
-flowing into one node or the other way around.</p>
+to be a list of nodes. A grouped edge represents one or several
+nodes flowing into one node.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.add_grouped_edges_from">
-<span class="sig-name descname"><span class="pre">add_grouped_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.add_grouped_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.add_grouped_edges_from" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.add_grouped_edges_from">
+<span class="sig-name descname"><span class="pre">add_grouped_edges_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group_edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.add_grouped_edges_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.add_grouped_edges_from" title="Permalink to this definition">#</a></dt>
 <dd><p>Add edges from grouped values.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.deepcopy">
-<span class="sig-name descname"><span class="pre">deepcopy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.deepcopy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.deepcopy" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.deepcopy">
+<span class="sig-name descname"><span class="pre">deepcopy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.deepcopy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.deepcopy" title="Permalink to this definition">#</a></dt>
 <dd><p>Deepcopy graph.</p>
-<p>The graph.copy method is a shallow copy. Deepcopy creates copy for the
-attributes dictionary.
+<p>The <code class="docutils literal notranslate"><span class="pre">graph.copy</span></code> method is a shallow copy. Deepcopy creates a copy for
+the attributes dictionary.
 <cite>graph.copy&lt;https://networkx.org/documentation/stable/reference/classes
 /generated/networkx.Graph.copy.html&gt;_</cite></p>
-<p>However, for subgraphs, deepcopy is incredibly inefficient because
+<p>However, for subgraphs, <code class="docutils literal notranslate"><span class="pre">deepcopy</span></code> is incredibly inefficient because
 subgraph contains ‘_graph’, which stores the original graph.
 An alternative method is to copy the code from the copy method,
-but use deepcopy for the items.</p>
+but use <code class="docutils literal notranslate"><span class="pre">deepcopy</span></code> for the items.</p>
 <p>The parser is redefined in the new graph.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.draw">
-<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'verbose'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.draw" title="Permalink to this definition">#</a></dt>
-<dd><p>Draw the graph.</p>
-<p>Draws the default styled graph.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>style</strong> (<em>str</em>) – there are three styles, plain, short, and verbose.
-Plain shows nodes only, short shows part of the metadata, and
-long shows all the metadata.</p></li>
-<li><p><strong>export</strong> (<em>str</em>) – filename to save the graph as. The file extension
-is needed.</p></li>
-</ul>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.edit_node">
+<span class="sig-name descname"><span class="pre">edit_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.edit_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.edit_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Edit node attributes.
+Returns a new graph.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.graph_attr_dict_factory">
-<span class="sig-name descname"><span class="pre">graph_attr_dict_factory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mmodel.graph.ModelGraph.graph_attr_dict_factory" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.get_node">
+<span class="sig-name descname"><span class="pre">get_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.get_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.get_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Get node attributes from the graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.graph.Graph.get_node_object">
+<span class="sig-name descname"><span class="pre">get_node_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.get_node_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.get_node_object" title="Permalink to this definition">#</a></dt>
+<dd><p>Get node object from the graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.graph.Graph.graph_attr_dict_factory">
+<span class="sig-name descname"><span class="pre">graph_attr_dict_factory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mmodel.graph.Graph.graph_attr_dict_factory" title="Permalink to this definition">#</a></dt>
 <dd><p>D.copy() -&gt; a shallow copy of D</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.modify_node">
-<span class="sig-name descname"><span class="pre">modify_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.modify_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.modify_node" title="Permalink to this definition">#</a></dt>
-<dd><p>Modify node attributes.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.node_metadata">
-<span class="sig-name descname"><span class="pre">node_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter=&lt;mmodel.metadata.MetaDataFormatter</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textwrapper=&lt;textwrap.TextWrapper</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.node_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.node_metadata" title="Permalink to this definition">#</a></dt>
-<dd><p>Printout node metadata.</p>
-<p>The metadata includes the node information and the node function
-information.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.replace_subgraph">
-<span class="sig-name descname"><span class="pre">replace_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.replace_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.replace_subgraph" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.replace_subgraph">
+<span class="sig-name descname"><span class="pre">replace_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">subgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.replace_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.replace_subgraph" title="Permalink to this definition">#</a></dt>
 <dd><p>Replace subgraph with a node.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.returns">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">returns</span></span><a class="headerlink" href="#mmodel.graph.ModelGraph.returns" title="Permalink to this definition">#</a></dt>
-<dd><p>Graph returns.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.set_node_object">
-<span class="sig-name descname"><span class="pre">set_node_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.set_node_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.set_node_object" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.set_node_object">
+<span class="sig-name descname"><span class="pre">set_node_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.set_node_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.set_node_object" title="Permalink to this definition">#</a></dt>
 <dd><p>Add or update the functions of an existing node.</p>
-<p>In the end, the edge attributes are re-determined
-Modifiers are applied directly onto the node. The parser checks the
-function type and returns (at least) three dictionary entries:
-_func, functype, doc.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.set_node_objects_from">
-<span class="sig-name descname"><span class="pre">set_node_objects_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.set_node_objects_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.set_node_objects_from" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.set_node_objects_from">
+<span class="sig-name descname"><span class="pre">set_node_objects_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_objects</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.set_node_objects_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.set_node_objects_from" title="Permalink to this definition">#</a></dt>
 <dd><p>Update the functions of existing nodes.</p>
 <p>The method is the same as adding a node object.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.signature">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">signature</span></span><a class="headerlink" href="#mmodel.graph.ModelGraph.signature" title="Permalink to this definition">#</a></dt>
-<dd><p>Graph signature.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>inspect.Signature object</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.subgraph">
-<span class="sig-name descname"><span class="pre">subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.subgraph" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.subgraph">
+<span class="sig-name descname"><span class="pre">subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.subgraph" title="Permalink to this definition">#</a></dt>
 <dd><p>Extract subgraph by nodes, inputs, and output.</p>
 <p>If multiple parameters are specified, the result is a union
 of the selection. The subgraph is a deep copy of the original graph.
@@ -481,9 +445,22 @@ returns a view of the original graph.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.graph.ModelGraph.update_graph">
-<span class="sig-name descname"><span class="pre">update_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#ModelGraph.update_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.ModelGraph.update_graph" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.graph.Graph.update_graph">
+<span class="sig-name descname"><span class="pre">update_graph</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.update_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.update_graph" title="Permalink to this definition">#</a></dt>
 <dd><p>Update edge attributes based on node objects and edges.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.graph.Graph.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/graph.html#Graph.visualize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.graph.Graph.visualize" title="Permalink to this definition">#</a></dt>
+<dd><p>Draw the graph.</p>
+<p>Draws the default styled graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>outfile</strong> (<em>str</em>) – filename to save the graph as. The file extension
+is needed.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -501,12 +478,12 @@ returns a view of the original graph.</p>
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="api_modifier.html"
+       href="ref_node.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modifier API</p>
+        <p class="prev-next-title">Node</p>
       </div>
     </a>
     <a class="right-next"
@@ -534,23 +511,22 @@ returns a view of the original graph.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-module"><code class="xref py py-mod docutils literal notranslate"><span class="pre">graph</span></code> module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph"><code class="docutils literal notranslate"><span class="pre">ModelGraph</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.add_edge"><code class="docutils literal notranslate"><span class="pre">ModelGraph.add_edge()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.add_edges_from"><code class="docutils literal notranslate"><span class="pre">ModelGraph.add_edges_from()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.add_grouped_edge"><code class="docutils literal notranslate"><span class="pre">ModelGraph.add_grouped_edge()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.add_grouped_edges_from"><code class="docutils literal notranslate"><span class="pre">ModelGraph.add_grouped_edges_from()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.deepcopy"><code class="docutils literal notranslate"><span class="pre">ModelGraph.deepcopy()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.draw"><code class="docutils literal notranslate"><span class="pre">ModelGraph.draw()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.graph_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">ModelGraph.graph_attr_dict_factory()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.modify_node"><code class="docutils literal notranslate"><span class="pre">ModelGraph.modify_node()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.node_metadata"><code class="docutils literal notranslate"><span class="pre">ModelGraph.node_metadata()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.replace_subgraph"><code class="docutils literal notranslate"><span class="pre">ModelGraph.replace_subgraph()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.returns"><code class="docutils literal notranslate"><span class="pre">ModelGraph.returns</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.set_node_object"><code class="docutils literal notranslate"><span class="pre">ModelGraph.set_node_object()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.set_node_objects_from"><code class="docutils literal notranslate"><span class="pre">ModelGraph.set_node_objects_from()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.signature"><code class="docutils literal notranslate"><span class="pre">ModelGraph.signature</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.subgraph"><code class="docutils literal notranslate"><span class="pre">ModelGraph.subgraph()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.ModelGraph.update_graph"><code class="docutils literal notranslate"><span class="pre">ModelGraph.update_graph()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph"><code class="docutils literal notranslate"><span class="pre">Graph</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.add_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_edge()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.add_edges_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_edges_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.add_grouped_edge"><code class="docutils literal notranslate"><span class="pre">Graph.add_grouped_edge()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.add_grouped_edges_from"><code class="docutils literal notranslate"><span class="pre">Graph.add_grouped_edges_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.deepcopy"><code class="docutils literal notranslate"><span class="pre">Graph.deepcopy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.edit_node"><code class="docutils literal notranslate"><span class="pre">Graph.edit_node()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.get_node"><code class="docutils literal notranslate"><span class="pre">Graph.get_node()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.get_node_object"><code class="docutils literal notranslate"><span class="pre">Graph.get_node_object()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.graph_attr_dict_factory"><code class="docutils literal notranslate"><span class="pre">Graph.graph_attr_dict_factory()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.replace_subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.replace_subgraph()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.set_node_object"><code class="docutils literal notranslate"><span class="pre">Graph.set_node_object()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.set_node_objects_from"><code class="docutils literal notranslate"><span class="pre">Graph.set_node_objects_from()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.subgraph"><code class="docutils literal notranslate"><span class="pre">Graph.subgraph()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.update_graph"><code class="docutils literal notranslate"><span class="pre">Graph.update_graph()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.graph.Graph.visualize"><code class="docutils literal notranslate"><span class="pre">Graph.visualize()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -578,7 +554,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

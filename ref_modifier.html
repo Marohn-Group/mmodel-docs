@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Modifier &#8212; MModel 0.6.2 documentation</title>
+    <title>Modifier &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -117,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -128,25 +128,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -294,11 +298,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.modifier"><code class="xref py py-mod docutils literal notranslate"><span class="pre">modifier</span></code> module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.bind_signature"><code class="docutils literal notranslate"><span class="pre">bind_signature()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.format_time"><code class="docutils literal notranslate"><span class="pre">format_time()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.loop_input"><code class="docutils literal notranslate"><span class="pre">loop_input()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.profile_time"><code class="docutils literal notranslate"><span class="pre">profile_time()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.redefine_pos_signature"><code class="docutils literal notranslate"><span class="pre">redefine_pos_signature()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.redefine_signature"><code class="docutils literal notranslate"><span class="pre">redefine_signature()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.zip_loop_inputs"><code class="docutils literal notranslate"><span class="pre">zip_loop_inputs()</span></code></a></li>
 </ul>
 </li>
@@ -315,19 +317,26 @@ document.write(`
                   
   <section id="modifier">
 <h1>Modifier<a class="headerlink" href="#modifier" title="Permalink to this heading">#</a></h1>
+<p>The available modifiers:</p>
+<table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mmodel.modifier.loop_input" title="mmodel.modifier.loop_input"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.modifier.loop_input</span></code></a>(parameter)</p></td>
+<td><p>Modify function to iterate one given parameter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#mmodel.modifier.zip_loop_inputs" title="mmodel.modifier.zip_loop_inputs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.modifier.zip_loop_inputs</span></code></a>(parameters)</p></td>
+<td><p>Modify function to iterate the parameters pairwise.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#mmodel.modifier.profile_time" title="mmodel.modifier.profile_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.modifier.profile_time</span></code></a>([number, ...])</p></td>
+<td><p>Profile the execution time of a function.</p></td>
+</tr>
+</tbody>
+</table>
 <section id="module-mmodel.modifier">
 <span id="modifier-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">modifier</span></code> module<a class="headerlink" href="#module-mmodel.modifier" title="Permalink to this heading">#</a></h2>
 <dl class="py function">
-<dt class="sig sig-object py" id="mmodel.modifier.bind_signature">
-<span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">bind_signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#bind_signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.bind_signature" title="Permalink to this definition">#</a></dt>
-<dd><p>Add parameter binding and checking for function.</p>
-<p>The additional wrapper is unnecessary, but to keep a consistent
-modifier syntax. The modifier can be used on wrapped functions
-that do not have a parameter binding step (ones that only allow
-keyword arguments).</p>
-<p>The parse_input method binds the input args and kwargs and fills
-default values automatically. The resulting function behaves the
-same as a python function.</p>
+<dt class="sig sig-object py" id="mmodel.modifier.format_time">
+<span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">format_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#format_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.format_time" title="Permalink to this definition">#</a></dt>
+<dd><p>Format time in seconds to a human-readable string.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -336,7 +345,8 @@ same as a python function.</p>
 <dd><p>Modify function to iterate one given parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>parameter</strong> (<em>list</em>) – target parameter to loop</p>
+<dd class="field-odd"><p><strong>parameter</strong> (<em>list</em>) – target parameter to loop
+The target parameter name is changed to f”{param}_loop”</p>
 </dd>
 </dl>
 </dd></dl>
@@ -345,42 +355,9 @@ same as a python function.</p>
 <dt class="sig sig-object py" id="mmodel.modifier.profile_time">
 <span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">profile_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">number</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">repeat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#profile_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.profile_time" title="Permalink to this definition">#</a></dt>
 <dd><p>Profile the execution time of a function.</p>
-<p>The modifier behaves similarly to the timeit module. However,
+<p>The modifier behaves similarly to the <em>timeit</em> module. However,
 the modifier does not suppress garbage collection during the function
-execution, therefore, the result might be slightly different.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mmodel.modifier.redefine_pos_signature">
-<span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">redefine_pos_signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#redefine_pos_signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.redefine_pos_signature" title="Permalink to this definition">#</a></dt>
-<dd><p>Replace node object positional signature with keyword arguments.</p>
-<p>For functions that do not have a signature or only allow positional only
-inputs. The modifier is specifically used to change the “signature” of the builtin
-function or numpy.ufunc.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The modifier is only tested against built-in function or numpy.ufunc.</p>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mmodel.modifier.redefine_signature">
-<span class="sig-prename descclassname"><span class="pre">mmodel.modifier.</span></span><span class="sig-name descname"><span class="pre">redefine_signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/modifier.html#redefine_signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.modifier.redefine_signature" title="Permalink to this definition">#</a></dt>
-<dd><p>Replace node object signature.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>parameters</strong> (<em>list</em>) – signature parameters to replace the original
-signature. The parameters are assumed to be “POSITIONAL_OR_KEYWORD”, and no
-default values are allowed. The signature will replace the original signature
-in order.</p>
-</dd>
-</dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The modifier does not work with functions that have positional-only
-input parameters; or functions do not have a signature
-(built-in and numpy.ufunc). Use pos_signature_modifier instead.</p>
-</div>
+execution; therefore, the result might be slightly different.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -389,8 +366,8 @@ input parameters; or functions do not have a signature
 <dd><p>Modify function to iterate the parameters pairwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>parameters</strong> (<em>list</em>) – list of the parameter to loop
-only one parameter is allowed. If the string of parameters is
+<dd class="field-odd"><p><strong>parameters</strong> (<em>list</em>) – list of the parameters to loop
+only one parameter is allowed. If a string of the parameters is
 provided, the parameters should be delimited by “, “.</p>
 </dd>
 </dl>
@@ -442,11 +419,9 @@ provided, the parameters should be delimited by “, “.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.modifier"><code class="xref py py-mod docutils literal notranslate"><span class="pre">modifier</span></code> module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.bind_signature"><code class="docutils literal notranslate"><span class="pre">bind_signature()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.format_time"><code class="docutils literal notranslate"><span class="pre">format_time()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.loop_input"><code class="docutils literal notranslate"><span class="pre">loop_input()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.profile_time"><code class="docutils literal notranslate"><span class="pre">profile_time()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.redefine_pos_signature"><code class="docutils literal notranslate"><span class="pre">redefine_pos_signature()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.redefine_signature"><code class="docutils literal notranslate"><span class="pre">redefine_signature()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.modifier.zip_loop_inputs"><code class="docutils literal notranslate"><span class="pre">zip_loop_inputs()</span></code></a></li>
 </ul>
 </li>
@@ -473,7 +448,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

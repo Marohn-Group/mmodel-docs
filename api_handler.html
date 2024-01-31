@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Handler API &#8212; MModel 0.6.2 documentation</title>
+    <title>Handler API &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Modifier API" href="api_modifier.html" />
-    <link rel="prev" title="Modifying a subgraph" href="tutorial_subgraph.html" />
+    <link rel="prev" title="Signature API" href="api_signature.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -117,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -128,25 +128,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -308,14 +312,7 @@ document.write(`
                   
   <section id="handler-api">
 <h1>Handler API<a class="headerlink" href="#handler-api" title="Permalink to this heading">#</a></h1>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.handler</span></code></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<p>Handlers in <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> represent different execution methods for the provided
+<p>Handlers in <em>mmodel</em> represent different execution methods for the provided
 graph. Currently, all handlers are executed in topological order,
 inherited from <code class="docutils literal notranslate"><span class="pre">TopologicalHandler</span></code>.</p>
 <section id="handler-class">
@@ -333,10 +330,11 @@ to allow signature detection with <code class="docutils literal notranslate"><sp
 <section id="handler-data-class-and-topologicalhandler">
 <h2>Handler Data class and TopologicalHandler<a class="headerlink" href="#handler-data-class-and-topologicalhandler" title="Permalink to this heading">#</a></h2>
 <p>Handler data stores the input value and all return values of the node execution.
-To define a custom handler a Data class should be defined,
+To define a custom handler, a Data class should be defined,
 and it should have <cite>__getitem__</cite> and <cite>__setitem__</cite> methods.
 If the Model inherits the TopologicalHandler, the class DataClass should be
 defined as the Handler data class.</p>
+<p>See <a class="reference internal" href="ref_handler.html"><span class="doc">handler reference</span></a> for the handler reference.</p>
 </section>
 </section>
 
@@ -350,12 +348,12 @@ defined as the Handler data class.</p>
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="tutorial_subgraph.html"
+       href="api_signature.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modifying a subgraph</p>
+        <p class="prev-next-title">Signature API</p>
       </div>
     </a>
     <a class="right-next"
@@ -407,7 +405,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

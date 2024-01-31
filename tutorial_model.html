@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Building a model &#8212; MModel 0.6.2 documentation</title>
+    <title>Create a model &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -44,8 +44,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial_model';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Modifying model and node" href="tutorial_modifier.html" />
-    <link rel="prev" title="Creating a model graph" href="tutorial_graph.html" />
+    <link rel="next" title="Modify nodes and models" href="tutorial_modifier.html" />
+    <link rel="prev" title="Build a model graph" href="tutorial_graph.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -117,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -128,25 +128,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -283,7 +287,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Building a model</h1>
+    <h1>Create a model</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -305,15 +309,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="building-a-model">
-<h1>Building a model<a class="headerlink" href="#building-a-model" title="Permalink to this heading">#</a></h1>
-<p>The model is built based on the graph and the desired handler. A mmodel
+  <section id="create-a-model">
+<h1>Create a model<a class="headerlink" href="#create-a-model" title="Permalink to this heading">#</a></h1>
+<p>The model is built based on the graph and the desired handler. A <em>mmodel</em>
 handler is an execution method that handles the node execution order and
 intermediate value flow. The resulting instance is a callable that behaves
 like a function. The resulting model copies and freezes the graph, making
-it immutable. The handler class is passed to the “handler” argument and
-any additional arguments to handler can be passed as keyword arguments to the
-Model class.</p>
+it immutable. A handler class is passed to the <code class="docutils literal notranslate"><span class="pre">handler</span></code> argument, and
+any additional arguments of the handler can be passed as a dictionary to
+the <code class="docutils literal notranslate"><span class="pre">handler_kwargs</span></code> argument.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># see the Graph page on how to build a graph</span>
 
 <span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">MemHandler</span>
@@ -323,7 +327,7 @@ Model class.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The graph cannot have isolated nodes or cycles.</p>
+<p>The graph cannot have cycles.</p>
 </div>
 <p>The model determines the parameter for the model instance.</p>
 <section id="extra-return-variables">
@@ -332,7 +336,7 @@ Model class.</p>
 output intermediate variables, use “returns” to define additional
 output for the model. All other handler parameters can be directly passed
 as keyword arguments.</p>
-<p>For all available handlers, see <a class="reference internal" href="ref_handler.html"><span class="doc">handler reference</span></a>.</p>
+<p>See <a class="reference internal" href="ref_handler.html"><span class="doc">handler reference</span></a> for all available handlers.</p>
 </section>
 </section>
 
@@ -351,7 +355,7 @@ as keyword arguments.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Creating a model graph</p>
+        <p class="prev-next-title">Build a model graph</p>
       </div>
     </a>
     <a class="right-next"
@@ -359,7 +363,7 @@ as keyword arguments.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modifying model and node</p>
+        <p class="prev-next-title">Modify nodes and models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -402,7 +406,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mmodel.model &#8212; MModel 0.6.2 documentation</title>
+    <title>mmodel.model &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -114,7 +114,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -125,25 +125,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -245,64 +249,115 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for mmodel.model</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">mmodel.utility</span> <span class="kn">import</span> <span class="n">parse_input</span><span class="p">,</span> <span class="n">is_node_attr_defined</span><span class="p">,</span> <span class="n">is_edge_attr_defined</span>
-<span class="kn">from</span> <span class="nn">mmodel.metadata</span> <span class="kn">import</span> <span class="n">modelformatter</span><span class="p">,</span> <span class="n">textwrap80</span><span class="p">,</span> <span class="n">format_metadata</span>
-<span class="kn">from</span> <span class="nn">mmodel.draw</span> <span class="kn">import</span> <span class="n">draw_graph</span>
+<span></span><span class="kn">from</span> <span class="nn">mmodel.utility</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">modify_func</span><span class="p">,</span>
+    <span class="n">construction_dict</span><span class="p">,</span>
+    <span class="n">is_node_attr_defined</span><span class="p">,</span>
+    <span class="n">is_edge_attr_defined</span><span class="p">,</span>
+    <span class="n">modelgraph_returns</span><span class="p">,</span>
+<span class="p">)</span>
+
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">mmodel.metadata</span> <span class="kn">import</span> <span class="n">modelformatter</span>
+<span class="kn">from</span> <span class="nn">mmodel.signature</span> <span class="kn">import</span> <span class="n">restructure_signature</span>
+<span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">signature</span>
+<span class="kn">from</span> <span class="nn">mmodel.visualizer</span> <span class="kn">import</span> <span class="n">visualizer</span>
 
 
 <div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create model callable.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create the model callable.</span>
 
 <span class="sd">    :param str name: Model name</span>
-<span class="sd">    :param object graph: ModelGraph instance (digraph)</span>
+<span class="sd">    :param object graph: Graph instance (digraph)</span>
 <span class="sd">    :param class handler: Handler class that handles model execution and</span>
-<span class="sd">        the keyword arguments. The parameter format is (HandlerClass, {})</span>
-<span class="sd">        By default, the handler takes the graph as the first parameter.</span>
-<span class="sd">        For additional arguments, add an argument to the dictionary afterward.</span>
+<span class="sd">        the keyword arguments.</span>
+<span class="sd">    :param dict handler_kwargs: keyword arguments for the handler class.</span>
 <span class="sd">    :param list modifiers: modifiers used for the whole graph model executable.</span>
-<span class="sd">        The parameter is Optional and defaults to an empty list. For each modifier,</span>
-<span class="sd">        the format is (modifier, {}). All modifiers should have the function as</span>
-<span class="sd">        the first argument.</span>
-<span class="sd">    :param str description: model description</span>
-<span class="sd">    :param list returns: The order of returns of the model; defaults to the</span>
+<span class="sd">    :param list returns: The order of model returns; defaults to the</span>
 <span class="sd">        topological search.</span>
+<span class="sd">    :param str doc: model docstring</span>
+<span class="sd">    :param dict defaults: default values for the model signature.</span>
+<span class="sd">    :param bool kw_only: whether to convert signature to keyword-only signature</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">_model_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;handler&quot;</span><span class="p">,</span> <span class="s2">&quot;modifiers&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;returns&quot;</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">name</span><span class="p">,</span>
         <span class="n">graph</span><span class="p">,</span>
         <span class="n">handler</span><span class="p">,</span>
+        <span class="n">handler_kwargs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
         <span class="n">modifiers</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-        <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="n">returns</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">defaults</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">doc</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
-
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_valid_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">name</span>
-
         <span class="c1"># create a copy of the graph</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">freeze</span><span class="p">(</span><span class="n">graph</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">returns</span> <span class="o">=</span> <span class="n">returns</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">returns</span>  <span class="c1"># tuples</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">modifiers</span> <span class="o">=</span> <span class="n">modifiers</span> <span class="ow">or</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_returns</span> <span class="o">=</span> <span class="n">returns</span> <span class="ow">or</span> <span class="n">modelgraph_returns</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>  <span class="c1"># tuples</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_modifiers</span> <span class="o">=</span> <span class="n">modifiers</span> <span class="ow">or</span> <span class="nb">list</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">handler</span> <span class="o">=</span> <span class="n">handler</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">handler_args</span> <span class="o">=</span> <span class="n">kwargs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">description</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handler_kwargs</span> <span class="o">=</span> <span class="n">handler_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_defaults</span> <span class="o">=</span> <span class="n">defaults</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">doc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">doc</span>
 
-        <span class="n">executor</span> <span class="o">=</span> <span class="n">handler</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">returns</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">execution_order</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span> <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">executor</span><span class="o">.</span><span class="n">order</span><span class="p">]</span>
+        <span class="c1"># update the kwargs</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
-        <span class="k">for</span> <span class="n">mdf</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">modifiers</span><span class="p">:</span>
-            <span class="n">executor</span> <span class="o">=</span> <span class="n">mdf</span><span class="p">(</span><span class="n">executor</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="n">__signature__</span>
-
+        <span class="c1"># create the runner using handler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_runner</span> <span class="o">=</span> <span class="n">handler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_returns</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_handler_kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_runner</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
         <span class="c1"># final callable</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span> <span class="o">=</span> <span class="n">executor</span>
+        <span class="c1"># model_func can be modified externally</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_func</span> <span class="o">=</span> <span class="n">modify_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_runner</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modifiers</span><span class="p">)</span>
+        <span class="c1"># apply defaults to model_func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_func</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">restructure_signature</span><span class="p">(</span>
+            <span class="n">signature</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_func</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaults</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The order of the node execution.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_runner</span><span class="o">.</span><span class="n">order</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">signature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model signature for inspection.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__signature__</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">__signature__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Model signature for inspection.&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_func</span><span class="o">.</span><span class="n">__signature__</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The graph attribute outputs a copy of the graph.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">returns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shallow copy of the returns.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_returns</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">modifiers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shallow copy of the modifiers.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_modifiers</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">defaults</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shallow copy of the defaults.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_defaults</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">handler_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Shallow copy of the handler arguments.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handler_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Execute the model.</span>
@@ -310,41 +365,13 @@ document.write(`
 <span class="sd">        The inputs from the keyword arguments are parsed and passed to the</span>
 <span class="sd">        the handler class.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># process inputs</span>
-        <span class="n">inputs</span> <span class="o">=</span> <span class="n">parse_input</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__signature__</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_executor</span><span class="p">(</span><span class="o">**</span><span class="n">inputs</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_metadata_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a dictionary with metadata keys.&quot;&quot;&quot;</span>
-
-        <span class="n">short_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;returns&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">returns</span><span class="p">}</span>
-
-        <span class="n">additonal_dict</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;graph&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">,</span>
-            <span class="s2">&quot;handler&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">handler</span><span class="p">,</span>
-            <span class="s2">&quot;handler args&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">handler_args</span><span class="p">,</span>
-            <span class="s2">&quot;modifiers&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">modifiers</span><span class="p">,</span>
-            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
-        <span class="p">}</span>
-
-        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="n">short_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">additonal_dict</span><span class="p">}</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">short_dict</span>
-
-<div class="viewcode-block" id="Model.metadata_str"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.metadata_str">[docs]</a>    <span class="k">def</span> <span class="nf">metadata_str</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="n">modelformatter</span><span class="p">,</span> <span class="n">textwrapper</span><span class="o">=</span><span class="n">textwrap80</span>
-    <span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Parse metadata string of the Model instance.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">format_metadata</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_metadata_dict</span><span class="p">(</span><span class="n">verbose</span><span class="p">),</span> <span class="n">formatter</span><span class="p">,</span> <span class="n">textwrapper</span><span class="p">)</span></div>
+        <span class="n">bound</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="c1"># defaults are added in the signature property</span>
+        <span class="n">bound</span><span class="o">.</span><span class="n">apply_defaults</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_func</span><span class="p">(</span><span class="o">**</span><span class="n">bound</span><span class="o">.</span><span class="n">arguments</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Output callable information.&quot;&quot;&quot;</span>
-
-        <span class="n">str_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metadata_str</span><span class="p">()</span>
-        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">str_list</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">modelformatter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">_is_valid_graph</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
@@ -361,39 +388,24 @@ document.write(`
             <span class="n">G</span>
         <span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;invalid graph (</span><span class="si">{</span><span class="n">G</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">): graph contains cycles.&quot;</span>
 
-        <span class="k">assert</span> <span class="n">is_node_attr_defined</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;func&quot;</span><span class="p">,</span> <span class="s2">&quot;callable&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">is_node_attr_defined</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;node_object&quot;</span><span class="p">)</span>
         <span class="c1"># the following might occur when the node object is incorrectly constructed</span>
         <span class="k">assert</span> <span class="n">is_node_attr_defined</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">is_node_attr_defined</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;sig&quot;</span><span class="p">,</span> <span class="s2">&quot;signature&quot;</span><span class="p">)</span>
-        <span class="k">assert</span> <span class="n">is_edge_attr_defined</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;var&quot;</span><span class="p">,</span> <span class="s2">&quot;variable&quot;</span><span class="p">)</span>
-
+        <span class="k">assert</span> <span class="n">is_node_attr_defined</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;signature&quot;</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">is_edge_attr_defined</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">True</span>
-
-    <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The graph attribute output a copy of the graph.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Model.get_node"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.get_node">[docs]</a>    <span class="k">def</span> <span class="nf">get_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Quick access to node within the model.&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Model.get_node_func"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.get_node_func">[docs]</a>    <span class="k">def</span> <span class="nf">get_node_func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Quick access to node base callable within the model.</span>
+<div class="viewcode-block" id="Model.get_node_object"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.get_node_object">[docs]</a>    <span class="k">def</span> <span class="nf">get_node_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Quick access to node object within the model.&quot;&quot;&quot;</span>
 
-<span class="sd">        The function helps extract the original function within</span>
-<span class="sd">        the node.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;node_object&quot;</span><span class="p">]</span></div>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;_func&quot;</span><span class="p">]</span></div>
-
-<div class="viewcode-block" id="Model.node_metadata"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.node_metadata">[docs]</a>    <span class="k">def</span> <span class="nf">node_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;View a specific node.&quot;&quot;&quot;</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">node_metadata</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="Model.draw"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.draw">[docs]</a>    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span> <span class="n">export</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Model.visualize"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.visualize">[docs]</a>    <span class="k">def</span> <span class="nf">visualize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw the graph of the model.</span>
 
 <span class="sd">        Draws the default styled graph.</span>
@@ -405,18 +417,36 @@ document.write(`
 <span class="sd">            is needed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">return</span> <span class="n">draw_graph</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">style</span><span class="p">,</span> <span class="n">export</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">visualizer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">outfile</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Model.edit_node"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.edit_node">[docs]</a>    <span class="k">def</span> <span class="nf">edit_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Edit node object.</span>
+
+<span class="sd">        A new model is created in the process.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">graph</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">edit_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">edit</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="Model.edit"><a class="viewcode-back" href="../../ref_model.html#mmodel.model.Model.edit">[docs]</a>    <span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Edit components of the model to create a new model.</span>
 
-<span class="sd">        It is not recommended to edit the graph component of the model.</span>
-<span class="sd">        Although it does create a new model, &quot;edit&quot; is for creating</span>
+<span class="sd">        Editing the graph component of the model is not recommended.</span>
+<span class="sd">        Although it does create a new model, &quot;edit&quot; is for building</span>
 <span class="sd">        a new model with the same graph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="n">model_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_keys</span><span class="p">}</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="o">**</span><span class="n">model_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">})</span></div></div>
+        <span class="c1"># reset returns when the graph is changed</span>
+        <span class="k">if</span> <span class="s2">&quot;graph&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s2">&quot;returns&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;returns&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">constructor_dict</span> <span class="o">=</span> <span class="n">construction_dict</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;returns&quot;</span><span class="p">,</span> <span class="s2">&quot;modifiers&quot;</span><span class="p">,</span> <span class="s2">&quot;handler_kwargs&quot;</span><span class="p">,</span> <span class="s2">&quot;defaults&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="n">constructor_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="o">**</span><span class="n">constructor_dict</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>
@@ -452,7 +482,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

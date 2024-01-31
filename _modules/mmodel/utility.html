@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mmodel.utility &#8212; MModel 0.7.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mmodel/utility';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Create and modify a subgraph</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../api_signature.html">Signature API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_handler.html">Handler API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_modifier.html">Modifier API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../ref_node.html">Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_graph.html">Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_model.html">Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_handler.html">Handler</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_filter.html">Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_utility.html">Utility</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <h1>Source code for mmodel.utility</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">Signature</span><span class="p">,</span> <span class="n">Parameter</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+
+<span class="c1"># graph properties</span>
+<div class="viewcode-block" id="modelgraph_signature"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.modelgraph_signature">[docs]</a><span class="k">def</span> <span class="nf">modelgraph_signature</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtain the signature from the model graph.</span>
+
+<span class="sd">    :param DiGraph graph: ``networkx.Digraph`` object,</span>
+<span class="sd">        with &quot;signature&quot; and &quot;output&quot; defined for nodes</span>
+<span class="sd">        and &quot;parameters&quot; for edges.</span>
+<span class="sd">        The args are a dictionary of inspected signatures.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">parameters</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;signature&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">parameters</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">parameters</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># if doesn&#39;t exist return None</span>
+
+    <span class="k">return</span> <span class="n">Signature</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">param_sorter</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="modelgraph_returns"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.modelgraph_returns">[docs]</a><span class="k">def</span> <span class="nf">modelgraph_returns</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Obtain the return parameter from the model graph.</span>
+
+<span class="sd">    The assumption is that all return parameter names are unique.</span>
+
+<span class="sd">    :returns: list of variable names based on note outputs</span>
+<span class="sd">    :rtype: list</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">returns_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">graph</span><span class="o">.</span><span class="n">out_degree</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">returns_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="n">returns_list</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">returns_list</span></div>
+
+
+<div class="viewcode-block" id="param_sorter"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.param_sorter">[docs]</a><span class="k">def</span> <span class="nf">param_sorter</span><span class="p">(</span><span class="n">parameter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sorter for argument parameter.</span>
+
+<span class="sd">    The values in the tuple are compared in sequential order:</span>
+<span class="sd">    1. Order by parameter kind</span>
+<span class="sd">    2. Default parameter rank at the end of its kind</span>
+<span class="sd">    3. Alphabetical order</span>
+
+<span class="sd">    :param inspect.Parameter parameter: parameter object</span>
+<span class="sd">    :rtype: (bool, parameter.name, parameter.kind)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">parameter</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">parameter</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">parameter</span><span class="o">.</span><span class="n">kind</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="n">parameter</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">parameter</span><span class="o">.</span><span class="n">kind</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">parameter</span><span class="o">.</span><span class="n">name</span></div>
+
+
+<div class="viewcode-block" id="graph_topological_sort"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.graph_topological_sort">[docs]</a><span class="k">def</span> <span class="nf">graph_topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Determine the topological order.</span>
+
+<span class="sd">    `nx.topological_generations` outputs a generator with each node list generation.</span>
+<span class="sd">    However, it does not carry the node attributes. The method</span>
+<span class="sd">    outputs a list of nodes for each generation.</span>
+
+<span class="sd">    :return: topological order of the graph. Returns a list of nodes and their</span>
+<span class="sd">        attributes.</span>
+<span class="sd">    :rtype: list</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">topological_order</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">topological_sort</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+        <span class="n">topological_order</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">node</span><span class="p">,</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">topological_order</span></div>
+
+
+<div class="viewcode-block" id="replace_subgraph"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.replace_subgraph">[docs]</a><span class="k">def</span> <span class="nf">replace_subgraph</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">,</span> <span class="n">subgraph_node</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Replace subgraph with a node.</span>
+
+<span class="sd">    Find all parent nodes, not in the subgraph, but child nodes in the</span>
+<span class="sd">    subgraph. (All child nodes of subgraph nodes are in the subgraph).</span>
+<span class="sd">    The edge attribute is passed down to the new edge. Here, a new graph is</span>
+<span class="sd">    created by deep copying the original graph.</span>
+
+<span class="sd">    :param graph model_graph: model_graph to modify.</span>
+<span class="sd">    :param graph subgraph: subgraph that is being replaced by a node</span>
+<span class="sd">        subgraph is a view of the original graph.</span>
+<span class="sd">    :param str subgraph_name: name of the subgraph.</span>
+<span class="sd">    :param str output: output parameter name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span>
+
+    <span class="n">new_edges</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">subgraph</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">parent</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">predecessors</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">parent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subgraph</span><span class="p">:</span>
+                <span class="n">new_edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">parent</span><span class="p">,</span> <span class="n">subgraph_node</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">successors</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">child</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subgraph</span><span class="p">:</span>
+                <span class="n">new_edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">subgraph_node</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">child</span><span class="p">))</span>
+
+    <span class="n">graph</span><span class="o">.</span><span class="n">remove_nodes_from</span><span class="p">(</span><span class="n">subgraph</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+    <span class="c1"># remove unique edges</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">new_edges</span><span class="p">))</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span><span class="n">subgraph_node</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">graph</span></div>
+
+
+<div class="viewcode-block" id="parse_parameters"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.parse_parameters">[docs]</a><span class="k">def</span> <span class="nf">parse_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse a list of parameters to signatures</span>
+
+<span class="sd">    :param list parameters: Parameters to parse. The element can either be a string</span>
+<span class="sd">        as the parameter name or a tuple/list as (parameter, default).</span>
+<span class="sd">    :return: parameter order and signature.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">param_order</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># parameters in the correct order</span>
+    <span class="n">sig_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># signature values</span>
+    <span class="n">sig_df_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># default values</span>
+    <span class="n">defultargs</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># default arguments dictionary</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">var_name</span><span class="p">,</span> <span class="n">default_value</span> <span class="o">=</span> <span class="n">var</span>
+            <span class="n">param_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span>
+            <span class="n">sig_df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Parameter</span><span class="p">(</span><span class="n">var_name</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default_value</span><span class="p">))</span>
+            <span class="n">defultargs</span><span class="p">[</span><span class="n">var_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">default_value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">param_order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+            <span class="n">sig_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Parameter</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">sig</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">(</span><span class="n">sig_list</span> <span class="o">+</span> <span class="n">sig_df_list</span><span class="p">)</span>  <span class="c1"># the default values are ordered next</span>
+
+    <span class="k">return</span> <span class="n">sig</span><span class="p">,</span> <span class="n">param_order</span><span class="p">,</span> <span class="n">defultargs</span></div>
+
+
+<div class="viewcode-block" id="param_counter"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.param_counter">[docs]</a><span class="k">def</span> <span class="nf">param_counter</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">returns</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Count the number of times a parameter is used for graph execution.</span>
+
+<span class="sd">    Count all function signature parameters. For extra returns,</span>
+<span class="sd">    add one to each count value.</span>
+
+<span class="sd">    :param list returns: method returns (include extra returns)</span>
+<span class="sd">    :return: dictionary with parameter_name: count pair</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">value_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">sig</span> <span class="ow">in</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;signature&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="n">param</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+                <span class="n">value_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+    <span class="c1"># add the additional parameter to list</span>
+    <span class="n">value_list</span> <span class="o">+=</span> <span class="n">returns</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">value_list</span><span class="p">:</span>
+        <span class="n">count</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">count</span></div>
+
+
+<div class="viewcode-block" id="is_node_attr_defined"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.is_node_attr_defined">[docs]</a><span class="k">def</span> <span class="nf">is_node_attr_defined</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if all graph nodes have the attribute defined.</span>
+
+<span class="sd">    :param str attr: attribute string.</span>
+
+<span class="sd">    Raise an exception if the attribute is undefined.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">graph</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+        <span class="n">graph_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;graph (</span><span class="si">{</span><span class="n">graph</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">graph_str</span> <span class="o">=</span> <span class="s2">&quot;graph&quot;</span>
+
+    <span class="n">node_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">node_attr</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">data</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">node_attr</span><span class="p">:</span>
+            <span class="n">node_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">node_list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;invalid </span><span class="si">{</span><span class="n">graph_str</span><span class="si">}</span><span class="s2">: attribute &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not defined for node(s) </span><span class="si">{</span><span class="n">node_list</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="is_edge_attr_defined"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.is_edge_attr_defined">[docs]</a><span class="k">def</span> <span class="nf">is_edge_attr_defined</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if all graph edges have the target attribute defined.</span>
+
+<span class="sd">    Raise an exception if the attribute is undefined.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">graph</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+        <span class="n">graph_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;graph (</span><span class="si">{</span><span class="n">graph</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">graph_str</span> <span class="o">=</span> <span class="s2">&quot;graph&quot;</span>
+
+    <span class="n">edge_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">edge_attr</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">edges</span><span class="o">.</span><span class="n">data</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">attr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">edge_attr</span><span class="p">:</span>
+            <span class="n">edge_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">edge_list</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;invalid </span><span class="si">{</span><span class="n">graph_str</span><span class="si">}</span><span class="s2">: attribute </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">attr</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; is not defined for edge(s) </span><span class="si">{</span><span class="n">edge_list</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="construction_dict"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.construction_dict">[docs]</a><span class="k">def</span> <span class="nf">construction_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">property_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">exclude_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a dictionary that contains object construction parameters.</span>
+
+<span class="sd">    The property list and exclude list need to be manually input.</span>
+<span class="sd">    The exclude list is used for object attributes that are not</span>
+<span class="sd">    part of the object construction but are public attributes.</span>
+<span class="sd">    The object attribute omits private (&#39;_&#39;) values but includes all</span>
+<span class="sd">    public attributes not in the exclude list.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">property_list</span> <span class="o">=</span> <span class="n">property_list</span> <span class="ow">or</span> <span class="p">[]</span>
+    <span class="n">exclude_list</span> <span class="o">=</span> <span class="n">exclude_list</span> <span class="ow">or</span> <span class="p">[]</span>
+
+    <span class="n">ppt_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">property_list</span><span class="p">}</span>
+    <span class="n">attr_dict</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">key</span><span class="p">:</span> <span class="n">value</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude_list</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="n">ppt_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">attr_dict</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="modify_func"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.modify_func">[docs]</a><span class="k">def</span> <span class="nf">modify_func</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">modifiers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Apply modifiers to function.&quot;&quot;&quot;</span>
+
+    <span class="k">for</span> <span class="n">mod</span> <span class="ow">in</span> <span class="n">modifiers</span><span class="p">:</span>
+        <span class="n">func</span> <span class="o">=</span> <span class="n">mod</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span></div>
+
+
+<div class="viewcode-block" id="parse_functype"><a class="viewcode-back" href="../../ref_utility.html#mmodel.utility.parse_functype">[docs]</a><span class="k">def</span> <span class="nf">parse_functype</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse function type.</span>
+
+<span class="sd">    For functions that are not a standard callable, returns</span>
+<span class="sd">    the module name, such as ``numpy.ufunc``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tp</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">tp</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="s2">&quot;builtins&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tp</span><span class="o">.</span><span class="vm">__qualname__</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">tp</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">tp</span><span class="o">.</span><span class="vm">__qualname__</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Peter Sun
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022 - 2024, Peter Sun.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

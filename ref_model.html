@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Model &#8212; MModel 0.6.2 documentation</title>
+    <title>Model &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -117,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -128,25 +128,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -295,13 +299,18 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-module"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.draw"><code class="docutils literal notranslate"><span class="pre">Model.draw()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.defaults"><code class="docutils literal notranslate"><span class="pre">Model.defaults</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.edit"><code class="docutils literal notranslate"><span class="pre">Model.edit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.edit_node"><code class="docutils literal notranslate"><span class="pre">Model.edit_node()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.get_node"><code class="docutils literal notranslate"><span class="pre">Model.get_node()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.get_node_func"><code class="docutils literal notranslate"><span class="pre">Model.get_node_func()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.get_node_object"><code class="docutils literal notranslate"><span class="pre">Model.get_node_object()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.graph"><code class="docutils literal notranslate"><span class="pre">Model.graph</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.metadata_str"><code class="docutils literal notranslate"><span class="pre">Model.metadata_str()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.node_metadata"><code class="docutils literal notranslate"><span class="pre">Model.node_metadata()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.handler_kwargs"><code class="docutils literal notranslate"><span class="pre">Model.handler_kwargs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.modifiers"><code class="docutils literal notranslate"><span class="pre">Model.modifiers</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.order"><code class="docutils literal notranslate"><span class="pre">Model.order</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.returns"><code class="docutils literal notranslate"><span class="pre">Model.returns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.signature"><code class="docutils literal notranslate"><span class="pre">Model.signature</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.visualize"><code class="docutils literal notranslate"><span class="pre">Model.visualize()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -319,48 +328,116 @@ document.write(`
                   
   <section id="model">
 <h1>Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">MModel</span></code> model building favors composition over inheritance.
+<p><em>mmodel</em> model building favors composition over inheritance.
 The <code class="docutils literal notranslate"><span class="pre">Model</span></code> class takes three components: graph, handler, and
-modifiers. A handler takes care of the graph calculation and data
+modifiers. A handler handles the graph calculation and data
 flow, and a modifier is a wrapper that applies simple modifications
 to the callable. The handler class is passed to the “handler” argument,
 and if the handler requires additional arguments, the keyword arguments
-can be passed to the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class as well. The modifier argument
+can also be passed to the <code class="docutils literal notranslate"><span class="pre">Model</span></code> class. The modifier argument
 accepts a list of modifier decorators. If the decorators have
-accepts argument, the argument should be applied first.
+arguments, the argument should be applied first.
 The resulting <code class="docutils literal notranslate"><span class="pre">Model</span></code> instance is a callable that behaves like a function.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Model</span></code> class also provides parameter checking and default value
+<p>The <code class="docutils literal notranslate"><span class="pre">Model</span></code> class also provides parameter checking and default value
 filling functionality at the <code class="docutils literal notranslate"><span class="pre">__call__</span></code> level. Note that handlers
 and modifiers require keyword inputs.</p>
 <section id="model-module">
 <h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> module<a class="headerlink" href="#model-module" title="Permalink to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="mmodel.model.Model">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">handler_kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model" title="Permalink to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Create model callable.</p>
+<p>Create the model callable.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – Model name</p></li>
-<li><p><strong>graph</strong> (<em>object</em>) – ModelGraph instance (digraph)</p></li>
+<li><p><strong>graph</strong> (<em>object</em>) – Graph instance (digraph)</p></li>
 <li><p><strong>handler</strong> (<em>class</em>) – Handler class that handles model execution and
-the keyword arguments. The parameter format is (HandlerClass, {})
-By default, the handler takes the graph as the first parameter.
-For additional arguments, add an argument to the dictionary afterward.</p></li>
-<li><p><strong>modifiers</strong> (<em>list</em>) – modifiers used for the whole graph model executable.
-The parameter is Optional and defaults to an empty list. For each modifier,
-the format is (modifier, {}). All modifiers should have the function as
-the first argument.</p></li>
-<li><p><strong>description</strong> (<em>str</em>) – model description</p></li>
-<li><p><strong>returns</strong> (<em>list</em>) – The order of returns of the model; defaults to the
+the keyword arguments.</p></li>
+<li><p><strong>handler_kwargs</strong> (<em>dict</em>) – keyword arguments for the handler class.</p></li>
+<li><p><strong>modifiers</strong> (<em>list</em>) – modifiers used for the whole graph model executable.</p></li>
+<li><p><strong>returns</strong> (<em>list</em>) – The order of model returns; defaults to the
 topological search.</p></li>
+<li><p><strong>doc</strong> (<em>str</em>) – model docstring</p></li>
+<li><p><strong>defaults</strong> (<em>dict</em>) – default values for the model signature.</p></li>
+<li><p><strong>kw_only</strong> (<em>bool</em>) – whether to convert signature to keyword-only signature</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="mmodel.model.Model.defaults">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">defaults</span></span><a class="headerlink" href="#mmodel.model.Model.defaults" title="Permalink to this definition">#</a></dt>
+<dd><p>Shallow copy of the defaults.</p>
+</dd></dl>
+
 <dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.draw">
-<span class="sig-name descname"><span class="pre">draw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'verbose'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.draw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.draw" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="mmodel.model.Model.edit">
+<span class="sig-name descname"><span class="pre">edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.edit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.edit" title="Permalink to this definition">#</a></dt>
+<dd><p>Edit components of the model to create a new model.</p>
+<p>Editing the graph component of the model is not recommended.
+Although it does create a new model, “edit” is for building
+a new model with the same graph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.model.Model.edit_node">
+<span class="sig-name descname"><span class="pre">edit_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.edit_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.edit_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Edit node object.</p>
+<p>A new model is created in the process.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.model.Model.get_node">
+<span class="sig-name descname"><span class="pre">get_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.get_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.get_node" title="Permalink to this definition">#</a></dt>
+<dd><p>Quick access to node within the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.model.Model.get_node_object">
+<span class="sig-name descname"><span class="pre">get_node_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.get_node_object"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.get_node_object" title="Permalink to this definition">#</a></dt>
+<dd><p>Quick access to node object within the model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mmodel.model.Model.graph">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph</span></span><a class="headerlink" href="#mmodel.model.Model.graph" title="Permalink to this definition">#</a></dt>
+<dd><p>The graph attribute outputs a copy of the graph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mmodel.model.Model.handler_kwargs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handler_kwargs</span></span><a class="headerlink" href="#mmodel.model.Model.handler_kwargs" title="Permalink to this definition">#</a></dt>
+<dd><p>Shallow copy of the handler arguments.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mmodel.model.Model.modifiers">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">modifiers</span></span><a class="headerlink" href="#mmodel.model.Model.modifiers" title="Permalink to this definition">#</a></dt>
+<dd><p>Shallow copy of the modifiers.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mmodel.model.Model.order">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">order</span></span><a class="headerlink" href="#mmodel.model.Model.order" title="Permalink to this definition">#</a></dt>
+<dd><p>The order of the node execution.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mmodel.model.Model.returns">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">returns</span></span><a class="headerlink" href="#mmodel.model.Model.returns" title="Permalink to this definition">#</a></dt>
+<dd><p>Shallow copy of the returns.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="mmodel.model.Model.signature">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">signature</span></span><a class="headerlink" href="#mmodel.model.Model.signature" title="Permalink to this definition">#</a></dt>
+<dd><p>Model signature for inspection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="mmodel.model.Model.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outfile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.visualize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.visualize" title="Permalink to this definition">#</a></dt>
 <dd><p>Draw the graph of the model.</p>
 <p>Draws the default styled graph.</p>
 <dl class="field-list simple">
@@ -374,47 +451,6 @@ is needed.</p></li>
 </ul>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.edit">
-<span class="sig-name descname"><span class="pre">edit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.edit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.edit" title="Permalink to this definition">#</a></dt>
-<dd><p>Edit components of the model to create a new model.</p>
-<p>It is not recommended to edit the graph component of the model.
-Although it does create a new model, “edit” is for creating
-a new model with the same graph.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.get_node">
-<span class="sig-name descname"><span class="pre">get_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.get_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.get_node" title="Permalink to this definition">#</a></dt>
-<dd><p>Quick access to node within the model.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.get_node_func">
-<span class="sig-name descname"><span class="pre">get_node_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.get_node_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.get_node_func" title="Permalink to this definition">#</a></dt>
-<dd><p>Quick access to node base callable within the model.</p>
-<p>The function helps extract the original function within
-the node.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="mmodel.model.Model.graph">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">graph</span></span><a class="headerlink" href="#mmodel.model.Model.graph" title="Permalink to this definition">#</a></dt>
-<dd><p>The graph attribute output a copy of the graph.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.metadata_str">
-<span class="sig-name descname"><span class="pre">metadata_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose=True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">formatter=&lt;mmodel.metadata.MetaDataFormatter</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textwrapper=&lt;textwrap.TextWrapper</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.metadata_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.metadata_str" title="Permalink to this definition">#</a></dt>
-<dd><p>Parse metadata string of the Model instance.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="mmodel.model.Model.node_metadata">
-<span class="sig-name descname"><span class="pre">node_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/model.html#Model.node_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.model.Model.node_metadata" title="Permalink to this definition">#</a></dt>
-<dd><p>View a specific node.</p>
 </dd></dl>
 
 </dd></dl>
@@ -466,13 +502,18 @@ the node.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-module"><code class="xref py py-mod docutils literal notranslate"><span class="pre">model</span></code> module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.draw"><code class="docutils literal notranslate"><span class="pre">Model.draw()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.defaults"><code class="docutils literal notranslate"><span class="pre">Model.defaults</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.edit"><code class="docutils literal notranslate"><span class="pre">Model.edit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.edit_node"><code class="docutils literal notranslate"><span class="pre">Model.edit_node()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.get_node"><code class="docutils literal notranslate"><span class="pre">Model.get_node()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.get_node_func"><code class="docutils literal notranslate"><span class="pre">Model.get_node_func()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.get_node_object"><code class="docutils literal notranslate"><span class="pre">Model.get_node_object()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.graph"><code class="docutils literal notranslate"><span class="pre">Model.graph</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.metadata_str"><code class="docutils literal notranslate"><span class="pre">Model.metadata_str()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.node_metadata"><code class="docutils literal notranslate"><span class="pre">Model.node_metadata()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.handler_kwargs"><code class="docutils literal notranslate"><span class="pre">Model.handler_kwargs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.modifiers"><code class="docutils literal notranslate"><span class="pre">Model.modifiers</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.order"><code class="docutils literal notranslate"><span class="pre">Model.order</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.returns"><code class="docutils literal notranslate"><span class="pre">Model.returns</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.signature"><code class="docutils literal notranslate"><span class="pre">Model.signature</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.model.Model.visualize"><code class="docutils literal notranslate"><span class="pre">Model.visualize()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -500,7 +541,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

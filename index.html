@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>MModel &#8212; MModel 0.6.2 documentation</title>
+    <title>mmodel &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -116,7 +116,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -127,25 +127,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -282,7 +286,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>MModel</h1>
+    <h1>mmodel</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -292,7 +296,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MModel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">mmodel</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickstart">Quickstart</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphviz-installation">Graphviz installation</a></li>
@@ -319,16 +323,16 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="mmodel">
-<h1>MModel<a class="headerlink" href="#mmodel" title="Permalink to this heading">#</a></h1>
+<h1>mmodel<a class="headerlink" href="#mmodel" title="Permalink to this heading">#</a></h1>
 <p><a class="reference external" href="https://github.com/Marohn-Group/mmodel"><img alt="GitHub version" src="https://badge.fury.io/gh/peterhs73%2FMModel.svg" /></a> <a class="reference external" href="https://pypi.python.org/pypi/mmodel/"><img alt="PyPI version shields.io" src="https://img.shields.io/pypi/v/mmodel.svg" /></a> <img alt="PyPI pyversions" src="https://img.shields.io/pypi/pyversions/mmodel.svg" /> <a class="reference external" href="https://github.com/Marohn-Group/mmodel/actions"><img alt="Unittests" src="https://github.com/Marohn-Group/mmodel/actions/workflows/tox.yml/badge.svg" /></a>
 <a class="reference external" href="https://github.com/Marohn-Group/mmodel-docs/"><img alt="Docs" src="https://img.shields.io/badge/Documentation--brightgreen.svg" /></a></p>
-<p>MModel is a lightweight and modular model-building framework
+<p><em>mmodel</em> is a lightweight and modular model-building framework
 for small-scale and nonlinear models. The package aims to solve
 scientific program prototyping and distribution difficulties, making
 it easier to create modular, fast, and user-friendly packages.</p>
-<p>For using mmodel in a complex scientific workflow, please refer to
+<p>For using <em>mmodel</em> in a complex scientific workflow, please refer to
 the <a class="reference external" href="https://marohn-group.github.io/mrfmsim-docs/overview.html">mrfmsim</a>
-on how mmodel improves the development of magnetic resonance force
+on how <em>mmodel</em> improves the development of magnetic resonance force
 microscopy (MRFM) experiments.</p>
 <section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">#</a></h2>
@@ -343,9 +347,9 @@ microscopy (MRFM) experiments.</p>
     <span class="k">return</span> <span class="n">sum_xy</span> <span class="o">*</span> <span class="n">log_xy</span> <span class="o">+</span> <span class="mi">6</span>
 </pre></div>
 </div>
-<p>The graph is defined using grouped edges (the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> syntax of edge
+<p>The graph is defined using grouped edges (the <em>NetworkX</em> syntax of edge
 the definition also works.)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">ModelGraph</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">MemHandler</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">MemHandler</span>
 <span class="c1"># create graph edges</span>
 <span class="n">grouped_edges</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;function node&quot;</span><span class="p">]),</span>
@@ -358,12 +362,12 @@ is node_name, node_func, output, input (if different from original function),
 and modifiers.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define note objects</span>
 <span class="n">node_objects</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="s2">&quot;sum_xy&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]),</span>
-    <span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="s2">&quot;log_xy&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">,</span> <span class="s2">&quot;log_base&quot;</span><span class="p">]),</span>
-    <span class="p">(</span><span class="s2">&quot;function node&quot;</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">),</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="s2">&quot;sum_xy&quot;</span><span class="p">),</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>  <span class="p">[</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">,</span> <span class="s2">&quot;log_base&quot;</span><span class="p">],</span> <span class="s2">&quot;log_xy&quot;</span><span class="p">),</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;function node&quot;</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;result&quot;</span><span class="p">),</span>
 <span class="p">]</span>
 
-<span class="n">G</span> <span class="o">=</span> <span class="n">ModelGraph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;example_graph&quot;</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;example_graph&quot;</span><span class="p">)</span>
 <span class="n">G</span><span class="o">.</span><span class="n">add_grouped_edges_from</span><span class="p">(</span><span class="n">grouped_edges</span><span class="p">)</span>
 <span class="n">G</span><span class="o">.</span><span class="n">set_node_objects_from</span><span class="p">(</span><span class="n">node_objects</span><span class="p">)</span>
 </pre></div>
@@ -371,14 +375,14 @@ and modifiers.</p>
 <p>To define the model, the name, graph, and handler need to be specified. Additional
 parameters include modifiers, descriptions, and returns lists. The input parameters
 of the model are determined based on the node information.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Test model.&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Test model.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The model behaves like a Python function, with additional metadata. The graph can
-be plotted using the <code class="docutils literal notranslate"><span class="pre">draw</span></code> method.</p>
+<p>The model behaves like a Python function with additional metadata. The graph can
+be plotted using the <code class="docutils literal notranslate"><span class="pre">visualize</span></code> method.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">example_model</span><span class="p">)</span>
 <span class="go">example_model(log_base, x, y)</span>
-<span class="go">returns: z</span>
+<span class="go">returns: result</span>
 <span class="go">graph: example_graph</span>
 <span class="go">handler: MemHandler</span>
 
@@ -387,16 +391,16 @@ be plotted using the <code class="docutils literal notranslate"><span class="pre
 <span class="gp">&gt;&gt;&gt; </span><span class="n">example_model</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
 <span class="go">30.0</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">example_model</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">example_model</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The resulting graph contains the model metadata and detailed node information.</p>
-<p>One key feature of <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> that differs from other workflow is modifiers,
-which modify callables post definition. Modifiers work on both the node level
+<p>One key feature of <code class="docutils literal notranslate"><span class="pre">mmodel</span></code> that differs from other workflows is modifiers,
+which modify callables post-definition. Modifiers work on both the node level
 and model level.</p>
 <p>Example: Use <code class="docutils literal notranslate"><span class="pre">loop_input</span></code> modifier on the graph to loop the nodes that require the
 “log_base” parameter.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">loop_input</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel.modifier</span> <span class="kn">import</span> <span class="n">loop_input</span>
 
 <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_base&quot;</span><span class="p">])</span>
 <span class="n">H</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;example_subgraph&quot;</span>
@@ -404,10 +408,7 @@ and model level.</p>
 
 <span class="n">looped_G</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">replace_subgraph</span><span class="p">(</span>
     <span class="n">H</span><span class="p">,</span>
-    <span class="s2">&quot;loop_node&quot;</span><span class="p">,</span>
-    <span class="n">loop_node</span><span class="p">,</span>
-    <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">,</span>
-    <span class="n">modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">loop_input</span><span class="p">(</span><span class="s2">&quot;log_base&quot;</span><span class="p">)],</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;loop_node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">,</span> <span class="n">modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">loop_input</span><span class="p">(</span><span class="s2">&quot;log_base&quot;</span><span class="p">)]),</span>
 <span class="p">)</span>
 <span class="n">looped_G</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;looped_graph&quot;</span>
 
@@ -419,25 +420,26 @@ and model level.</p>
 <span class="go">looped_model(log_base, x, y)</span>
 <span class="go">returns: looped_z</span>
 <span class="go">graph: looped_graph</span>
-<span class="go">handler: MemHandler()</span>
+<span class="go">handler: MemHandler</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="o">.</span><span class="n">node_metadata</span><span class="p">(</span><span class="s2">&quot;loop_node&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="o">.</span><span class="n">get_node_object</span><span class="p">(</span><span class="s2">&quot;loop_node&quot;</span><span class="p">))</span>
 <span class="go">submodel(log_base, sum_xy)</span>
 <span class="go">return: looped_z</span>
-<span class="go">functype: mmodel.Model</span>
+<span class="go">functype: &lt;class &#39;mmodel.model.Model&#39;&gt;</span>
 <span class="go">modifiers:</span>
-<span class="go">  - loop_input(&#39;log_base&#39;)</span>
+<span class="go">- loop_input(&#39;log_base&#39;)</span>
 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
 <span class="go">[30.0, 18.0]</span>
 </pre></div>
 </div>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">draw</span></code> method to draw the graph. There are three styles
-“plain”, “short”, and “verbose”, which differ by the level of detail of the
-node information. A graph output is displayed in Jupyter Notebook
-or can be saved using the export option.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;short&quot;</span><span class="p">)</span>
-<span class="n">example_model</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;plain&quot;</span><span class="p">,</span> <span class="n">export</span><span class="o">=</span><span class="s2">&quot;example.pdf&quot;</span><span class="p">)</span> <span class="c1"># default to draw_graph</span>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">visualize</span></code> method to draw the graph. For a graph, a simple diagram
+with only node names shown, and for a model, the diagram shows detailed
+node and model information. Customized plotting objects can be created
+using the Visualizer class.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+<span class="c1"># draw the graph and output to a pdf file</span>
+<span class="n">example_model</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">outfile</span><span class="o">=</span><span class="s2">&quot;example.pdf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -447,8 +449,14 @@ or can be saved using the export option.</p>
 <h3>Graphviz installation<a class="headerlink" href="#graphviz-installation" title="Permalink to this heading">#</a></h3>
 <p>To view the graph, Graphviz needs to be installed:
 <a class="reference external" href="https://graphviz.org/download/">Graphviz Installation</a>
-For windows installation, please choose “add Graphviz to the
+For Windows installation, please choose “add Graphviz to the
 system PATH for all users/current users” during the setup.</p>
+<p>For macOS systems, sometimes <cite>brew install</cite> results
+in an unexpected installation path, it is recommended to install
+with conda:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pygraphviz</span>
+</pre></div>
+</div>
 </section>
 <section id="mmodel-installation">
 <h3>MModel installation<a class="headerlink" href="#mmodel-installation" title="Permalink to this heading">#</a></h3>
@@ -460,18 +468,13 @@ system PATH for all users/current users” during the setup.</p>
 <h3>Development installation<a class="headerlink" href="#development-installation" title="Permalink to this heading">#</a></h3>
 <p>MModel uses <a class="reference external" href="https://python-poetry.org/docs/">poetry</a> as
 the build system. The package works with both pip and poetry
-installation. For macos systems, sometimes <cite>brew install</cite> results
-in unexpected installation path, it is recommended to install
-with conda:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">pygraphviz</span>
-</pre></div>
-</div>
-<p>To install test and docs, despondencies run:</p>
+installation.</p>
+<p>To install dependencies for “test” and “docs”:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">.</span><span class="p">[</span><span class="n">test</span><span class="p">]</span> <span class="o">.</span><span class="p">[</span><span class="n">docs</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>To run the tests in different python environments and cases
-(py38, py39, py310, py311, coverage and docs):</p>
+<p>To run the tests in different Python environments and cases
+(py310, py311, coverage and docs):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tox</span>
 </pre></div>
 </div>
@@ -485,7 +488,7 @@ with conda:</p>
 <section id="license">
 <h1>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h1>
 <p>MModel is distributed with the 3-clause BSD license.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2022</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2022</span> <span class="o">-</span> <span class="mi">2024</span>
 <span class="n">Peter</span> <span class="n">Sun</span> <span class="o">&lt;</span><span class="n">hs859</span><span class="nd">@cornell</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
 <span class="n">John</span> <span class="n">Marohn</span> <span class="o">&lt;</span><span class="n">jam99</span><span class="nd">@cornell</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
 <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
@@ -570,7 +573,7 @@ with conda:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">MModel</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">mmodel</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quickstart">Quickstart</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphviz-installation">Graphviz installation</a></li>
@@ -608,7 +611,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

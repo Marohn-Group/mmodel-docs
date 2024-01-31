@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Shortcut &#8212; MModel 0.6.2 documentation</title>
+    <title>Visualizer &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -41,10 +41,11 @@
     <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ref_shortcut';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ref_visualizer';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Parser" href="ref_parser.html" />
+    <link rel="next" title="Utility" href="ref_utility.html" />
+    <link rel="prev" title="Metadata" href="ref_metadata.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -116,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -127,25 +128,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -200,7 +205,7 @@
       
       
       
-      <li><a href="_sources/ref_shortcut.rst" target="_blank"
+      <li><a href="_sources/ref_visualizer.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -282,7 +287,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Shortcut</h1>
+    <h1>Visualizer</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -292,8 +297,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.shortcut"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shortcut</span></code> module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.shortcut.modifier_shortcut"><code class="docutils literal notranslate"><span class="pre">modifier_shortcut()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.visualizer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualizer</span></code> module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.visualizer.Visualizer"><code class="docutils literal notranslate"><span class="pre">Visualizer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.visualizer.format_label"><code class="docutils literal notranslate"><span class="pre">format_label()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -307,16 +313,23 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="shortcut">
-<h1>Shortcut<a class="headerlink" href="#shortcut" title="Permalink to this heading">#</a></h1>
-<p>Shortcuts are a way to apply modifiers or other operations to the nodes in a model.
-They should take a model as input and return a new model as output.</p>
-<section id="module-mmodel.shortcut">
-<span id="shortcut-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">shortcut</span></code> module<a class="headerlink" href="#module-mmodel.shortcut" title="Permalink to this heading">#</a></h2>
+  <section id="visualizer">
+<h1>Visualizer<a class="headerlink" href="#visualizer" title="Permalink to this heading">#</a></h1>
+<section id="module-mmodel.visualizer">
+<span id="visualizer-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualizer</span></code> module<a class="headerlink" href="#module-mmodel.visualizer" title="Permalink to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mmodel.visualizer.Visualizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.visualizer.</span></span><span class="sig-name descname"><span class="pre">Visualizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">format_node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format_edge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_settings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'graph_attr':</span> <span class="pre">{'labeljust':</span> <span class="pre">'l',</span> <span class="pre">'labelloc':</span> <span class="pre">'t',</span> <span class="pre">'ordering':</span> <span class="pre">'out',</span> <span class="pre">'splines':</span> <span class="pre">'ortho'},</span> <span class="pre">'node_attr':</span> <span class="pre">{'shape':</span> <span class="pre">'box'}}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/visualizer.html#Visualizer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.visualizer.Visualizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Visualizer class for drawing a <em>NetworkX</em> graph.</p>
+</dd></dl>
+
 <dl class="py function">
-<dt class="sig sig-object py" id="mmodel.shortcut.modifier_shortcut">
-<span class="sig-prename descclassname"><span class="pre">mmodel.shortcut.</span></span><span class="sig-name descname"><span class="pre">modifier_shortcut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifier_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/shortcut.html#modifier_shortcut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.shortcut.modifier_shortcut" title="Permalink to this definition">#</a></dt>
-<dd><p>Shortcut for quickly adding modifiers to the model.</p>
+<dt class="sig sig-object py" id="mmodel.visualizer.format_label">
+<span class="sig-prename descclassname"><span class="pre">mmodel.visualizer.</span></span><span class="sig-name descname"><span class="pre">format_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/visualizer.html#format_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.visualizer.format_label" title="Permalink to this definition">#</a></dt>
+<dd><p>Format label for graphviz.</p>
+<p>The function replaces newlines with the graphviz left-aligned line break.
+However, if the “n” is escaped, change it to “\\n”.</p>
 </dd></dl>
 
 </section>
@@ -332,13 +345,22 @@ They should take a model as input and return a new model as output.</p>
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ref_parser.html"
+       href="ref_metadata.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Parser</p>
+        <p class="prev-next-title">Metadata</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="ref_utility.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Utility</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -355,8 +377,9 @@ They should take a model as input and return a new model as output.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.shortcut"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shortcut</span></code> module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.shortcut.modifier_shortcut"><code class="docutils literal notranslate"><span class="pre">modifier_shortcut()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.visualizer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">visualizer</span></code> module</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.visualizer.Visualizer"><code class="docutils literal notranslate"><span class="pre">Visualizer</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.visualizer.format_label"><code class="docutils literal notranslate"><span class="pre">format_label()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -382,7 +405,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>

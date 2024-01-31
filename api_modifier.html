@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Modifier API &#8212; MModel 0.6.2 documentation</title>
+    <title>Modifier API &#8212; MModel 0.7.0 documentation</title>
   
   
   
@@ -44,7 +44,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'api_modifier';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Graph" href="ref_graph.html" />
+    <link rel="next" title="Node" href="ref_node.html" />
     <link rel="prev" title="Handler API" href="api_handler.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -117,7 +117,7 @@
   
   
   
-    <p class="title logo__title">MModel 0.6.2 documentation</p>
+    <p class="title logo__title">MModel 0.7.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -128,25 +128,29 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Creating a model graph</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Building a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modifying model and node</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Modifying a subgraph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modifier API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ref_node.html">Node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_graph.html">Graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_parser.html">Parser</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_utility.html">Utility</a></li>
 </ul>
 
     </div>
@@ -297,50 +301,67 @@ document.write(`
                   
   <section id="modifier-api">
 <h1>Modifier API<a class="headerlink" href="#modifier-api" title="Permalink to this heading">#</a></h1>
-<table class="autosummary longtable table autosummary">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="ref_modifier.html#module-mmodel.modifier" title="mmodel.modifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mmodel.modifier</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<p>Modifiers should be defined the same as decorators. See
+<p>The modifiers are defined as decorator functions that can modify a function
+and take additional input parameters. See
 documentation for
-<a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.wraps">wraps</a>.
-Here is an example of a loop modifier:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
-<span class="k">def</span> <span class="nf">loop_input</span><span class="p">(</span><span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify function to iterate single input parameter.</span>
+<a class="reference external" href="https://docs.python.org/3/library/functools.html#functools.wraps">functools.wraps</a>.
+The modifiers can be applied to a node or a model. It is important to note that the
+modifier only sees the function rather than the node object, meaning modifiers do not
+have access to the node information. The decision is made to simplify the modifier
+definition. Modifying the function does not require the modifiers to handle
+the passing down of the node information properly, increasing the compatibility
+of chained modifiers.</p>
+<p>Here is an example of a loop modifier:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loop_input</span><span class="p">(</span><span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify function to iterate one given parameter.</span>
 
-<span class="sd">    :param list parameter: target parameter to loop.</span>
+<span class="sd">    :param list parameter: target parameter to loop</span>
+<span class="sd">        The target parameter name is changed to f&quot;{param}_loop&quot;</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="nf">loop_modifier</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">parameter</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">loop</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+        <span class="n">param_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">parameter</span><span class="p">:</span>
+                <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Parameter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2">_loop&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+
+        <span class="n">new_sig</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span>
 
         <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
         <span class="k">def</span> <span class="nf">loop_wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Isolate the loop parameter and loop over the values.&quot;&quot;&quot;</span>
+            <span class="n">loop_values</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">parameter</span><span class="si">}</span><span class="s2">_loop&quot;</span><span class="p">)</span>
 
-            <span class="n">loop_values</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
             <span class="k">return</span> <span class="p">[</span><span class="n">func</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="n">parameter</span><span class="p">:</span> <span class="n">value</span><span class="p">})</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">loop_values</span><span class="p">]</span>
 
+        <span class="n">loop_wrapped</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">new_sig</span>
         <span class="k">return</span> <span class="n">loop_wrapped</span>
-    <span class="n">loop_modifier</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;loop_input(</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">loop_modifier</span>
+
+    <span class="n">loop</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;loop_input(</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+    <span class="k">return</span> <span class="n">loop</span>
 </pre></div>
 </div>
+<p>The modifier takes an additional argument “parameter” and returns a modified function.
+For a node, the equivalent function is :code:<code class="docutils literal notranslate"><span class="pre">loop_input(parameter)(func)</span></code>.
+The function signature is modified under the <code class="docutils literal notranslate"><span class="pre">loop</span></code> function to indicate that the parameter
+requires an iterable input. Under the <code class="docutils literal notranslate"><span class="pre">loop_wrapped</span></code> function, the loop parameter is
+isolated, and the function loops over the iterable to create a list result.</p>
+<p>Notice that the <code class="docutils literal notranslate"><span class="pre">loop_wrapped</span></code> function takes keyword-only arguments. The decision
+is made to reduce the overhead of the function call. All nodes in the Model are supplied
+with keyword-only arguments. See <a class="reference internal" href="api_signature.html"><span class="doc">signature API</span></a> for more information.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The wrapped function changes all parameters to keywords only. The behavior is
-intended to reduce overhead during model definition (model changes all parameters
-to positional-or-keyword-arguments).</p>
-<p>For individual functions, if necessary, <code class="docutils literal notranslate"><span class="pre">signature_binding_modifier()</span></code>
-can be used to add the binding and check the steps.</p>
-<p>A modifier for <code class="docutils literal notranslate"><span class="pre">MModel</span></code> requires to have a proper signature. If the modifier changes the
-function signal, add <code class="docutils literal notranslate"><span class="pre">__signature__</span></code> attribute with <code class="docutils literal notranslate"><span class="pre">inspect.Signature</span></code> to the wrapped
-function.</p>
+<p><em>mmodel</em> requires modifiers to have a proper signature. If the modifier changes the
+function signature, add <code class="docutils literal notranslate"><span class="pre">__signature__</span></code> attribute with <code class="docutils literal notranslate"><span class="pre">inspect.Signature</span></code> to the
+wrapped function.</p>
 <p>The metadata of the modifier is used to generate the string displayed in the metadata
 at the node and model level. The metadata is a string passed to the “metadata” attribute of
 the modifier function.</p>
 </div>
+<p>See <a class="reference internal" href="tutorial_modifier.html"><span class="doc">modifier tutorial</span></a> for how to use modifiers,
+and <cite>modifier reference &lt;/ref_modifier&gt;</cite> for all available modifiers.</p>
 </section>
 
 
@@ -362,11 +383,11 @@ the modifier function.</p>
       </div>
     </a>
     <a class="right-next"
-       href="ref_graph.html"
+       href="ref_node.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Graph</p>
+        <p class="prev-next-title">Node</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -395,7 +416,7 @@ By Peter Sun
     
   <p class="copyright">
     
-      © Copyright 2023, Peter Sun.
+      © Copyright 2022 - 2024, Peter Sun.
       <br/>
     
   </p>
