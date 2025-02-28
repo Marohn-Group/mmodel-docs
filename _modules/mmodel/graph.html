@@ -1,50 +1,54 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mmodel.graph &#8212; MModel 0.7.0 documentation</title>
+    <title>mmodel.graph &#8212; mmodel 0.8.0 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=d6acfc83"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mmodel/graph';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -52,23 +56,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -76,7 +73,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -84,16 +80,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -106,6 +113,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -114,10 +124,18 @@
   
   
   
-    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+    <p class="title logo__title">mmodel 0.8.0 documentation</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
@@ -125,16 +143,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_node.html">Define a node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Build a model graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Create a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_group.html">Create a model group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Use modifiers and shortcuts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_handler.html">Handler API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api_modifier.html">Modifier API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_modifier_shortcut.html">Modifer and shortcut API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_metadata.html">Metadata API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -143,6 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_shortcut.html">Shortcut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_filter.html">Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_signature.html">Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_metadata.html">Metadata</a></li>
@@ -156,14 +177,19 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -172,14 +198,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -206,23 +232,17 @@
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
 
 </div></div>
       
@@ -246,43 +266,53 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <h1>Source code for mmodel.graph</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">from</span> <span class="nn">mmodel.visualizer</span> <span class="kn">import</span> <span class="n">plain_visualizer</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
-<span class="kn">from</span> <span class="nn">mmodel.filter</span> <span class="kn">import</span> <span class="n">subnodes_by_inputs</span><span class="p">,</span> <span class="n">subnodes_by_outputs</span>
-<span class="kn">from</span> <span class="nn">mmodel.utility</span> <span class="kn">import</span> <span class="n">replace_subgraph</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmodel.visualizer</span><span class="w"> </span><span class="kn">import</span> <span class="n">plain_visualizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmodel.filter</span><span class="w"> </span><span class="kn">import</span> <span class="n">subnodes_by_inputs</span><span class="p">,</span> <span class="n">subnodes_by_outputs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmodel.utility</span><span class="w"> </span><span class="kn">import</span> <span class="n">replace_subgraph</span><span class="p">,</span> <span class="n">ReprMixin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmodel.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">product</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
 
 
-<div class="viewcode-block" id="Graph"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph">[docs]</a><span class="k">class</span> <span class="nc">Graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Graph</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">,</span> <span class="n">ReprMixin</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create model graphs.</span>
 
-<span class="sd">    mmodel.Graph inherits from `networkx.DiGraph()`, which has all `DiGraph`</span>
-<span class="sd">    methods.</span>
+<span class="sd">    mmodel.Graph inherits from `networkx.DiGraph()`.</span>
 
-<span class="sd">    The class adds the &quot;type&quot; attribute to the graph attribute. The factory method</span>
+<span class="sd">    The class adds the &quot;graph_module&quot; and &quot;node_type&quot; attribute to</span>
+<span class="sd">    the graph attribute. The factory method</span>
 <span class="sd">    returns a copy of the dictionary. It is equivalent to</span>
-<span class="sd">    ``{&quot;type&quot;: &quot;mmodel_graph&quot;}.copy()`` when called.</span>
+<span class="sd">    ``{&quot;graph_module&quot;: &quot;mmodel_graph&quot;, &quot;node_type&quot;: Node}.copy()``</span>
+<span class="sd">    when called.</span>
 
 <span class="sd">    The additional graph operations are added:</span>
 <span class="sd">    - add_grouped_edges and set_node_objects.</span>
 <span class="sd">    - Method ``add_grouped_edges``, cannot have both edges list.</span>
 <span class="sd">    - Method ``set_node_object`` updates nodes with the node callable &quot;func&quot; and output.</span>
-<span class="sd">    - The method adds callable signature &#39;sig&#39; to the node attribute.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">graph_attr_dict_factory</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;mmodel_graph&quot;</span><span class="p">}</span><span class="o">.</span><span class="n">copy</span>
+    <span class="n">graph_attr_dict_factory</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;graph_module&quot;</span><span class="p">:</span> <span class="s2">&quot;mmodel&quot;</span><span class="p">,</span> <span class="s2">&quot;node_type&quot;</span><span class="p">:</span> <span class="n">Node</span><span class="p">}</span><span class="o">.</span><span class="n">copy</span>
 
-<div class="viewcode-block" id="Graph.set_node_object"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.set_node_object">[docs]</a>    <span class="k">def</span> <span class="nf">set_node_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_object</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph.set_node_object">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.set_node_object">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_node_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_object</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add or update the functions of an existing node.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node_object</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;node_object&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_object</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node_object</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;signature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_object</span><span class="o">.</span><span class="n">signature</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node_object</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">node_object</span><span class="o">.</span><span class="n">output</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_graph</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Graph.set_node_objects_from"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.set_node_objects_from">[docs]</a>    <span class="k">def</span> <span class="nf">set_node_objects_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_objects</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.set_node_objects_from">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.set_node_objects_from">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_node_objects_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node_objects</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Update the functions of existing nodes.</span>
 
 <span class="sd">        The method is the same as adding a node object.</span>
@@ -292,19 +322,28 @@ document.write(`
             <span class="c1"># unzipping works for input with or without modifiers</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">set_node_object</span><span class="p">(</span><span class="n">node_object</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Graph.add_edge"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.add_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.add_edge">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.add_edge">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Modify add_edge to update the edge attribute in the end.&quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u_of_edge</span><span class="p">,</span> <span class="n">v_of_edge</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_graph</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Graph.add_edges_from"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.add_edges_from">[docs]</a>    <span class="k">def</span> <span class="nf">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ebunch_to_add</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.add_edges_from">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.add_edges_from">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ebunch_to_add</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Modify add_edges_from to update the edge attributes.&quot;&quot;&quot;</span>
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">ebunch_to_add</span><span class="p">,</span> <span class="o">**</span><span class="n">attr</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">update_graph</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Graph.add_grouped_edge"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.add_grouped_edge">[docs]</a>    <span class="k">def</span> <span class="nf">add_grouped_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.add_grouped_edge">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.add_grouped_edge">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_grouped_edge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add linked edge.</span>
 
 <span class="sd">        For mmodel, a group edge (u, v) allows u or v</span>
@@ -312,39 +351,64 @@ document.write(`
 <span class="sd">        nodes flowing into one node.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;only one edge node can be a list&quot;</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">u</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span>
+        <span class="n">edge_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">edge_list</span><span class="p">)</span></div>
 
-        <span class="c1"># use add edges from to run less update graph</span>
-        <span class="c1"># currently a compromise</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="n">_u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">_u</span> <span class="ow">in</span> <span class="n">u</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">([(</span><span class="n">u</span><span class="p">,</span> <span class="n">_v</span><span class="p">)</span> <span class="k">for</span> <span class="n">_v</span> <span class="ow">in</span> <span class="n">v</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># neither is a list</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Graph.add_grouped_edges_from"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.add_grouped_edges_from">[docs]</a>    <span class="k">def</span> <span class="nf">add_grouped_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_edges</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph.add_grouped_edges_from">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.add_grouped_edges_from">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_grouped_edges_from</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group_edges</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Add edges from grouped values.&quot;&quot;&quot;</span>
 
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">group_edges</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">add_grouped_edge</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Graph.update_graph"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.update_graph">[docs]</a>    <span class="k">def</span> <span class="nf">update_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update edge attributes based on node objects and edges.&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">grouped_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return grouped edges based on the graph.&quot;&quot;&quot;</span>
+        <span class="n">g_edges_reversed</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+            <span class="n">g_edges_reversed</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+        <span class="n">g_edges</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">g_edges_reversed</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">g_edges</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+        <span class="n">grouped_edges</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">g_edges</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">v</span>
+            <span class="n">grouped_edges</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">grouped_edges</span>
+
+<div class="viewcode-block" id="Graph.update_graph">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.update_graph">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update edge attributes based on node objects and edges.</span>
+
+<span class="sd">        The edge &quot;output&quot; is not defined if the parent node does not have</span>
+<span class="sd">        the &quot;output&quot; attribute or the child node does not have the parameter.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
-                <span class="c1"># the edge &quot;output&quot; is not defined if the parent node does not</span>
-                <span class="c1"># have &quot;output&quot; attribute or the child node does not have</span>
-                <span class="c1"># the parameter</span>
-                <span class="c1"># extract the parameter dictionary</span>
                 <span class="n">v_sig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="s2">&quot;signature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">parameters</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">v_sig</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">]</span></div>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">]</span>
+                <span class="k">elif</span> <span class="s2">&quot;output&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">]:</span>  <span class="c1"># reset edge output</span>
+                    <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">edges</span><span class="p">[</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">][</span><span class="s2">&quot;output&quot;</span><span class="p">]</span></div>
+
 
     <span class="c1"># graph operations</span>
-<div class="viewcode-block" id="Graph.subgraph"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.subgraph">[docs]</a>    <span class="k">def</span> <span class="nf">subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Graph.subgraph">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.subgraph">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nodes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract subgraph by nodes, inputs, and output.</span>
 
 <span class="sd">        If multiple parameters are specified, the result is a union</span>
@@ -364,21 +428,33 @@ document.write(`
 
         <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">subgraph_nodes</span><span class="p">)</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Graph.replace_subgraph"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.replace_subgraph">[docs]</a>    <span class="k">def</span> <span class="nf">replace_subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">,</span> <span class="n">node_object</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.replace_subgraph">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.replace_subgraph">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replace_subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">,</span> <span class="n">node_object</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Replace subgraph with a node.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">replace_subgraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">subgraph</span><span class="p">,</span> <span class="n">node_object</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Graph.get_node"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.get_node">[docs]</a>    <span class="k">def</span> <span class="nf">get_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.get_node">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.get_node">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get node attributes from the graph.&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Graph.get_node_object"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.get_node_object">[docs]</a>    <span class="k">def</span> <span class="nf">get_node_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.get_node_object">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.get_node_object">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_node_object</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get node object from the graph.&quot;&quot;&quot;</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;node_object&quot;</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="Graph.edit_node"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.edit_node">[docs]</a>    <span class="k">def</span> <span class="nf">edit_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.edit_node">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.edit_node">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">edit_node</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Edit node attributes.</span>
 <span class="sd">        Returns a new graph.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -389,7 +465,10 @@ document.write(`
 
         <span class="k">return</span> <span class="n">graph</span></div>
 
-<div class="viewcode-block" id="Graph.visualize"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.visualize">[docs]</a>    <span class="k">def</span> <span class="nf">visualize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.visualize">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.visualize">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">visualize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outfile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Draw the graph.</span>
 
 <span class="sd">        Draws the default styled graph.</span>
@@ -400,7 +479,10 @@ document.write(`
 
         <span class="k">return</span> <span class="n">plain_visualizer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="n">outfile</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Graph.deepcopy"><a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.deepcopy">[docs]</a>    <span class="k">def</span> <span class="nf">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+
+<div class="viewcode-block" id="Graph.deepcopy">
+<a class="viewcode-back" href="../../ref_graph.html#mmodel.graph.Graph.deepcopy">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Deepcopy graph.</span>
 
 <span class="sd">        The ``graph.copy`` method is a shallow copy. Deepcopy creates a copy for</span>
@@ -425,7 +507,9 @@ document.write(`
             <span class="k">for</span> <span class="n">v</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
         <span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">G</span></div></div>
+        <span class="k">return</span> <span class="n">G</span></div>
+</div>
+
 </pre></div>
 
                 </article>
@@ -433,8 +517,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -446,7 +532,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -459,12 +545,6 @@ By Peter Sun
   
   <div class="footer-item">
     
-  <p class="copyright">
-    
-      © Copyright 2022 - 2024, Peter Sun.
-      <br/>
-    
-  </p>
 
   </div>
   
@@ -476,7 +556,7 @@ By Peter Sun
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -485,8 +565,8 @@ By Peter Sun
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

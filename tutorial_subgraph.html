@@ -1,53 +1,57 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Create and modify a subgraph &#8212; MModel 0.7.0 documentation</title>
+    <title>Create and modify a subgraph &#8212; mmodel 0.8.0 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=d6acfc83"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial_subgraph';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Signature API" href="api_signature.html" />
-    <link rel="prev" title="Modify nodes and models" href="tutorial_modifier.html" />
+    <link rel="next" title="Handler API" href="api_handler.html" />
+    <link rel="prev" title="Use modifiers and shortcuts" href="tutorial_modifier.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -55,23 +59,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -79,7 +76,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -87,16 +83,25 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -109,6 +114,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="index.html">
@@ -117,10 +125,18 @@
   
   
   
-    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+    <p class="title logo__title">mmodel 0.8.0 documentation</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
@@ -128,16 +144,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_node.html">Define a node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_group.html">Create a model group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Use modifiers and shortcuts</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_modifier_shortcut.html">Modifer and shortcut API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_metadata.html">Metadata API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -146,6 +164,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
@@ -159,14 +178,19 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -175,14 +199,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -257,26 +281,20 @@
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -297,7 +315,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-subgraph">Create a subgraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-subgraph">create a subgraph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-model-based-on-a-subgraph">Create a model based on a subgraph</a></li>
 </ul>
             </nav>
@@ -308,12 +326,34 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="create-and-modify-a-subgraph">
-<h1>Create and modify a subgraph<a class="headerlink" href="#create-and-modify-a-subgraph" title="Permalink to this heading">#</a></h1>
+<h1>Create and modify a subgraph<a class="headerlink" href="#create-and-modify-a-subgraph" title="Link to this heading">#</a></h1>
+<p>The graph used in the tutorial is defined as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Node</span>
+
+<span class="n">grouped_edges</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;function node&quot;</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;function node&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="c1"># define note objects</span>
+<span class="n">node_objects</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">),</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">,</span> <span class="s2">&quot;log_base&quot;</span><span class="p">],</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;log_xy&quot;</span><span class="p">),</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;function node&quot;</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;result&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;example_graph&quot;</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">add_grouped_edges_from</span><span class="p">(</span><span class="n">grouped_edges</span><span class="p">)</span>
+<span class="n">G</span><span class="o">.</span><span class="n">set_node_objects_from</span><span class="p">(</span><span class="n">node_objects</span><span class="p">)</span>
+</pre></div>
+</div>
 <section id="create-a-subgraph">
-<h2>Create a subgraph<a class="headerlink" href="#create-a-subgraph" title="Permalink to this heading">#</a></h2>
+<h2>create a subgraph<a class="headerlink" href="#create-a-subgraph" title="Link to this heading">#</a></h2>
 <p>There are three methods provided for creating a subgraph from the graph:</p>
 <ol class="arabic simple">
 <li><p>filter by nodes (“nodes”)</p></li>
@@ -323,7 +363,7 @@ document.write(`
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The filtered subgraph is a view of the original graph, and they are
-frozen.</p>
+frozen (immutable).</p>
 </div>
 <p>If we filter the graph by the output “log_xy”, the node “function node” is
 excluded.
@@ -340,38 +380,39 @@ README.rst):</p>
 only part of the graph.</p>
 </section>
 <section id="create-a-model-based-on-a-subgraph">
-<h2>Create a model based on a subgraph<a class="headerlink" href="#create-a-model-based-on-a-subgraph" title="Permalink to this heading">#</a></h2>
+<h2>Create a model based on a subgraph<a class="headerlink" href="#create-a-model-based-on-a-subgraph" title="Link to this heading">#</a></h2>
 <p>Subgraphing is also helpful if we apply modifiers to part of the
 graph. For example, we want to loop a variable that only part of the subgraph
 uses. Here, we loop the “log_base” parameter from the README example.
-<code class="docutils literal notranslate"><span class="pre">replace_subgraph</span></code> outputs a new graph.</p>
+The <code class="docutils literal notranslate"><span class="pre">replace_subgraph</span></code> function outputs a new graph.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_base&quot;</span><span class="p">])</span>
 <span class="n">loop_node</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span>
     <span class="s2">&quot;loop_submodel&quot;</span><span class="p">,</span>
     <span class="n">H</span><span class="p">,</span>
     <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">,</span>
-    <span class="n">modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">loop_input</span><span class="p">(</span><span class="s2">&quot;log_base&quot;</span><span class="p">})],</span>
+    <span class="n">modifiers</span><span class="o">=</span><span class="p">[</span><span class="n">loop_input</span><span class="p">(</span><span class="s2">&quot;log_base&quot;</span><span class="p">)],</span>
 <span class="p">)</span>
 <span class="n">looped_graph</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">replace_subgraph</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;loop_node&quot;</span><span class="p">,</span> <span class="n">loop_node</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;looped_z&quot;</span><span class="p">))</span>
-
 <span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;looped_model&quot;</span><span class="p">,</span> <span class="n">looped_graph</span><span class="p">,</span> <span class="n">loop_node</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
+
+<span class="n">looped_model</span><span class="p">(</span><span class="n">log_base_loop</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">returns</span><span class="p">:</span> <span class="n">looped_z</span>
+<span class="n">graph</span><span class="p">:</span> <span class="n">example_graph</span>
+<span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span>
 </pre></div>
 </div>
-<p>The steps:</p>
+<p>The steps are:</p>
 <ol class="arabic simple">
 <li><p>Filter the graph with <code class="docutils literal notranslate"><span class="pre">G.subgraph(inputs=...)</span></code>.</p></li>
 <li><p>Create a subgraph model with <code class="docutils literal notranslate"><span class="pre">Model</span></code> and loop modifiers.</p></li>
-<li><dl class="simple">
-<dt>Update the graph with the subgraph nodes object <code class="docutils literal notranslate"><span class="pre">loop_node</span></code> with</dt><dd><p><code class="docutils literal notranslate"><span class="pre">replace_subgraph</span></code>. Use “output” to specify the output name of the subgraph node.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>Build the model for the graph with <code class="docutils literal notranslate"><span class="pre">Model</span></code>. The handler is the same as</dt><dd><p>the loop_node.</p>
-</dd>
-</dl>
-</li>
+<li><p>Update the graph with the subgraph nodes object <code class="docutils literal notranslate"><span class="pre">loop_node</span></code> with
+<code class="docutils literal notranslate"><span class="pre">replace_subgraph</span></code>. Use “output” to specify the output name of the subgraph node.</p></li>
+<li><p>Build the model for the graph with <code class="docutils literal notranslate"><span class="pre">Model</span></code>. The handler is the same as
+the loop_node.</p></li>
 </ol>
+<p>The above process can be replaced with the <code class="docutils literal notranslate"><span class="pre">loop_shortcut</span></code>.</p>
 </section>
 </section>
 
@@ -381,8 +422,10 @@ uses. Here, we loop the “log_base” parameter from the README example.
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="tutorial_modifier.html"
@@ -390,15 +433,15 @@ uses. Here, we loop the “log_base” parameter from the README example.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modify nodes and models</p>
+        <p class="prev-next-title">Use modifiers and shortcuts</p>
       </div>
     </a>
     <a class="right-next"
-       href="api_signature.html"
+       href="api_handler.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Signature API</p>
+        <p class="prev-next-title">Handler API</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -409,7 +452,9 @@ uses. Here, we loop the “log_base” parameter from the README example.
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -417,7 +462,7 @@ uses. Here, we loop the “log_base” parameter from the README example.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-subgraph">Create a subgraph</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-subgraph">create a subgraph</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-model-based-on-a-subgraph">Create a model based on a subgraph</a></li>
 </ul>
   </nav></div>
@@ -427,7 +472,7 @@ uses. Here, we loop the “log_base” parameter from the README example.
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -440,12 +485,6 @@ By Peter Sun
   
   <div class="footer-item">
     
-  <p class="copyright">
-    
-      © Copyright 2022 - 2024, Peter Sun.
-      <br/>
-    
-  </p>
 
   </div>
   
@@ -457,7 +496,7 @@ By Peter Sun
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -466,8 +505,8 @@ By Peter Sun
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

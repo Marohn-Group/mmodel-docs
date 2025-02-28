@@ -1,45 +1,48 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Utility &#8212; MModel 0.7.0 documentation</title>
+    <title>Utility &#8212; mmodel 0.8.0 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=d6acfc83"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ref_utility';</script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -47,6 +50,7 @@
     <link rel="prev" title="Visualizer" href="ref_visualizer.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -54,23 +58,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -78,7 +75,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,16 +82,25 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -108,6 +113,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="index.html">
@@ -116,10 +124,18 @@
   
   
   
-    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+    <p class="title logo__title">mmodel 0.8.0 documentation</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
@@ -127,16 +143,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_node.html">Define a node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_group.html">Create a model group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Use modifiers and shortcuts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_modifier_shortcut.html">Modifer and shortcut API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_metadata.html">Metadata API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="current nav bd-sidenav">
@@ -145,6 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
@@ -158,14 +177,19 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -174,14 +198,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -256,26 +280,20 @@
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -297,7 +315,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.utility"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utility</span></code> module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.construction_dict"><code class="docutils literal notranslate"><span class="pre">construction_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.EditMixin"><code class="docutils literal notranslate"><span class="pre">EditMixin</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.EditMixin.edit_dict"><code class="docutils literal notranslate"><span class="pre">EditMixin.edit_dict</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.graph_topological_sort"><code class="docutils literal notranslate"><span class="pre">graph_topological_sort()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.is_edge_attr_defined"><code class="docutils literal notranslate"><span class="pre">is_edge_attr_defined()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.is_node_attr_defined"><code class="docutils literal notranslate"><span class="pre">is_node_attr_defined()</span></code></a></li>
@@ -320,26 +341,34 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="utility">
-<h1>Utility<a class="headerlink" href="#utility" title="Permalink to this heading">#</a></h1>
+<h1>Utility<a class="headerlink" href="#utility" title="Link to this heading">#</a></h1>
 <section id="module-mmodel.utility">
-<span id="utility-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">utility</span></code> module<a class="headerlink" href="#module-mmodel.utility" title="Permalink to this heading">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="mmodel.utility.construction_dict">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">construction_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">property_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exclude_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#construction_dict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.construction_dict" title="Permalink to this definition">#</a></dt>
-<dd><p>Return a dictionary that contains object construction parameters.</p>
-<p>The property list and exclude list need to be manually input.
-The exclude list is used for object attributes that are not
-part of the object construction but are public attributes.
-The object attribute omits private (‘_’) values but includes all
-public attributes not in the exclude list.</p>
+<span id="utility-module"></span><h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">utility</span></code> module<a class="headerlink" href="#module-mmodel.utility" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="mmodel.utility.EditMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">EditMixin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#EditMixin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.EditMixin" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Mixin class that records the parameters that used in constructor.</p>
+<p>For classes that allows the edit method to create a new instance,
+we keep track of the constructor parameter with the __new__ method.
+Some of the constructor parameters might not be saved as attributes
+or attributes of the same name, therefore the values are stored as well.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="mmodel.utility.EditMixin.edit_dict">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edit_dict</span></span><a class="headerlink" href="#mmodel.utility.EditMixin.edit_dict" title="Link to this definition">#</a></dt>
+<dd><p>Get the current attributes based on init_dict.</p>
+<p>Some parameters are defined as properties to avoid the same reference.
+The method here updates the current values of the attributes.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.graph_topological_sort">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">graph_topological_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#graph_topological_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.graph_topological_sort" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">graph_topological_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#graph_topological_sort"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.graph_topological_sort" title="Link to this definition">#</a></dt>
 <dd><p>Determine the topological order.</p>
 <p><cite>nx.topological_generations</cite> outputs a generator with each node list generation.
 However, it does not carry the node attributes. The method
@@ -357,14 +386,14 @@ attributes.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.is_edge_attr_defined">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">is_edge_attr_defined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#is_edge_attr_defined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.is_edge_attr_defined" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">is_edge_attr_defined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#is_edge_attr_defined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.is_edge_attr_defined" title="Link to this definition">#</a></dt>
 <dd><p>Check if all graph edges have the target attribute defined.</p>
 <p>Raise an exception if the attribute is undefined.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.is_node_attr_defined">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">is_node_attr_defined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#is_node_attr_defined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.is_node_attr_defined" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">is_node_attr_defined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#is_node_attr_defined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.is_node_attr_defined" title="Link to this definition">#</a></dt>
 <dd><p>Check if all graph nodes have the attribute defined.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -376,7 +405,7 @@ attributes.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.modelgraph_returns">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">modelgraph_returns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#modelgraph_returns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.modelgraph_returns" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">modelgraph_returns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#modelgraph_returns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.modelgraph_returns" title="Link to this definition">#</a></dt>
 <dd><p>Obtain the return parameter from the model graph.</p>
 <p>The assumption is that all return parameter names are unique.</p>
 <dl class="field-list simple">
@@ -391,7 +420,7 @@ attributes.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.modelgraph_signature">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">modelgraph_signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#modelgraph_signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.modelgraph_signature" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">modelgraph_signature</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#modelgraph_signature"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.modelgraph_signature" title="Link to this definition">#</a></dt>
 <dd><p>Obtain the signature from the model graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -405,13 +434,13 @@ The args are a dictionary of inspected signatures.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.modify_func">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">modify_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#modify_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.modify_func" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">modify_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modifiers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#modify_func"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.modify_func" title="Link to this definition">#</a></dt>
 <dd><p>Apply modifiers to function.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.param_counter">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">param_counter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#param_counter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.param_counter" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">param_counter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">returns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#param_counter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.param_counter" title="Link to this definition">#</a></dt>
 <dd><p>Count the number of times a parameter is used for graph execution.</p>
 <p>Count all function signature parameters. For extra returns,
 add one to each count value.</p>
@@ -430,7 +459,7 @@ add one to each count value.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.param_sorter">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">param_sorter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#param_sorter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.param_sorter" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">param_sorter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#param_sorter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.param_sorter" title="Link to this definition">#</a></dt>
 <dd><p>Sorter for argument parameter.</p>
 <p>The values in the tuple are compared in sequential order:
 1. Order by parameter kind
@@ -448,7 +477,7 @@ add one to each count value.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.parse_functype">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">parse_functype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#parse_functype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.parse_functype" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">parse_functype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#parse_functype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.parse_functype" title="Link to this definition">#</a></dt>
 <dd><p>Parse function type.</p>
 <p>For functions that are not a standard callable, returns
 the module name, such as <code class="docutils literal notranslate"><span class="pre">numpy.ufunc</span></code>.</p>
@@ -456,7 +485,7 @@ the module name, such as <code class="docutils literal notranslate"><span class=
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.parse_parameters">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">parse_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#parse_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.parse_parameters" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">parse_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#parse_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.parse_parameters" title="Link to this definition">#</a></dt>
 <dd><p>Parse a list of parameters to signatures</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -471,7 +500,7 @@ as the parameter name or a tuple/list as (parameter, default).</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mmodel.utility.replace_subgraph">
-<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">replace_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subgraph_node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#replace_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.replace_subgraph" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mmodel.utility.</span></span><span class="sig-name descname"><span class="pre">replace_subgraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subgraph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subgraph_node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mmodel/utility.html#replace_subgraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mmodel.utility.replace_subgraph" title="Link to this definition">#</a></dt>
 <dd><p>Replace subgraph with a node.</p>
 <p>Find all parent nodes, not in the subgraph, but child nodes in the
 subgraph. (All child nodes of subgraph nodes are in the subgraph).
@@ -499,8 +528,10 @@ subgraph is a view of the original graph.</p></li>
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="ref_visualizer.html"
@@ -518,7 +549,9 @@ subgraph is a view of the original graph.</p></li>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -527,7 +560,10 @@ subgraph is a view of the original graph.</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-mmodel.utility"><code class="xref py py-mod docutils literal notranslate"><span class="pre">utility</span></code> module</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.construction_dict"><code class="docutils literal notranslate"><span class="pre">construction_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.EditMixin"><code class="docutils literal notranslate"><span class="pre">EditMixin</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.EditMixin.edit_dict"><code class="docutils literal notranslate"><span class="pre">EditMixin.edit_dict</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.graph_topological_sort"><code class="docutils literal notranslate"><span class="pre">graph_topological_sort()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.is_edge_attr_defined"><code class="docutils literal notranslate"><span class="pre">is_edge_attr_defined()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmodel.utility.is_node_attr_defined"><code class="docutils literal notranslate"><span class="pre">is_node_attr_defined()</span></code></a></li>
@@ -549,7 +585,7 @@ subgraph is a view of the original graph.</p></li>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -562,12 +598,6 @@ By Peter Sun
   
   <div class="footer-item">
     
-  <p class="copyright">
-    
-      © Copyright 2022 - 2024, Peter Sun.
-      <br/>
-    
-  </p>
 
   </div>
   
@@ -579,7 +609,7 @@ By Peter Sun
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -588,8 +618,8 @@ By Peter Sun
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

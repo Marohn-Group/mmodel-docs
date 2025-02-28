@@ -1,52 +1,58 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>mmodel &#8212; MModel 0.7.0 documentation</title>
+    <title>mmodel &#8212; mmodel 0.8.0 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=d6acfc83"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Overview" href="overview.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -54,23 +60,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -78,7 +77,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -86,16 +84,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -108,6 +117,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="#">
@@ -116,10 +128,18 @@
   
   
   
-    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+    <p class="title logo__title">mmodel 0.8.0 documentation</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
@@ -127,16 +147,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_node.html">Define a node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_group.html">Create a model group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Use modifiers and shortcuts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_modifier_shortcut.html">Modifer and shortcut API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_metadata.html">Metadata API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -145,6 +167,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
@@ -158,14 +181,19 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -174,14 +202,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -256,26 +284,20 @@
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -321,10 +343,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="mmodel">
-<h1>mmodel<a class="headerlink" href="#mmodel" title="Permalink to this heading">#</a></h1>
+<h1>mmodel<a class="headerlink" href="#mmodel" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://github.com/Marohn-Group/mmodel"><img alt="GitHub version" src="https://badge.fury.io/gh/peterhs73%2FMModel.svg" /></a> <a class="reference external" href="https://pypi.python.org/pypi/mmodel/"><img alt="PyPI version shields.io" src="https://img.shields.io/pypi/v/mmodel.svg" /></a> <img alt="PyPI pyversions" src="https://img.shields.io/pypi/pyversions/mmodel.svg" /> <a class="reference external" href="https://github.com/Marohn-Group/mmodel/actions"><img alt="Unittests" src="https://github.com/Marohn-Group/mmodel/actions/workflows/tox.yml/badge.svg" /></a>
 <a class="reference external" href="https://doi.org/10.1063/5.0155617"><img alt="DOI" src="https://img.shields.io/badge/DOI-10.1063/5.0155617-blue.svg" /></a></p>
 <p><em>mmodel</em> is a lightweight and modular model-building framework
@@ -336,13 +358,13 @@ the <a class="reference external" href="https://marohn-group.github.io/mrfmsim-d
 on how <em>mmodel</em> improves the development of magnetic resonance force
 microscopy (MRFM) experiments.</p>
 <section id="quickstart">
-<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading">#</a></h2>
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">#</a></h2>
 <p>To create a nonlinear model that has the result of
 <cite>(x + y)log(x + y, base)</cite>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
-<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">sum_xy</span><span class="p">,</span> <span class="n">log_xy</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">func</span><span class="p">(</span><span class="n">sum_xy</span><span class="p">,</span> <span class="n">log_xy</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Function that adds a value to the multiplied inputs.&quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="n">sum_xy</span> <span class="o">*</span> <span class="n">log_xy</span> <span class="o">+</span> <span class="mi">6</span>
@@ -350,7 +372,7 @@ microscopy (MRFM) experiments.</p>
 </div>
 <p>The graph is defined using grouped edges (the <em>NetworkX</em> syntax of edge
 the definition also works.)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel</span> <span class="kn">import</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">MemHandler</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mmodel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Graph</span><span class="p">,</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Node</span><span class="p">,</span> <span class="n">MemHandler</span>
 <span class="c1"># create graph edges</span>
 <span class="n">grouped_edges</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="s2">&quot;function node&quot;</span><span class="p">]),</span>
@@ -358,13 +380,18 @@ the definition also works.)</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>The functions are then added to node attributes. The order of definition
-is node_name, node_func, output, input (if different from original function),
-and modifiers.</p>
+<p>To add node objects to each node we can use the <code class="docutils literal notranslate"><span class="pre">add_node</span></code> method from
+the <em>NetworkX</em> graph class. <em>mmodel</em> provides a way to add a node object to
+each node with the <code class="docutils literal notranslate"><span class="pre">Node</span></code> class. The class takes the node name, function,
+positional inputs, keyword inputs, output, and modifiers as arguments.</p>
+<p>Partically, the positional inputs and keyword inputs are used to replace
+the original function inputs if necessary. The inputs are given as lists.</p>
+<p>The node object can be added to the graph using the <code class="docutils literal notranslate"><span class="pre">set_node_object</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">set_node_objects_from</span></code> method is used for multiple nodes.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># define note objects</span>
 <span class="n">node_objects</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="s2">&quot;sum_xy&quot;</span><span class="p">),</span>
-    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">,</span>  <span class="p">[</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">,</span> <span class="s2">&quot;log_base&quot;</span><span class="p">],</span> <span class="s2">&quot;log_xy&quot;</span><span class="p">),</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">),</span>
+    <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;sum_xy&quot;</span><span class="p">,</span> <span class="s2">&quot;log_base&quot;</span><span class="p">],</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;log_xy&quot;</span><span class="p">),</span>
     <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;function node&quot;</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s2">&quot;result&quot;</span><span class="p">),</span>
 <span class="p">]</span>
 
@@ -375,24 +402,29 @@ and modifiers.</p>
 </div>
 <p>To define the model, the name, graph, and handler need to be specified. Additional
 parameters include modifiers, descriptions, and returns lists. The input parameters
-of the model are determined based on the node information.</p>
+of the model are determined based on the node function parameter signature,
+or custom signature can be provides using the <code class="docutils literal notranslate"><span class="pre">inputs</span></code> parameter.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">example_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">MemHandler</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;Test model.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The model behaves like a Python function with additional metadata. The graph can
 be plotted using the <code class="docutils literal notranslate"><span class="pre">visualize</span></code> method.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">example_model</span><span class="p">)</span>
-<span class="go">example_model(log_base, x, y)</span>
-<span class="go">returns: result</span>
-<span class="go">graph: example_graph</span>
-<span class="go">handler: MemHandler</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># model representation</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">example_model</span>
+<span class="o">&lt;</span><span class="n">mmodel</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span> <span class="s1">&#39;example_model&#39;</span><span class="o">&gt;</span>
 
-<span class="go">Test model.</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">example_model</span><span class="p">)</span>
+<span class="n">example_model</span><span class="p">(</span><span class="n">log_base</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">returns</span><span class="p">:</span> <span class="n">result</span>
+<span class="n">graph</span><span class="p">:</span> <span class="n">example_graph</span>
+<span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">example_model</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
-<span class="go">30.0</span>
+<span class="n">Test</span> <span class="n">model</span><span class="o">.</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">example_model</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">example_model</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
+<span class="mf">30.0</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">example_model</span><span class="o">.</span><span class="n">visualize</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>The resulting graph contains the model metadata and detailed node information.</p>
@@ -401,7 +433,7 @@ which modify callables post-definition. Modifiers work on both the node level
 and model level.</p>
 <p>Example: Use <code class="docutils literal notranslate"><span class="pre">loop_input</span></code> modifier on the graph to loop the nodes that require the
 “log_base” parameter.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mmodel.modifier</span> <span class="kn">import</span> <span class="n">loop_input</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mmodel.modifier</span><span class="w"> </span><span class="kn">import</span> <span class="n">loop_input</span>
 
 <span class="n">H</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;log_base&quot;</span><span class="p">])</span>
 <span class="n">H</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;example_subgraph&quot;</span>
@@ -414,27 +446,46 @@ and model level.</p>
 <span class="n">looped_G</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;looped_graph&quot;</span>
 
 <span class="n">looped_model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;looped_model&quot;</span><span class="p">,</span> <span class="n">looped_G</span><span class="p">,</span> <span class="n">loop_node</span><span class="o">.</span><span class="n">handler</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
+<span class="n">looped_model</span><span class="p">(</span><span class="n">log_base</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">returns</span><span class="p">:</span> <span class="n">looped_z</span>
+<span class="n">graph</span><span class="p">:</span> <span class="n">looped_graph</span>
+<span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="o">.</span><span class="n">get_node_object</span><span class="p">(</span><span class="s2">&quot;loop_node&quot;</span><span class="p">))</span>
+<span class="n">loop_node</span>
+
+<span class="n">submodel</span><span class="p">(</span><span class="n">log_base</span><span class="p">,</span> <span class="n">sum_xy</span><span class="p">)</span>
+<span class="k">return</span><span class="p">:</span> <span class="n">looped_z</span>
+<span class="n">functype</span><span class="p">:</span> <span class="n">mmodel</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span>
+<span class="n">modifiers</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">loop_input</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span><span class="s1">&#39;log_base&#39;</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
+<span class="p">[</span><span class="mf">30.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>We can inspect the loop node as well as the new model.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
-<span class="go">looped_model(log_base, x, y)</span>
-<span class="go">returns: looped_z</span>
-<span class="go">graph: looped_graph</span>
-<span class="go">handler: MemHandler</span>
+<p>The above process is included in the <code class="docutils literal notranslate"><span class="pre">shortcut</span></code> module and we can use the
+<code class="docutils literal notranslate"><span class="pre">loop_shortcut</span></code> to directly apply the above process. Note that the shortcut
+changes the input parameter name to <code class="docutils literal notranslate"><span class="pre">(name)_loop</span></code> to distinguish
+between the models.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mmodel.shortcut</span><span class="w"> </span><span class="kn">import</span> <span class="n">loop_shortcut</span>
+<span class="n">looped_model</span> <span class="o">=</span> <span class="n">loop_shortcut</span><span class="p">(</span><span class="n">example_model</span><span class="p">,</span> <span class="s2">&quot;log_base&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;looped_model&quot;</span><span class="p">)</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="o">.</span><span class="n">get_node_object</span><span class="p">(</span><span class="s2">&quot;loop_node&quot;</span><span class="p">))</span>
-<span class="go">submodel(log_base, sum_xy)</span>
-<span class="go">return: looped_z</span>
-<span class="go">functype: &lt;class &#39;mmodel.model.Model&#39;&gt;</span>
-<span class="go">modifiers:</span>
-<span class="go">- loop_input(&#39;log_base&#39;)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">looped_model</span><span class="p">)</span>
+<span class="n">looped_model</span><span class="p">(</span><span class="n">log_base_loop</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">returns</span><span class="p">:</span> <span class="n">result</span>
+<span class="n">graph</span><span class="p">:</span> <span class="n">example_graph</span>
+<span class="n">handler</span><span class="p">:</span> <span class="n">MemHandler</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
-<span class="go">[30.0, 18.0]</span>
+<span class="n">Test</span> <span class="n">model</span><span class="o">.</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">looped_model</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1"># (5 + 3)log(5 + 3, 2) + 6</span>
+<span class="p">[</span><span class="mf">30.0</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">visualize</span></code> method to draw the graph. For a graph, a simple diagram
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">visualize</span></code> method to draw the graph. For a graph, a simple diagram
 with only node names shown, and for a model, the diagram shows detailed
 node and model information. Customized plotting objects can be created
 using the Visualizer class.</p>
@@ -445,9 +496,9 @@ using the Visualizer class.</p>
 </div>
 </section>
 <section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
 <section id="graphviz-installation">
-<h3>Graphviz installation<a class="headerlink" href="#graphviz-installation" title="Permalink to this heading">#</a></h3>
+<h3>Graphviz installation<a class="headerlink" href="#graphviz-installation" title="Link to this heading">#</a></h3>
 <p>To view the graph, Graphviz needs to be installed:
 <a class="reference external" href="https://graphviz.org/download/">Graphviz Installation</a>
 For Windows installation, please choose “add Graphviz to the
@@ -460,13 +511,13 @@ with conda:</p>
 </div>
 </section>
 <section id="mmodel-installation">
-<h3>MModel installation<a class="headerlink" href="#mmodel-installation" title="Permalink to this heading">#</a></h3>
+<h3>MModel installation<a class="headerlink" href="#mmodel-installation" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mmodel</span>
 </pre></div>
 </div>
 </section>
 <section id="development-installation">
-<h3>Development installation<a class="headerlink" href="#development-installation" title="Permalink to this heading">#</a></h3>
+<h3>Development installation<a class="headerlink" href="#development-installation" title="Link to this heading">#</a></h3>
 <p>MModel uses <a class="reference external" href="https://python-poetry.org/docs/">poetry</a> as
 the build system. The package works with both pip and poetry
 installation.</p>
@@ -485,7 +536,7 @@ installation.</p>
 </div>
 </section>
 <section id="citing-mmdoel">
-<h3>Citing <em>mmdoel</em><a class="headerlink" href="#citing-mmdoel" title="Permalink to this heading">#</a></h3>
+<h3>Citing <em>mmdoel</em><a class="headerlink" href="#citing-mmdoel" title="Link to this heading">#</a></h3>
 <p>The work was <a class="reference external" href="https://pubs.aip.org/aip/jcp/article/159/4/044801/2904249/mmodel-A-workflow-framework-to-accelerate-the">published</a> in the Journal
 of Chemical Physics.</p>
 <p>BibTex:</p>
@@ -507,9 +558,9 @@ of Chemical Physics.</p>
 </section>
 </section>
 <section id="license">
-<h1>License<a class="headerlink" href="#license" title="Permalink to this heading">#</a></h1>
+<h1>License<a class="headerlink" href="#license" title="Link to this heading">#</a></h1>
 <p>MModel is distributed with the 3-clause BSD license.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2022</span> <span class="o">-</span> <span class="mi">2024</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2022</span> <span class="o">-</span> <span class="mi">2025</span>
 <span class="n">Peter</span> <span class="n">Sun</span> <span class="o">&lt;</span><span class="n">hs859</span><span class="nd">@cornell</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
 <span class="n">John</span> <span class="n">Marohn</span> <span class="o">&lt;</span><span class="n">jam99</span><span class="nd">@cornell</span><span class="o">.</span><span class="n">edu</span><span class="o">&gt;</span>
 <span class="n">All</span> <span class="n">rights</span> <span class="n">reserved</span><span class="o">.</span>
@@ -528,7 +579,7 @@ of Chemical Physics.</p>
 
 <span class="o">*</span> <span class="n">Neither</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">NetworkX</span> <span class="n">Developers</span> <span class="n">nor</span> <span class="n">the</span> <span class="n">names</span> <span class="n">of</span> <span class="n">its</span>
     <span class="n">contributors</span> <span class="n">may</span> <span class="n">be</span> <span class="n">used</span> <span class="n">to</span> <span class="n">endorse</span> <span class="ow">or</span> <span class="n">promote</span> <span class="n">products</span> <span class="n">derived</span>
-    <span class="kn">from</span> <span class="nn">this</span> <span class="n">software</span> <span class="n">without</span> <span class="n">specific</span> <span class="n">prior</span> <span class="n">written</span> <span class="n">permission</span><span class="o">.</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">this</span> <span class="n">software</span> <span class="n">without</span> <span class="n">specific</span> <span class="n">prior</span> <span class="n">written</span> <span class="n">permission</span><span class="o">.</span>
 
 <span class="n">THIS</span> <span class="n">SOFTWARE</span> <span class="n">IS</span> <span class="n">PROVIDED</span> <span class="n">BY</span> <span class="n">THE</span> <span class="n">COPYRIGHT</span> <span class="n">HOLDERS</span> <span class="n">AND</span> <span class="n">CONTRIBUTORS</span>
 <span class="s2">&quot;AS IS&quot;</span> <span class="n">AND</span> <span class="n">ANY</span> <span class="n">EXPRESS</span> <span class="n">OR</span> <span class="n">IMPLIED</span> <span class="n">WARRANTIES</span><span class="p">,</span> <span class="n">INCLUDING</span><span class="p">,</span> <span class="n">BUT</span> <span class="n">NOT</span>
@@ -545,7 +596,7 @@ of Chemical Physics.</p>
 </div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">#</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -567,8 +618,10 @@ of Chemical Physics.</p>
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="right-next"
        href="overview.html"
@@ -586,7 +639,9 @@ of Chemical Physics.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -618,7 +673,7 @@ of Chemical Physics.</p>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -631,12 +686,6 @@ By Peter Sun
   
   <div class="footer-item">
     
-  <p class="copyright">
-    
-      © Copyright 2022 - 2024, Peter Sun.
-      <br/>
-    
-  </p>
 
   </div>
   
@@ -648,7 +697,7 @@ By Peter Sun
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -657,8 +706,8 @@ By Peter Sun
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

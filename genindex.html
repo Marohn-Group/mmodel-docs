@@ -1,50 +1,54 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; MModel 0.7.0 documentation</title>
+    <title>Index &#8212; mmodel 0.8.0 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=d6acfc83"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -52,23 +56,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -76,7 +73,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -84,16 +80,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -106,6 +113,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="index.html">
@@ -114,10 +124,18 @@
   
   
   
-    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+    <p class="title logo__title">mmodel 0.8.0 documentation</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
@@ -125,16 +143,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_node.html">Define a node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_graph.html">Build a model graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_model.html">Create a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_group.html">Create a model group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_modifier.html">Use modifiers and shortcuts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_handler.html">Handler API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_modifier.html">Modifier API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_modifier_shortcut.html">Modifer and shortcut API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_metadata.html">Metadata API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -143,6 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ref_shortcut.html">Shortcut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_filter.html">Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_signature.html">Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ref_metadata.html">Metadata</a></li>
@@ -156,14 +177,19 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -172,14 +198,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -206,23 +232,17 @@
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
 
 </div></div>
       
@@ -246,7 +266,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
 
 <h1 id="index">Index</h1>
@@ -287,7 +307,7 @@ document.write(`
 </li>
       <li><a href="ref_graph.html#mmodel.graph.Graph.add_grouped_edges_from">add_grouped_edges_from() (mmodel.graph.Graph method)</a>
 </li>
-      <li><a href="ref_signature.html#mmodel.signature.add_signature">add_signature() (in module mmodel.signature)</a>
+      <li><a href="ref_modifier.html#mmodel.modifier.add_modifier_metadata">add_modifier_metadata() (in module mmodel.modifier)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -303,16 +323,20 @@ document.write(`
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ref_signature.html#mmodel.signature.check_signature">check_signature() (in module mmodel.signature)</a>
+      <li><a href="ref_signature.html#mmodel.signature.check_args">check_args() (in module mmodel.signature)</a>
 </li>
-      <li><a href="ref_utility.html#mmodel.utility.construction_dict">construction_dict() (in module mmodel.utility)</a>
+      <li><a href="ref_signature.html#mmodel.signature.check_kwargs">check_kwargs() (in module mmodel.signature)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ref_node.html#mmodel.node.Node.convert_func">convert_func() (mmodel.node.Node method)</a>
+      <li><a href="ref_signature.html#mmodel.signature.check_signature">check_signature() (in module mmodel.signature)</a>
 </li>
-      <li><a href="ref_signature.html#mmodel.signature.convert_signature">convert_signature() (in module mmodel.signature)</a>
+      <li><a href="ref_signature.html#mmodel.signature.convert_func">convert_func() (in module mmodel.signature)</a>
+
+      <ul>
+        <li><a href="ref_node.html#mmodel.node.Node.convert_func">(mmodel.node.Node method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -333,8 +357,6 @@ document.write(`
 </li>
       <li><a href="ref_graph.html#mmodel.graph.Graph.deepcopy">deepcopy() (mmodel.graph.Graph method)</a>
 </li>
-      <li><a href="ref_model.html#mmodel.model.Model.defaults">defaults (mmodel.model.Model property)</a>
-</li>
   </ul></td>
 </tr></table>
 
@@ -347,6 +369,8 @@ document.write(`
         <li><a href="ref_node.html#mmodel.node.Node.edit">(mmodel.node.Node method)</a>
 </li>
       </ul></li>
+      <li><a href="ref_utility.html#mmodel.utility.EditMixin.edit_dict">edit_dict (mmodel.utility.EditMixin property)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ref_graph.html#mmodel.graph.Graph.edit_node">edit_node() (mmodel.graph.Graph method)</a>
@@ -355,6 +379,8 @@ document.write(`
         <li><a href="ref_model.html#mmodel.model.Model.edit_node">(mmodel.model.Model method)</a>
 </li>
       </ul></li>
+      <li><a href="ref_utility.html#mmodel.utility.EditMixin">EditMixin (class in mmodel.utility)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -365,7 +391,11 @@ document.write(`
 </li>
       <li><a href="ref_metadata.html#mmodel.metadata.format_dictargs">format_dictargs() (in module mmodel.metadata)</a>
 </li>
+      <li><a href="ref_metadata.html#mmodel.metadata.format_dictkeys">format_dictkeys() (in module mmodel.metadata)</a>
+</li>
       <li><a href="ref_metadata.html#mmodel.metadata.format_func">format_func() (in module mmodel.metadata)</a>
+</li>
+      <li><a href="ref_metadata.html#mmodel.metadata.format_group_content">format_group_content() (in module mmodel.metadata)</a>
 </li>
       <li><a href="ref_visualizer.html#mmodel.visualizer.format_label">format_label() (in module mmodel.visualizer)</a>
 </li>
@@ -376,6 +406,8 @@ document.write(`
       <li><a href="ref_metadata.html#mmodel.metadata.format_modifierlist">format_modifierlist() (in module mmodel.metadata)</a>
 </li>
       <li><a href="ref_metadata.html#mmodel.metadata.format_obj_name">format_obj_name() (in module mmodel.metadata)</a>
+</li>
+      <li><a href="ref_modifier.html#mmodel.modifier.format_parameters">format_parameters() (in module mmodel.modifier)</a>
 </li>
       <li><a href="ref_metadata.html#mmodel.metadata.format_returns">format_returns() (in module mmodel.metadata)</a>
 </li>
@@ -403,8 +435,12 @@ document.write(`
         <li><a href="ref_model.html#mmodel.model.Model.get_node_object">(mmodel.model.Model method)</a>
 </li>
       </ul></li>
+      <li><a href="ref_signature.html#mmodel.signature.get_node_signature">get_node_signature() (in module mmodel.signature)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ref_signature.html#mmodel.signature.get_parameters">get_parameters() (in module mmodel.signature)</a>
+</li>
       <li><a href="ref_graph.html#mmodel.graph.Graph">Graph (class in mmodel.graph)</a>
 </li>
       <li><a href="ref_model.html#mmodel.model.Model.graph">graph (mmodel.model.Model property)</a>
@@ -412,6 +448,8 @@ document.write(`
       <li><a href="ref_graph.html#mmodel.graph.Graph.graph_attr_dict_factory">graph_attr_dict_factory() (mmodel.graph.Graph method)</a>
 </li>
       <li><a href="ref_utility.html#mmodel.utility.graph_topological_sort">graph_topological_sort() (in module mmodel.utility)</a>
+</li>
+      <li><a href="ref_graph.html#mmodel.graph.Graph.grouped_edges">grouped_edges (mmodel.graph.Graph property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -424,8 +462,6 @@ document.write(`
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ref_model.html#mmodel.model.Model.handler_kwargs">handler_kwargs (mmodel.model.Model property)</a>
-</li>
-      <li><a href="ref_signature.html#mmodel.signature.has_signature">has_signature() (in module mmodel.signature)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -448,6 +484,10 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ref_modifier.html#mmodel.modifier.loop_input">loop_input() (in module mmodel.modifier)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="ref_shortcut.html#mmodel.shortcut.loop_shortcut">loop_shortcut() (in module mmodel.shortcut)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -478,6 +518,13 @@ document.write(`
 
       <ul>
         <li><a href="ref_modifier.html#module-mmodel.modifier">module</a>
+</li>
+      </ul></li>
+      <li>
+    mmodel.shortcut
+
+      <ul>
+        <li><a href="ref_shortcut.html#module-mmodel.shortcut">module</a>
 </li>
       </ul></li>
       <li>
@@ -519,8 +566,6 @@ document.write(`
       </ul></li>
       <li><a href="ref_utility.html#mmodel.utility.modify_func">modify_func() (in module mmodel.utility)</a>
 </li>
-      <li><a href="ref_signature.html#mmodel.signature.modify_signature">modify_signature() (in module mmodel.signature)</a>
-</li>
       <li>
     module
 
@@ -530,6 +575,8 @@ document.write(`
         <li><a href="ref_metadata.html#module-mmodel.metadata">mmodel.metadata</a>
 </li>
         <li><a href="ref_modifier.html#module-mmodel.modifier">mmodel.modifier</a>
+</li>
+        <li><a href="ref_shortcut.html#module-mmodel.shortcut">mmodel.shortcut</a>
 </li>
         <li><a href="ref_signature.html#module-mmodel.signature">mmodel.signature</a>
 </li>
@@ -550,6 +597,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ref_handler.html#mmodel.handler.TopologicalHandler.node_exception">node_exception() (mmodel.handler.TopologicalHandler method)</a>
 </li>
+      <li><a href="ref_node.html#mmodel.node.Node.node_func">node_func (mmodel.node.Node property)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -566,13 +615,23 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="ref_utility.html#mmodel.utility.param_counter">param_counter() (in module mmodel.utility)</a>
 </li>
+      <li><a href="ref_model.html#mmodel.model.Model.param_defaults">param_defaults (mmodel.model.Model property)</a>
+</li>
       <li><a href="ref_utility.html#mmodel.utility.param_sorter">param_sorter() (in module mmodel.utility)</a>
+</li>
+      <li><a href="ref_modifier.html#mmodel.modifier.parse_fields">parse_fields() (in module mmodel.modifier)</a>
+</li>
+      <li><a href="ref_utility.html#mmodel.utility.parse_functype">parse_functype() (in module mmodel.utility)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ref_utility.html#mmodel.utility.parse_functype">parse_functype() (in module mmodel.utility)</a>
-</li>
       <li><a href="ref_utility.html#mmodel.utility.parse_parameters">parse_parameters() (in module mmodel.utility)</a>
+</li>
+      <li><a href="ref_modifier.html#mmodel.modifier.print_inputs">print_inputs() (in module mmodel.modifier)</a>
+</li>
+      <li><a href="ref_modifier.html#mmodel.modifier.print_output">print_output() (in module mmodel.modifier)</a>
+</li>
+      <li><a href="ref_shortcut.html#mmodel.shortcut.print_shortcut">print_shortcut() (in module mmodel.shortcut)</a>
 </li>
       <li><a href="ref_modifier.html#mmodel.modifier.profile_time">profile_time() (in module mmodel.modifier)</a>
 </li>
@@ -614,8 +673,6 @@ document.write(`
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="ref_signature.html#mmodel.signature.split_arguments">split_arguments() (in module mmodel.signature)</a>
-</li>
       <li><a href="ref_graph.html#mmodel.graph.Graph.subgraph">subgraph() (mmodel.graph.Graph method)</a>
 </li>
       <li><a href="ref_filter.html#mmodel.filter.subnodes_by_inputs">subnodes_by_inputs() (in module mmodel.filter)</a>
@@ -672,8 +729,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -685,7 +744,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -698,12 +757,6 @@ By Peter Sun
   
   <div class="footer-item">
     
-  <p class="copyright">
-    
-      © Copyright 2022 - 2024, Peter Sun.
-      <br/>
-    
-  </p>
 
   </div>
   
@@ -715,7 +768,7 @@ By Peter Sun
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -724,8 +777,8 @@ By Peter Sun
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

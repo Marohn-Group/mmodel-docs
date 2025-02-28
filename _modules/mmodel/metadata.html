@@ -1,50 +1,54 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mmodel.metadata &#8212; MModel 0.7.0 documentation</title>
+    <title>mmodel.metadata &#8212; mmodel 0.8.0 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=d6acfc83"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mmodel/metadata';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -52,23 +56,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -76,7 +73,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -84,16 +80,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -106,6 +113,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -114,10 +124,18 @@
   
   
   
-    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+    <p class="title logo__title">mmodel 0.8.0 documentation</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
@@ -125,16 +143,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_node.html">Define a node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Build a model graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Create a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_group.html">Create a model group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Use modifiers and shortcuts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_handler.html">Handler API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api_modifier.html">Modifier API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_modifier_shortcut.html">Modifer and shortcut API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_metadata.html">Metadata API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -143,6 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_shortcut.html">Shortcut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_filter.html">Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_signature.html">Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_metadata.html">Metadata</a></li>
@@ -156,14 +177,19 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -172,14 +198,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -206,23 +232,17 @@
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
 
 </div></div>
       
@@ -246,31 +266,34 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <h1>Source code for mmodel.metadata</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">inspect</span>
-<span class="kn">from</span> <span class="nn">textwrap</span> <span class="kn">import</span> <span class="n">TextWrapper</span><span class="p">,</span> <span class="n">shorten</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">textwrap</span><span class="w"> </span><span class="kn">import</span> <span class="n">TextWrapper</span><span class="p">,</span> <span class="n">shorten</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
 
 
-<div class="viewcode-block" id="MetaDataFormatter"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.MetaDataFormatter">[docs]</a><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">class</span> <span class="nc">MetaDataFormatter</span><span class="p">:</span>
+<div class="viewcode-block" id="MetaDataFormatter">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.MetaDataFormatter">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MetaDataFormatter</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Metadata Formatter.&quot;&quot;&quot;</span>
 
-    <span class="n">format_dict</span><span class="p">:</span> <span class="nb">dict</span>
+    <span class="n">formatter_dict</span><span class="p">:</span> <span class="nb">dict</span>
     <span class="n">meta_order</span><span class="p">:</span> <span class="nb">list</span>
     <span class="n">text_wrapper</span><span class="p">:</span> <span class="nb">callable</span>
     <span class="n">shorten_list</span><span class="p">:</span> <span class="nb">list</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="n">shorten_placeholder</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot; ...&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert metadata dictionary to string.</span>
 
 <span class="sd">        The process returns a list of metadata by lines.</span>
 <span class="sd">        If the formatter is not found in the formatter dictionary,</span>
 <span class="sd">        the default string output is &quot;key: value&quot;.</span>
 
-<span class="sd">        :param dict format_dict: format function dictionary</span>
+<span class="sd">        :param dict formatter_dict: format function dictionary</span>
 <span class="sd">        :param list meta_order: metadata key order, entry is None if linebreak needed.</span>
 <span class="sd">            Defaults to dictionary key order.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -287,8 +310,8 @@ document.write(`
                 <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
             <span class="c1"># the format functions return a list, for potential multi-liners strings</span>
-            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dict</span><span class="p">:</span>
-                <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">format_dict</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatter_dict</span><span class="p">:</span>
+                <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatter_dict</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
             <span class="k">elif</span> <span class="n">value</span><span class="p">:</span>
                 <span class="n">entry</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
@@ -296,7 +319,14 @@ document.write(`
 
             <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">shorten_list</span><span class="p">:</span>
                 <span class="c1"># replace the original list</span>
-                <span class="n">entry</span> <span class="o">=</span> <span class="p">[</span><span class="n">shorten</span><span class="p">(</span><span class="n">ele</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">text_wrapper</span><span class="o">.</span><span class="n">width</span><span class="p">)</span> <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">entry</span><span class="p">]</span>
+                <span class="n">entry</span> <span class="o">=</span> <span class="p">[</span>
+                    <span class="n">shorten</span><span class="p">(</span>
+                        <span class="n">ele</span><span class="p">,</span>
+                        <span class="n">width</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">text_wrapper</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+                        <span class="n">placeholder</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shorten_placeholder</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">entry</span>
+                <span class="p">]</span>
 
             <span class="n">metadata_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
 
@@ -310,7 +340,10 @@ document.write(`
         <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">metadata_wrapped</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span></div>
 
 
-<div class="viewcode-block" id="format_func"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_func">[docs]</a><span class="k">def</span> <span class="nf">format_func</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_func">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_func">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_func</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format the metadata value that has a function.</span>
 
 <span class="sd">    The key name is not shown in the string output.</span>
@@ -322,17 +355,22 @@ document.write(`
     <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}{</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="format_list"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_list">[docs]</a><span class="k">def</span> <span class="nf">format_list</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_list">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_list">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_list</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format the metadata value that is a list.&quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
-        <span class="c1"># return [f&quot;{key}: []&quot;]</span>
         <span class="k">return</span> <span class="p">[]</span>
     <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">- </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
     <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">elements</span></div>
 
 
-<div class="viewcode-block" id="format_dictargs"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_dictargs">[docs]</a><span class="k">def</span> <span class="nf">format_dictargs</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_dictargs">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_dictargs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_dictargs</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format the metadata value that is a dictionary.&quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
@@ -343,38 +381,27 @@ document.write(`
     <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">elements</span></div>
 
 
-<div class="viewcode-block" id="modifier_metadata"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.modifier_metadata">[docs]</a><span class="k">def</span> <span class="nf">modifier_metadata</span><span class="p">(</span><span class="n">closure</span><span class="p">):</span>
+
+<div class="viewcode-block" id="modifier_metadata">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.modifier_metadata">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">modifier_metadata</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract metadata from closure, including the name and the arguments.</span>
 
 <span class="sd">    The order of extraction:</span>
 <span class="sd">    1. If the object has the &quot;metadata&quot; attribute defined.</span>
-<span class="sd">    2. If the closure takes no arguments, the name is the function name.</span>
-<span class="sd">    3. If the closure takes arguments, the &quot;metadata&quot; attribute is not defined.</span>
-
-<span class="sd">    Note::</span>
-
-<span class="sd">        inspect.getclosurevars(closure).nonlocals can only parse values</span>
-<span class="sd">        if the value is used in the closure.</span>
+<span class="sd">    2. If not, the metadata returns the function name itself.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">closure</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">closure</span><span class="o">.</span><span class="n">metadata</span>
-    <span class="k">elif</span> <span class="ow">not</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getclosurevars</span><span class="p">(</span><span class="n">closure</span><span class="p">)</span><span class="o">.</span><span class="n">nonlocals</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">closure</span><span class="o">.</span><span class="vm">__name__</span>
-
-    <span class="k">else</span><span class="p">:</span>  <span class="c1"># closure takes arguments</span>
-        <span class="c1"># In some rare cases, the closure is a nested function.</span>
-        <span class="c1"># For example, in the tests, the nested closure reflects the</span>
-        <span class="c1"># path of the parent function. Here we remove the nested</span>
-        <span class="c1"># parent function name.</span>
-
-        <span class="n">name</span> <span class="o">=</span> <span class="n">closure</span><span class="o">.</span><span class="vm">__qualname__</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;.&lt;locals&gt;.&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-        <span class="n">kwargs</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getclosurevars</span><span class="p">(</span><span class="n">closure</span><span class="p">)</span><span class="o">.</span><span class="n">nonlocals</span>
-        <span class="n">kwargs_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">kwargs_str</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="s2">&quot;metadata&quot;</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">func</span><span class="o">.</span><span class="n">metadata</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span></div>
 
 
-<div class="viewcode-block" id="format_modifierlist"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_modifierlist">[docs]</a><span class="k">def</span> <span class="nf">format_modifierlist</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_modifierlist">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_modifierlist">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_modifierlist</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format the metadata that is a list of modifiers.</span>
 
 <span class="sd">    The metadata of the modifier is extracted by the modifier_metadata function.</span>
@@ -386,7 +413,10 @@ document.write(`
     <span class="k">return</span> <span class="n">format_list</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">modifier_str_list</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="format_shortdocstring"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_shortdocstring">[docs]</a><span class="k">def</span> <span class="nf">format_shortdocstring</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_shortdocstring">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_shortdocstring">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_shortdocstring</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format function docstring.</span>
 
 <span class="sd">    Only the short docstring is parsed. The built-in and</span>
@@ -394,7 +424,8 @@ document.write(`
 <span class="sd">    some module/function has the repr at the first line,</span>
 <span class="sd">    and some don&#39;t.</span>
 <span class="sd">    Here we try to grab the first line that starts with</span>
-<span class="sd">    an upper case and ends with a period.</span>
+<span class="sd">    an upper case and ends with a period. If the docstring</span>
+<span class="sd">    is improperly formatted, the first line is used.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">[]</span>
@@ -403,12 +434,15 @@ document.write(`
         <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">line</span> <span class="ow">and</span> <span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span> <span class="ow">and</span> <span class="n">line</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">):</span>
             <span class="n">doc</span> <span class="o">=</span> <span class="n">line</span>
-            <span class="k">break</span>
+            <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">doc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">doc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span></div>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[:</span><span class="mi">1</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="format_returns"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_returns">[docs]</a><span class="k">def</span> <span class="nf">format_returns</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_returns">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_returns">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_returns</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format the metadata value that has a list of returns.</span>
 
 <span class="sd">    The formatter is for the returns metadata. If the &quot;returns&quot; value is empty,</span>
@@ -428,7 +462,10 @@ document.write(`
     <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">returns_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="format_value"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_value">[docs]</a><span class="k">def</span> <span class="nf">format_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_value">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_value">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_value</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format the metadata without displaying the key.&quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
@@ -437,7 +474,10 @@ document.write(`
     <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span></div>
 
 
-<div class="viewcode-block" id="format_obj_name"><a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_obj_name">[docs]</a><span class="k">def</span> <span class="nf">format_obj_name</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+
+<div class="viewcode-block" id="format_obj_name">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_obj_name">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_obj_name</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Format the metadata value that is an object.</span>
 
 <span class="sd">    Only show the name of the object. This is used for</span>
@@ -451,6 +491,22 @@ document.write(`
 
     <span class="n">name</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;__name__&quot;</span><span class="p">,</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
     <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="format_dictkeys">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_dictkeys">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_dictkeys</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Formating function that only shows dictionary keys.</span>
+
+<span class="sd">    If the value dictionary is empty return None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: None&quot;</span><span class="p">]</span></div>
+
 
 
 <span class="c1"># customized textwrapper</span>
@@ -476,6 +532,7 @@ document.write(`
     <span class="p">[</span>
         <span class="s2">&quot;self&quot;</span><span class="p">,</span>
         <span class="s2">&quot;returns&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;group&quot;</span><span class="p">,</span>
         <span class="s2">&quot;graph&quot;</span><span class="p">,</span>
         <span class="s2">&quot;handler&quot;</span><span class="p">,</span>
         <span class="s2">&quot;handler_kwargs&quot;</span><span class="p">,</span>
@@ -498,6 +555,42 @@ document.write(`
     <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;node_func&quot;</span><span class="p">,</span> <span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;functype&quot;</span><span class="p">,</span> <span class="s2">&quot;modifiers&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">],</span>
     <span class="n">wrapper80</span><span class="p">,</span>
 <span class="p">)</span>
+
+
+<div class="viewcode-block" id="format_group_content">
+<a class="viewcode-back" href="../../ref_metadata.html#mmodel.metadata.format_group_content">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_group_content</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">formatter</span><span class="o">=</span><span class="n">modelformatter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format the metadata value that is a dictionary of model arguments.</span>
+
+<span class="sd">    Here use the model formatter dictionary to parse the content.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">value</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">meta_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">key</span> <span class="o">+</span> <span class="s2">&quot;: {&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">sub_key</span><span class="p">,</span> <span class="n">sub_value</span> <span class="ow">in</span> <span class="n">value</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">sub_key</span> <span class="ow">in</span> <span class="n">formatter</span><span class="o">.</span><span class="n">formatter_dict</span><span class="p">:</span>
+            <span class="n">meta_list</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">formatter</span><span class="o">.</span><span class="n">formatter_dict</span><span class="p">[</span><span class="n">sub_key</span><span class="p">](</span><span class="n">sub_key</span><span class="p">,</span> <span class="n">sub_value</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">meta_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">sub_key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">sub_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">meta_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;}&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">meta_list</span></div>
+
+
+
+<span class="n">modelgroupformatter</span> <span class="o">=</span> <span class="n">MetaDataFormatter</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">format_value</span><span class="p">,</span>
+        <span class="s2">&quot;models&quot;</span><span class="p">:</span> <span class="n">format_dictkeys</span><span class="p">,</span>
+        <span class="s2">&quot;nodes&quot;</span><span class="p">:</span> <span class="n">format_dictkeys</span><span class="p">,</span>
+        <span class="s2">&quot;model_defaults&quot;</span><span class="p">:</span> <span class="n">format_group_content</span><span class="p">,</span>
+        <span class="s2">&quot;doc&quot;</span><span class="p">:</span> <span class="n">format_value</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;models&quot;</span><span class="p">,</span> <span class="s2">&quot;nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;model_defaults&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="s2">&quot;doc&quot;</span><span class="p">],</span>
+    <span class="n">wrapper80</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">&quot;model_defaults&quot;</span><span class="p">,</span> <span class="s2">&quot;nodes&quot;</span><span class="p">],</span>
+<span class="p">)</span>
 </pre></div>
 
                 </article>
@@ -505,8 +598,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -518,7 +613,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -531,12 +626,6 @@ By Peter Sun
   
   <div class="footer-item">
     
-  <p class="copyright">
-    
-      © Copyright 2022 - 2024, Peter Sun.
-      <br/>
-    
-  </p>
 
   </div>
   
@@ -548,7 +637,7 @@ By Peter Sun
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -557,8 +646,8 @@ By Peter Sun
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

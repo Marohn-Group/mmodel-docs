@@ -1,50 +1,54 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mmodel.signature &#8212; MModel 0.7.0 documentation</title>
+    <title>mmodel.signature &#8212; mmodel 0.8.0 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=d6acfc83"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/mmodel/signature';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -52,23 +56,16 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+  <div id="pst-scroll-pixel-helper"></div>
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -76,7 +73,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -84,16 +80,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -106,6 +113,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -114,10 +124,18 @@
   
   
   
-    <p class="title logo__title">MModel 0.7.0 documentation</p>
+  
+    <p class="title logo__title">mmodel 0.8.0 documentation</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../overview.html">Overview</a></li>
@@ -125,16 +143,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_node.html">Define a node</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_graph.html">Build a model graph</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_model.html">Create a model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Modify nodes and models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_group.html">Create a model group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorial_modifier.html">Use modifiers and shortcuts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tutorial_subgraph.html">Create and modify a subgraph</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Guideline</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../api_signature.html">Signature API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api_handler.html">Handler API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../api_modifier.html">Modifier API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_modifier_shortcut.html">Modifer and shortcut API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api_metadata.html">Metadata API</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul class="nav bd-sidenav">
@@ -143,6 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../ref_model.html">Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_handler.html">Handler</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_modifier.html">Modifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ref_shortcut.html">Shortcut</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_filter.html">Filter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_signature.html">Signature</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../ref_metadata.html">Metadata</a></li>
@@ -156,14 +177,19 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -172,14 +198,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -206,23 +232,17 @@
 </button>
 
 
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
 
 </div></div>
       
@@ -246,246 +266,194 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <h1>Source code for mmodel.signature</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">inspect</span> <span class="kn">import</span> <span class="n">signature</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Signature</span>
-<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">wraps</span>
-<span class="kn">from</span> <span class="nn">mmodel.utility</span> <span class="kn">import</span> <span class="n">param_sorter</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">inspect</span><span class="w"> </span><span class="kn">import</span> <span class="n">signature</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Signature</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">wraps</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmodel.utility</span><span class="w"> </span><span class="kn">import</span> <span class="n">param_sorter</span>
 
 
-<div class="viewcode-block" id="split_arguments"><a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.split_arguments">[docs]</a><span class="k">def</span> <span class="nf">split_arguments</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">arguments</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Split the input argument into args and kwargs based on the signature.</span>
-
-<span class="sd">    The kwargs need to match the inputs completely. The function</span>
-<span class="sd">    takes care of the position-only variable in the old function.</span>
-
-<span class="sd">    :param inspect.Signature sig: signature of the original function</span>
-<span class="sd">    :param dict arguments: keyword argument values</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">args</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arguments</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">args</span><span class="p">,</span> <span class="n">arguments</span></div>
-
-
-<div class="viewcode-block" id="modify_signature"><a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.modify_signature">[docs]</a><span class="k">def</span> <span class="nf">modify_signature</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Modify function signature to custom-defined inputs.</span>
-
-<span class="sd">    The inputs replace the original signature in the same</span>
-<span class="sd">    order. The resulting function is a keyword-only function.</span>
-<span class="sd">    The conversion ignores VAR_POSITIONAL (args). For these</span>
-<span class="sd">    functions, create a new function instead.</span>
-
-<span class="sd">    :param callable func: function to change signature</span>
-<span class="sd">    :param list inputs: new input parameters for the function.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-
-    <span class="c1"># check if input parameters are less than the parameters required</span>
-    <span class="c1"># excludes parameters with defaults</span>
-    <span class="n">sig_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-    <span class="n">sig_default_dict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
-
-    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-        <span class="n">sig_dict</span><span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">kind</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-            <span class="n">sig_default_dict</span><span class="p">[</span><span class="n">param</span><span class="o">.</span><span class="n">kind</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-
-    <span class="n">sig_count</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">sig_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
-    <span class="n">nd_sig_count</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nb">len</span><span class="p">(</span><span class="n">sig_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">sig_default_dict</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-    <span class="p">]</span>
-
-    <span class="c1"># there are four cases for max_length</span>
-    <span class="c1"># case 1: var_kw - max = unlimited</span>
-    <span class="c1"># case 1: kw_only, no var_kw - max = pos + pos_or_kw + kw_only</span>
-    <span class="c1"># case 3: var_pos, no var_kw, no kw_only - max = unlimited</span>
-    <span class="c1"># case 4: no var_pos, no kw_only, no var_kw - max = pos + pos_or_kw</span>
-    <span class="n">pos_expand</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="k">if</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">max_length</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">elif</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">max_length</span> <span class="o">=</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">max_length</span> <span class="o">=</span> <span class="kc">None</span>
-        <span class="n">pos_expand</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">max_length</span> <span class="o">=</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="c1"># there are three cases for min_length (nd = non-default)</span>
-    <span class="c1"># case 1: nd kw_only - min = nd kw + pos_or_kw + pos</span>
-    <span class="c1"># case 2: nd pos_or_kw, no nd kw_only - min = nd pos_or_kw + pos</span>
-    <span class="c1"># case 3: no nd pos_or_kw, no nd kw_only - min = nd pos</span>
-
-    <span class="k">if</span> <span class="n">nd_sig_count</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">min_length</span> <span class="o">=</span> <span class="n">nd_sig_count</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">nd_sig_count</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">min_length</span> <span class="o">=</span> <span class="n">nd_sig_count</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">sig_count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">min_length</span> <span class="o">=</span> <span class="n">nd_sig_count</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-    <span class="c1"># check if the inputs are enough for the function</span>
-    <span class="k">if</span> <span class="n">min_length</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not enough inputs for the function&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">max_length</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">max_length</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Too many inputs for the function&quot;</span><span class="p">)</span>
-
-    <span class="n">new_param</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
-        <span class="n">new_param</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Parameter</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">Parameter</span><span class="o">.</span><span class="n">POSITIONAL_OR_KEYWORD</span><span class="p">))</span>
-    <span class="n">new_sig</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">(</span><span class="n">new_param</span><span class="p">)</span>
-
-    <span class="c1"># remove the *args and **kwargs</span>
-    <span class="n">param_list</span> <span class="o">=</span> <span class="n">sig_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">sig_dict</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">sig_dict</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-    <span class="n">param_pair</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">param_list</span><span class="p">,</span> <span class="n">inputs</span><span class="p">))</span>
-
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="c1"># all parameters are positional</span>
-        <span class="k">if</span> <span class="n">pos_expand</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-
-        <span class="c1"># if keyword argument exists in the original signature</span>
-        <span class="n">adjusted_args</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">adjusted_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
-
-        <span class="k">for</span> <span class="n">old_key</span><span class="p">,</span> <span class="n">new_key</span> <span class="ow">in</span> <span class="n">param_pair</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">old_key</span> <span class="ow">in</span> <span class="n">sig_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                <span class="n">adjusted_args</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">new_key</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">adjusted_kwargs</span><span class="p">[</span><span class="n">old_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">new_key</span><span class="p">)</span>
-
-        <span class="n">adjusted_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">adjusted_args</span><span class="p">,</span> <span class="o">**</span><span class="n">adjusted_kwargs</span><span class="p">)</span>
-
-    <span class="n">wrapped</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">new_sig</span>
-    <span class="k">return</span> <span class="n">wrapped</span></div>
-
-
-<div class="viewcode-block" id="add_signature"><a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.add_signature">[docs]</a><span class="k">def</span> <span class="nf">add_signature</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add signature to ufunc and builtin function.</span>
-
-<span class="sd">    Numpy&#39;s ufunc and builtin type do not have signatures,</span>
-<span class="sd">    therefore, a new signature is created, and the input arguments</span>
-<span class="sd">    are mapped as positional-only values.</span>
-
-<span class="sd">    :param callable func: function to change signature</span>
-<span class="sd">    :param list inputs: new input parameters for the function.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">new_param</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
-        <span class="n">new_param</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Parameter</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">Parameter</span><span class="o">.</span><span class="n">POSITIONAL_OR_KEYWORD</span><span class="p">))</span>
-
-    <span class="n">new_sig</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">(</span><span class="n">new_param</span><span class="p">)</span>
-
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-
-    <span class="n">wrapped</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">new_sig</span>
-    <span class="k">return</span> <span class="n">wrapped</span></div>
-
-
-<div class="viewcode-block" id="convert_signature"><a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.convert_signature">[docs]</a><span class="k">def</span> <span class="nf">convert_signature</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert function signature to pos_or_keywords.</span>
-
-<span class="sd">    The method ignores &quot;args&quot;, and &quot;kwargs&quot;.</span>
-<span class="sd">    Note the signature does not include parameters with default values.</span>
-<span class="sd">    Use inputs to include the parameters.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="n">parameters</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
-
-    <span class="n">param_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="ow">and</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-            <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># defaults cannot be added to pos only parameter</span>
-            <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">Parameter</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">Parameter</span><span class="o">.</span><span class="n">POSITIONAL_OR_KEYWORD</span><span class="p">)</span>
-            <span class="p">)</span>
-
-    <span class="n">new_sig</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">(</span><span class="n">parameters</span><span class="o">=</span><span class="n">param_list</span><span class="p">)</span>
-
-    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="c1"># arguments = new_sig.bind(*args, **kwargs).arguments</span>
-        <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">split_arguments</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-    <span class="n">wrapped</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">new_sig</span>
-    <span class="k">return</span> <span class="n">wrapped</span></div>
-
-
-<div class="viewcode-block" id="restructure_signature"><a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.restructure_signature">[docs]</a><span class="k">def</span> <span class="nf">restructure_signature</span><span class="p">(</span>
-    <span class="n">signature</span><span class="p">,</span> <span class="n">default_dict</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">Parameter</span><span class="o">.</span><span class="n">POSITIONAL_OR_KEYWORD</span>
-<span class="p">):</span>
+<div class="viewcode-block" id="restructure_signature">
+<a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.restructure_signature">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">restructure_signature</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">default_dict</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Add defaults to signature for Model.</span>
 
 <span class="sd">    Here the parameter kinds are replaced with kind (defaults</span>
-<span class="sd">    to POSITIONAL_OR_KEYWORD), and defaults are applied.</span>
-<span class="sd">    The final signatures are sorted. The function is used in</span>
-<span class="sd">    the Model signature definition, therefore no VAR_POSITIONAL</span>
-<span class="sd">    or VAR_KEYWORD should be in the signature.</span>
-
+<span class="sd">    to positional-or-keyword), and defaults are applied.</span>
+<span class="sd">    The final signatures are sorted.</span>
 
 <span class="sd">    :param inspect.Signature signature: signature to add defaults</span>
 <span class="sd">    :param dict default_dict: default values for the parameters</span>
-<span class="sd">    :param int kind: parameter kind</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">param_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">signature</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-        <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">Parameter</span><span class="p">(</span>
-                <span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span>
-                <span class="n">default</span><span class="o">=</span><span class="n">default_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">empty</span><span class="p">),</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="n">default_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">empty</span><span class="p">)</span>
+        <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Parameter</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">Signature</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">param_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">param_sorter</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="has_signature"><a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.has_signature">[docs]</a><span class="k">def</span> <span class="nf">has_signature</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the function has a signature.</span>
 
-<span class="sd">    The function checks if the function has a signature. If the</span>
-<span class="sd">    function has a signature, the function returns True. If the</span>
-<span class="sd">    function does not have a signature, the function returns False.</span>
+<div class="viewcode-block" id="get_parameters">
+<a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.get_parameters">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_parameters</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get the parameter dictionary for the function.</span>
+
+<span class="sd">    If the function has no signature, the function returns</span>
+<span class="sd">    a dictionary with \*args and \*\*kwargs.</span>
+<span class="sd">    Empty input definition is allowed, therefore a function</span>
+<span class="sd">    without a signature and without argument lists is valid.</span>
+
+<span class="sd">    :param callable func: function to get the parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span>
+        <span class="n">sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;args&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;kwargs&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span></div>
 
 
-<div class="viewcode-block" id="check_signature"><a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.check_signature">[docs]</a><span class="k">def</span> <span class="nf">check_signature</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the function signature has parameters with default values.</span>
 
-<span class="sd">    If the function has position-only, or var-positional,</span>
-<span class="sd">    or var-keyword, or default values, the function returns False.</span>
+<div class="viewcode-block" id="get_node_signature">
+<a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.get_node_signature">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_node_signature</span><span class="p">(</span><span class="n">base_params</span><span class="p">,</span> <span class="n">inputs_list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the node signature based on the function and argument lists.</span>
+
+<span class="sd">    If the inputs_list are empty, the function returns</span>
+<span class="sd">    the signature with only the required parameters and no var- parameters.</span>
+<span class="sd">    If the inputs_list are not empty, the function checks if the</span>
+<span class="sd">    argument lists meet the minimum and maximum requirements of the function.</span>
+<span class="sd">    The inputs can be separated by &quot;*&quot; to indicate the keyword only parameters.</span>
+
+<span class="sd">    :param dict param_dict: dictionary of parameters</span>
+<span class="sd">    :param list inputs_list: list of input parameters</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">Parameter</span><span class="o">.</span><span class="n">KEYWORD_ONLY</span><span class="p">,</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">POSITIONAL_OR_KEYWORD</span><span class="p">]</span>
-            <span class="ow">or</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">empty</span>
-        <span class="p">):</span>
-            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">inputs_list</span><span class="p">:</span>
+        <span class="n">sig_param</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">base_params</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">empty</span> <span class="ow">and</span> <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">sig_param</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="n">inputs_list</span><span class="p">:</span>
+            <span class="n">var_index</span> <span class="o">=</span> <span class="n">inputs_list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
+            <span class="n">arglist</span> <span class="o">=</span> <span class="n">inputs_list</span><span class="p">[:</span><span class="n">var_index</span><span class="p">]</span>
+            <span class="n">kwarglist</span> <span class="o">=</span> <span class="n">inputs_list</span><span class="p">[</span><span class="n">var_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arglist</span> <span class="o">=</span> <span class="n">inputs_list</span>
+            <span class="n">kwarglist</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">assert</span> <span class="n">check_args</span><span class="p">(</span><span class="n">base_params</span><span class="p">,</span> <span class="n">arglist</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">check_kwargs</span><span class="p">(</span><span class="n">base_params</span><span class="p">,</span> <span class="n">kwarglist</span><span class="p">)</span>
+
+        <span class="c1"># create the new signature</span>
+        <span class="n">sig_param</span> <span class="o">=</span> <span class="p">[</span><span class="n">Parameter</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">arglist</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span>
+            <span class="n">Parameter</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">kwarglist</span>
+        <span class="p">]</span>
+
+    <span class="n">node_sig</span> <span class="o">=</span> <span class="n">Signature</span><span class="p">(</span><span class="n">sig_param</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">node_sig</span></div>
+
+
+
+<div class="viewcode-block" id="convert_func">
+<a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.convert_func">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_func</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wrap the input node function and redirect the input parameters.</span>
+
+<span class="sd">    The signature is constructed in the node definition that defines</span>
+<span class="sd">    the new signature following the old signature.</span>
+<span class="sd">    The wrapper split the into the positional and keyword arguments,</span>
+<span class="sd">    and apply them to the function.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="n">sig</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="n">arg_keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">kind</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">]</span>
+    <span class="n">kwarg_keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">kind</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">]</span>
+
+    <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># order the dictionary first</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">arg_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">arg_keys</span><span class="p">]</span>
+            <span class="n">kwarg_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">kwargs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">kwarg_keys</span><span class="p">}</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># have the same behavior as a regular function</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;missing a required argument: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">arg_list</span><span class="p">,</span> <span class="o">**</span><span class="n">kwarg_dict</span><span class="p">)</span>
+
+    <span class="n">wrapper</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">sig</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span></div>
+
+
+
+<div class="viewcode-block" id="check_signature">
+<a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.check_signature">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_signature</span><span class="p">(</span><span class="n">base_params</span><span class="p">,</span> <span class="n">param_list</span><span class="p">,</span> <span class="n">param_type</span><span class="p">,</span> <span class="n">nonvar_kind</span><span class="p">,</span> <span class="n">var_kind</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if the function signature is valid.</span>
+
+<span class="sd">    Check for the number of parameters based on original</span>
+<span class="sd">    signature requirements.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">argname</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">required</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">var_args</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">base_params</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="n">var_kind</span><span class="p">:</span>
+            <span class="n">var_args</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="n">param</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="n">nonvar_kind</span><span class="p">:</span>
+            <span class="n">argname</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">param</span><span class="o">.</span><span class="n">default</span> <span class="ow">is</span> <span class="n">Parameter</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+                <span class="n">required</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">var_args</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">argname</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;too many </span><span class="si">{</span><span class="n">param_type</span><span class="si">}</span><span class="s2"> arguments, &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;maximum </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">argname</span><span class="p">)</span><span class="si">}</span><span class="s2"> but got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">required</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;not enough </span><span class="si">{</span><span class="n">param_type</span><span class="si">}</span><span class="s2"> arguments, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;minimum </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">required</span><span class="p">)</span><span class="si">}</span><span class="s2"> but got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">param_list</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
     <span class="k">return</span> <span class="kc">True</span></div>
+
+
+
+<div class="viewcode-block" id="check_kwargs">
+<a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.check_kwargs">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_kwargs</span><span class="p">(</span><span class="n">base_params</span><span class="p">,</span> <span class="n">kwarglist</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if kwargs list is valid.</span>
+
+<span class="sd">    :param list base_params: list of signature parameters</span>
+<span class="sd">    :param list kwarglist: list of keyword arguments</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">check_signature</span><span class="p">(</span><span class="n">base_params</span><span class="p">,</span> <span class="n">kwarglist</span><span class="p">,</span> <span class="s2">&quot;keyword&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">])</span></div>
+
+
+
+<div class="viewcode-block" id="check_args">
+<a class="viewcode-back" href="../../ref_signature.html#mmodel.signature.check_args">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_args</span><span class="p">(</span><span class="n">base_params</span><span class="p">,</span> <span class="n">arglist</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if args list is valid.</span>
+
+<span class="sd">    :param list base_params: list of signature parameters</span>
+<span class="sd">    :param list arglist: list of positional arguments</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">check_signature</span><span class="p">(</span><span class="n">base_params</span><span class="p">,</span> <span class="n">arglist</span><span class="p">,</span> <span class="s2">&quot;positional&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">])</span></div>
+
 </pre></div>
 
                 </article>
@@ -493,8 +461,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -506,7 +476,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -519,12 +489,6 @@ By Peter Sun
   
   <div class="footer-item">
     
-  <p class="copyright">
-    
-      © Copyright 2022 - 2024, Peter Sun.
-      <br/>
-    
-  </p>
 
   </div>
   
@@ -536,7 +500,7 @@ By Peter Sun
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -545,8 +509,8 @@ By Peter Sun
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
